@@ -1,46 +1,53 @@
-<h3>新規会員登録</h3>
-<div class="row">
-<%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-      <table>
-        <tbody>
-          <tr>
-            <th>名前</th>
-            <td class="sign-up-small-cell">(姓)</td>
-            <td><%= f.text_field :last_name, autofocus: true %></td>
-            <td class="sign-up-small-cell">(名)</td>
-            <td><%= f.text_field :first_name, autofocus: true %></td>
-          </tr>
-          <tr>
-            <th>メールアドレス</th>
-            <td class="sign-up-small-cell"></td>
-            <td><%= f.email_field :email, autofocus: true, autocomplete: "email"%></td>
-          </tr>
-          <tr>
-            <th>住所</th>
-            <td class="sign-up-small-cell"></td>
-            <td colspan="3"><%= f.text_field :address, autofocus: true, class: "sign-up-address" %></td>
-          </tr>
-            <th>パスワード（６文字以上）</th>
-            <td class="sign-up-small-cell"></td>
-            <td><%= f.password_field :password %></td>
-          </tr>
-          <tr>
-            <th>パスワード（確認用）</th>
-            <td class="sign-up-small-cell"></td>
-            <td><%= f.password_field :password_confirmation, autocomplete: "current-password" %></td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="customer-sign-up-actions">
-        <%= f.submit "新規登録", class:"btn btn-success col-xs-3 col-xs-offset-5" %>
-      </div>
-    <% end %>
-  </div>
-</div>
-<div class="container col-xs-6 col-xs-offset-2 sign-up-message">
-  <h3>既に登録済みの方</h3>
+<div class="container">
+  <h3>新規会員登録</h3>
   <div class="row">
-    <span class="col-xs-offset-"><%= link_to 'こちら', new_user_session_path %>からログインしてください。</span>
-  </div>
+    <div class="col-6  offset-3">
+    <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        
+        <%= f.label :"名前" %>
+        <div class="d-flex justyfy-content-around my-2">
+          <%= f.text_field :last_name, autofocus: true, placeholder:"例）山田",class:"form-control mr-2" %>
+          <%= f.text_field :first_name, autofocus: true, placeholder:"例）太郎",class:"form-control ml-2" %>
+        </div>
+        
+        <div class="field my-2">
+          <%= f.label :"学校所在地" %>
+          <%= f.collection_select :prefecture_code,JpPrefecture::Prefecture.all, :code, :name,{ prompt: "選択してください" }, class: "form-control" %>          
+        </div>
+        
+        <div class="field my-2">
+          <%= f.label :"教員歴" %>
+          <%= f.select :history_status, User.history_statuses.keys,{ prompt: "選択してください" },class: "form-control" %>          
+        </div>
+        
+        <div class="field my-2">
+          <%= f.label :"メールアドレス" %>
+          <%= f.email_field :email, autofocus: true, placeholder:"例）kaeru@example.com", autocomplete: "email",class:"form-control" %>
+        </div>
+        <div class="field my-2">
+          <%= f.label :"パスワード" %>
+          <%= f.password_field :password, placeholder:"6〜25文字", autocomplete: "current-password",class:"form-control" %>
+        </div>
+        
+        <div class="field my-2">
+          <%= f.label :確認 %><br />
+          <%= f.password_field :password_confirmation,placeholder:"6〜25文字", autocomplete: "new-password",class:"form-control" %>
+        </div>
+        
+          <div class="my-3 text-center">
+            <%= f.submit "ログイン",class: "btn btn-success"%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="container col-xs-6 col-xs-offset-2 sign-up-message">
+      <h3>既に登録済みの方</h3>
+      <div class="row">
+        <span class="col-xs-offset-"><%= link_to 'こちら', new_user_session_path %>からログインしてください。</span>
+      </div>
+    </div>
+      
+    </div>
+  
 </div>

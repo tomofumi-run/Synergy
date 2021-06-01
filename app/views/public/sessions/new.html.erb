@@ -1,7 +1,6 @@
 <div class="container">
   <h3>ログイン</h3>
   <div class="row">
-    <div class="col">
       <div class="col-6 offset-3">
       <h6 class="my-3">会員の方はこちらからログイン</h6>
         <%= form_with model: @user, url: user_session_path, local: true do |f| %>
@@ -14,17 +13,14 @@
             <%= f.label :"パスワード" %><br />
             <%= f.password_field :password, placeholder:"例）xxxxxx", autocomplete: "current-password",class:"form-control" %>
           </div>
-          <div class="actions my-3 text-center">
-           
+          <div class="my-3 text-center">
             <%= f.submit "ログイン",class: "btn btn-primary"%>
           </div>
         <% end %>
           <div>
               <h6 class="text-center">会員登録がお済みでない⽅</h6>
-              <p class="text-center"><%= link_to "こちら", new_customer_registration_path %>からログインしてください。</p>
+              <p class="text-center"><%= link_to "こちら", new_user_registration_path %>からログインしてください。</p>
           </div>
       </div>
-      
-    </div>
   </div>
 </div>

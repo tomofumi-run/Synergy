@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+  
 
   attachment :profile_image
   enum history_status: { "経験なし": 0, "1年目": 1, "2年目": 2, "3年目": 3, "4年目": 4,
@@ -15,14 +18,14 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
-  has_many :reverse_of_relationships, class_name: ‘Relationship’, foreign_key: ‘followed_id’, dependent: :destroy
-  has_many :relationships, class_name: ‘Relationship’, foreign_key: ‘follower_id’, dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_many :followings, through: :relationships, source: :followed
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
-  has_many :active_notifications, class_name: ‘Notification’, foreign_key: ‘visiter_id’, dependent: :destroy
-  has_many :passive_notifications, class_name: ‘Notification’, foreign_key: ‘visited_id’, dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
     
   validates :first_name, presence: true
   validates :last_name, presence: true
