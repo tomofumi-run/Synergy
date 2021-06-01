@@ -47,7 +47,7 @@
 
 ## 📕チャレンジ要素一覧
 
-https://docs.google.com/spreadsheets/d/1rKFhXuo3yfafgMzxxizGoaHVmZqqz4-e/edit?rtpof=true#gid=284504462
+https://docs.google.com/spreadsheets/d/12Q-OzbBB7sKLiqnmzHqpcgDZdR5KlurBs_gXRjrEx_0/edit#gid=0
 
 <br>
 
