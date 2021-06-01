@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :authenicate_user!
+  before_action :authenticate_user!
   before_action :set_current, only: [:show,:edit,:update,:out]
   
   def index
