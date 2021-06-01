@@ -1,3 +1,57 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # admin
+  devise_for :admin, :controllers => {
+    :sessions => 'admin/sessions'
+  }
+  namespace :admin do
+    resources :usres,only: [:index,:show,:edit,:update,:destroy] do
+      collection do
+        get 'search'
+      end
+    end
+  	resources :posts,only: [:index,:show,:destroy] do
+  	  collection do
+  	    get 'search'
+  	 end   
+  	end
+  	resources :genres,only: [:index,:create,:edit,:update]
+  end
+
+  # user
+  devise_for :users, :controllers => {
+    :sessions => 'public/sessions',
+    :registrations => 'public/registrations',
+    :passwords => 'public/passwords'
+  }
+
+  get 'about' => 'public/homes#about'
+  root 'public/homes#top'
+
+  scope module: :public do
+    resources :users,only:[:index,:show,:edit,:update] do
+      resource :relationships, only:[:create,:destroy]
+      get 'followings', to: 'relationships#followings', as: 'followings'
+      get 'followers', to: 'relationships#followers', as: 'followers'
+      resources :notifications, only: :index
+      get 'quit'
+      patch 'out'
+      get 'likes'
+      get 'search'
+    end
+    
+    resources :posts do
+      resource :likes,only:[:create,:destroy]
+      collection do
+        get 'search'
+      end
+    end
+    
+    resources :chats, only:[:index,:create]
+    get 'chat', to: 'chats#show'
+    resources :contacts, only:[:new,:create] do
+      collection do
+        get 'thanx'
+      end
+    end
+  end
 end
