@@ -2,7 +2,6 @@ class Post < ApplicationRecord
   attachment :post_image
   
   has_many :likes, dependent: :destroy
-  has_many :liking_users, through: :likes, source: :user
   has_many :notifications, dependent: :destroy
   belongs_to :user
   belongs_to :genre
