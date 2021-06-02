@@ -75,3 +75,7 @@ gem 'pry-byebug'
 gem 'dotenv-rails'
 gem 'faker'
 gem 'summernote-rails'
+
+group :production do
+  gem 'mysql2'
+end
