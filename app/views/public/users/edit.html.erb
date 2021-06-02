@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0 mx-auto">
      <h2>プロフィール編集</h2>
       <%= form_with model:@user, local:true do |f| %>
       <%= render 'layouts/errors', obj: @user%>
@@ -9,7 +9,7 @@
          <%= f.label :"プロフィール画像" %>
          <%= f.attachment_field :profile_image,class:"form-control-file"%>
         </div>
-        <%= attachment_image_tag(@user, :profile_image,:fill,200,200,fallback: "no_image.png",class:"rounded-circle")%>
+        <%= attachment_image_tag(@user, :profile_image,:fill,100,100,fallback: "no_image.png",class:"rounded-circle")%>
       </div>
       
       <%= f.label :"名前" %>
@@ -38,9 +38,10 @@
         <%= f.text_area :introduction,placeholder:"例）本やニュースで学んだことをサクッと皆さんと共有していきます。",class:"form-control"%>        
       </div>
       
-      <div class="form-group">
-       <%= f.submit "Update", class:"btn btn-secondary"%>
-       <%= link_to "Back",user_path(current_user),class:"btn btn-success"%>
+      <div class="form-group d-flex justify-content-around">
+       <%= link_to "戻る",user_path(current_user),class:"btn btn-secondary"%>
+       <%= f.submit "更新する", class:"btn btn-success"%>
+       <%= link_to "退会ページへ進む", user_quit_path(current_user),class:"btn btn-danger"%>
       </div>
       
      <% end%>

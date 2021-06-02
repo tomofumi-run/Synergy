@@ -1,43 +1,40 @@
 <div class="container">
   <div class="row">
     <!--左側-->
-    <div class="col-md-3">
+    <div class="col-lg-3">
       <div class="container">
-        <div class="row">
+        <div>
           <div><%= attachment_image_tag(@user, :profile_image,:fill,20,200,fallback: "no_image.png",class:"rounded-circle")%></div>
           <p><%= full_name(@user)%></p>
-          <div class="row">
-            <% if current_user = @user %>
-              <%= link_to '',edit_user_path(@user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@user.id}" %>
-            <% end %>
-          </div>          
         </div>
+          <div class="container">
+              <div class="row mt-3">
+                <h5 class="mr-4">学校所在地:</h5>
+                <p><%= @user.prefecture_name%></p>
+              </div>
+              <div class="row mt-3">
+                <h5 class="mr-4">所属先:</h5>
+                <p><%= @user.work%></p>
+              </div>
+              <div class="row mt-3">
+                <h5 class="mr-4">教員歴:</h5>
+                <p><%= @user.history_status%></p>
+              </div>
+              <div class="row mt-3">
+                <h5 class="mr-4">自己紹介:</h5>
+                <p><%= @user.introduction%></p>
+              </div>
+        </div>
+        
+            <% if current_user = @user %>
+              <%= link_to '編集する',edit_user_path(@user),class: "btn btn-success edit_user_#{@user.id}" %>
+            <% end %>
       </div>
     </div>
     
     <!--右側-->
-    <div class="col-md-8">
-      <div class="container">
-        <div class="row">
-          <h2>プロフィール</h2>
-          <div>
-            <p>学校所在地</p>
-            <p><%= @user.prefecture_name%></p>
-          </div>
-          <div>
-            <p>所属先</p>
-            <p><%= @user.work%></p>
-          </div>
-          <div>
-            <p>教員歴</p>
-            <p><%= @user.history_status%></p>
-          </div>
-          <div>
-            <p>自己紹介</p>
-            <p><%= @user.introduction%></p>
-          </div>
-        </div>
-      </div>
+    <div class="col-lg-7">
+
     </div>
   </div>
 </div>
