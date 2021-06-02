@@ -16,3 +16,16 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+  body,html{
+    margin: 0;
+    padding: 0;
+    background-color: #EEEEEE;
+  }
+  
+  header{
+    background-color: #CCFFCC;
+    .nav-item{
+      margin: 0 20px;
+    }
+  }

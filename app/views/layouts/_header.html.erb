@@ -9,26 +9,26 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in?%>
           <li class="nav-item">
-            <%= link_to"Chat", chats_path,class: 'nav-link text-dark'%>
+            <%= link_to"Chat", chats_path,class: 'btn btn-outline-secondary py-2 px-4'%>
           </li>
           <li class="nav-item">
-            <%= link_to"Post", new_post_path,class: 'nav-link text-dark'%>
+            <%= link_to"Post", new_post_path,class: 'btn btn-outline-secondary py-2 px-4'%>
           </li>  
           <li class="nav-item">
-            <%= link_to"Mypage", user_path(current_user),class: 'nav-link text-dark'%>
+            <%= link_to"Mypage", user_path(current_user),class: 'btn btn-outline-secondary py-2 px-4'%>
           </li>
           <li class="nav-item">
-            <%= link_to"Logout", destroy_user_session_path,method: :delete,class: 'nav-link text-dark'%>
+            <%= link_to"Logout", destroy_user_session_path,method: :delete,class: 'btn btn-outline-secondary py-2 px-4'%>
           </li>
         <% else%>
           <li class="nav-item">
-            <%= link_to"About", about_path,class: 'nav-link text-dark'%>
+            <%= link_to"About", about_path,class: 'btn btn-outline-secondary py-2 px-4'%>
           </li>
           <li class="nav-item">
-            <%= link_to"Signup", new_user_registration_path,class: 'nav-link text-dark'%>
+            <%= link_to"Signup", new_user_registration_path,class: 'btn btn-outline-secondary py-2 px-4'%>
           </li>
           <li class="nav-item">
-            <%= link_to"Login", new_user_session_path,class: 'nav-link text-dark'%>
+            <%= link_to"Login", new_user_session_path,class: 'btn btn-outline-secondary py-2 px-4'%>
           </li>
         <% end %>
         </ul>
