@@ -5,7 +5,7 @@
     <div class="col-lg-3">
       <div class="container">
         <div>
-          <div><%= attachment_image_tag(@user, :profile_image,:fill,20,200,fallback: "no_image.png",class:"rounded-circle")%></div>
+          <div><%= attachment_image_tag(@user, :profile_image,:fill,200,200,fallback: "no_image.png")%></div>
           <p><%= full_name(@user)%></p>
         </div>
           <div class="container">
@@ -26,10 +26,9 @@
                 <p><%= @user.introduction%></p>
               </div>
         </div>
-        
-            <% if current_user = @user %>
-              <%= link_to '編集する',edit_user_path(@user),class: "btn btn-success edit_user_#{@user.id}" %>
-            <% end %>
+          <% if current_user = @user %>
+            <%= link_to '編集する',edit_user_path(@user),class: "btn btn-success edit_user_#{@user.id}" %>
+          <% end %>
       </div>
     </div>
     
