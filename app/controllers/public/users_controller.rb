@@ -34,7 +34,8 @@ class Public::UsersController < ApplicationController
   end
   
   def search
-    
+    @content = params[:content]
+    @records = User.search_for(@content)
   end
   
   private
