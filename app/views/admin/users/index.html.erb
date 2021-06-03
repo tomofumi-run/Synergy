@@ -1,17 +1,21 @@
+<% provide(:title, "会員一覧")%>
 <div class="container">
   <div class="row">
     <% @users.each do |user|%>
-      <div class="col">
+      <div class="col-xs-12 col-md-6 col-lg-3">
         <div class="card" style="width: 18rem;">
           <%= attachment_image_tag(user, :profile_image,fallback: "no_image.png",class:"card-img-top")%>
           <div class="card-body">
             <h5 class="card-title">
-              <%= link_to user_path(user) do%>
-              <%=full_name(user)%>
+              <%= link_to admin_user_path(user) do%>
+              <%= full_name(user) %>
               <% end %>
             </h5>
-            <p class="card-text"><%= user.prefecture_name%></p>
-            <p class="card-text"><%= user.history_status%></p>
+            <% if user.is_deleted === true %>
+              <p class="card-text text-danger">退会済</p>
+            <% else %>
+              <p class="card-text text-success">有効</p>
+            <% end %>
           </div>
         </div>
       </div>

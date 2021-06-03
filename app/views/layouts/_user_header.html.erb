@@ -1,0 +1,12 @@
+<li class="nav-item">
+   <%= link_to"Chat", chats_path,class: 'nav-link text-dark'%>
+</li>
+<li class="nav-item">
+    <%= link_to"Post", new_post_path,class: 'nav-link text-dark'%>
+</li>  
+<li class="nav-item">
+  <%= link_to"Mypage", user_path(current_user),class: 'nav-link text-dark'%>
+</li>
+<li class="nav-item">
+  <%= link_to"Logout", destroy_user_session_path,method: :delete,class: 'nav-link text-dark'%>
+</li>

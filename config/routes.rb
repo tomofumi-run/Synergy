@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     :sessions => 'admin/sessions'
   }
   namespace :admin do
-    resources :usres,only: [:index,:show,:edit,:update,:destroy] do
+    resources :users,only: [:index,:show,:edit,:update,:destroy] do
       collection do
         get 'search'
       end
