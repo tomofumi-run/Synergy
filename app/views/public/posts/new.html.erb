@@ -1,0 +1,38 @@
+<% provide(:title, "新規投稿")%>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0 mx-auto">
+     <h2>新規投稿</h2>
+      <%= form_with model:@post, local:true do |f| %>
+      <%= render 'layouts/errors', obj: @post%>
+      <div class="field my-2 d-flex">
+        <div>
+         <%= f.label :"画像" %>
+         <%= f.attachment_field :post_image,class:"form-control-file"%>
+        </div>
+      </div>
+
+      <div class="field my-2">
+        <%= f.label :"カテゴリーを選んでください" %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name,{ prompt: "選択してください" }, class: "form-control" %>          
+      </div>
+      
+      <div class="field my-2">
+        <%= f.label :"タイトル" %>
+        <%= f.text_field :title,placeholder:"25文字以内",class: "form-control"%>         
+      </div>
+      
+      <div class="field my-2">
+        <%= f.label :"本文" %>
+        <%= f.text_area :content,placeholder:"カテゴリーに繋がる記事や学びを書き込みましょう。",class:"form-control"%>        
+      </div>   
+      
+      <div class="form-group d-flex justify-content-around">
+       <%= f.submit "更新する", class:"btn btn-success"%>
+       <%= link_to "投稿一覧へ戻る", posts_path,class:"btn btn-secondary"%>
+      </div>
+      
+     <% end%>
+    </div>
+  </div>
+</div>

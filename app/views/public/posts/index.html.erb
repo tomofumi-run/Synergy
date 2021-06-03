@@ -1,0 +1,9 @@
+<% provide(:title, "投稿一覧")%>
+<div class="container">
+  <div class="row">
+    <%= link_to "投稿する", new_post_path, class:"btn btn-primary btn-lg"%>
+  </div>
+  <div class="row">
+    <%= render "public/posts/index", posts: @posts%>
+  </div>
+</div>

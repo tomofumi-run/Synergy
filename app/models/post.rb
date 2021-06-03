@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   belongs_to :genre
   
   validates :genre_id, presence: true
-  validates :post_image_id, presence: true
+  validates :post_image, presence: true
   validates :title, presence: true, length: { maximum: 25 }
   validates :content, presence: true
   

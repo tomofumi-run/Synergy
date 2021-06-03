@@ -10,11 +10,5 @@
     </div>
   <div class="container mt-5">
     <h2>最新の投稿</h2>
-      <div class="row">
-          <% @posts.first(4).each do |post| %>
-           <%= render "new_post" , post: post%>
-          <% end %>
-      </div>
-    <p class="text-right"><%= link_to "全ての投稿を見る", posts_path %></p>
   </div>
 </div>
