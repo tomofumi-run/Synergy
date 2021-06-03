@@ -31,6 +31,8 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   
+  # ---------- フォローとアンフォロー  ----------
+  
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
@@ -43,6 +45,8 @@ class User < ApplicationRecord
     followings.include?(user)
   end  
   
+  # ---------- 都道府県入力  ----------
+  
   def prefecture_name
     JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
   end
@@ -51,7 +55,19 @@ class User < ApplicationRecord
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
   
+  # ---------- 論理削除者が再ログインできないようにオーバーライド  ----------
+  
   def active_for_authentication?
     super && (self.is_deleted == false)
+  end
+  # ---------- last_nameとfirst_nameを絡めた検索  ----------
+  
+  def self.search_for(content)
+    return none if content.blank?
+    
+    f_name = User.where('first_name LIKE ?', '%' + content + '%')
+    l_name = User.where('last_name LIKE ?', '%' + content + '%')
+    
+    users = f_name + l_name
   end
 end

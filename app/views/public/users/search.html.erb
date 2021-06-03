@@ -1,0 +1,9 @@
+<% provide(:title, "ユーザー検索")%>
+<%= render "public/users/user_search"%>
+
+<div class="container">
+  <h5>検索ワード　"<%= @content %>"</h5>
+  <div class="row">
+      <%= render "public/users/index", users: @records  %>
+  </div>
+</div>
