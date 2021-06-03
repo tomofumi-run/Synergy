@@ -1,12 +1,15 @@
 <li class="nav-item">
-   <%= link_to"Chat", chats_path,class: 'nav-link text-dark'%>
+   <%= link_to"チャット", chats_path,class: 'nav-link text-dark'%>
 </li>
 <li class="nav-item">
-    <%= link_to"Post", new_post_path,class: 'nav-link text-dark'%>
+    <%= link_to"ユーザー一覧", users_path,class: 'nav-link text-dark'%>
 </li>  
 <li class="nav-item">
-  <%= link_to"Mypage", user_path(current_user),class: 'nav-link text-dark'%>
+    <%= link_to"投稿", new_post_path,class: 'nav-link text-dark'%>
+</li>  
+<li class="nav-item">
+  <%= link_to"マイページ", user_path(current_user),class: 'nav-link text-dark'%>
 </li>
 <li class="nav-item">
-  <%= link_to"Logout", destroy_user_session_path,method: :delete,class: 'nav-link text-dark'%>
+  <%= link_to"ログアウト", destroy_user_session_path,method: :delete,class: 'nav-link text-dark'%>
 </li>
