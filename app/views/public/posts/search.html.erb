@@ -1,0 +1,9 @@
+<% provide(:title, "新規投稿")%>
+<%= render "public/posts/post_search"%>
+
+<div class="container">
+  <h5>検索ワード　"<%= @content %>"</h5>
+  <div class="row">
+    <%= render "public/posts/index", posts: @records%>
+  </div>
+</div>

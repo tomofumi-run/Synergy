@@ -11,7 +11,14 @@ class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 25 }
   validates :content, presence: true
   
+  # ---------- userがlikeをしているかどうか  ----------  
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
+  end
+
+  # ---------- postの部分一致  ----------
+  def self.search_for(content)
+    return none if content.blank? #contentに記述なしの場合、何も表示させない。
+    Post.where('title LIKE?', '%' + content + '%')
   end
 end
