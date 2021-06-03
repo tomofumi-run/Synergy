@@ -33,8 +33,6 @@ class Public::SessionsController < Devise::SessionsController
     # 入力されたパスワードが正しいこと 且つ　active_for_authentication?メソッドがfalseであるかどうか。
         redirect_to new_customer_session_path,alert:"このアカウントは退会済みです。"
       end
-    else
-      flash[:alert] = "必須項目を入力してください"
     end
   end
 end

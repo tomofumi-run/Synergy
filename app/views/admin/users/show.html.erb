@@ -1,0 +1,42 @@
+<% provide(:title, "会員詳細")%>
+<div class="container">
+  <div class="row">
+      <div class="mx-auto">
+        <h2><%= full_name(@user)%>さんの会員情報</h2>
+          <table class="table">
+            <tr>
+              <th>学校所在地</th>
+              <td><%= @user.prefecture_name%></td>
+            </tr>
+            <tr>
+              <th>所属先</th>
+              <td><%= @user.work%></td>
+            </tr>
+            <tr>
+              <th>教員歴</th>
+              <td><%= @user.history_status%></td>
+            </tr>
+            <tr>
+              <th>自己紹介</th>
+              <td><%= @user.introduction%></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @user.email%></td>
+            </tr>
+            <tr>
+              <th>会員ステータス</th>
+              <% if @user.is_deleted == true%>
+               <td class="text-secondary">退会済み</td>
+              <% else %>
+               <td class="text-success">有効</td>
+              <% end %>
+            </tr>            
+          </table>      
+          <div class="d-flex justify-content-around">
+            <p><%= link_to "編集する",edit_admin_user_path, class:"btn btn-success"%></p>
+            <p><%= link_to "完全削除する",admin_user_path,method: :delete,data: { confirm: '完全に削除しますか？' }, class:"btn btn-danger"%></p>
+          </div>
+      </div>
+  </div>
+</div>

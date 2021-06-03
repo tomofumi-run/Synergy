@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :authenicate_admin!
+  before_action :authenticate_admin!
   before_action :set_user, only: [:show,:edit,:update,:destroy]
   
   def index
@@ -7,14 +7,16 @@ class Admin::UsersController < ApplicationController
   end
   
   def show
+    @user = User.find(params[:id])
   end
   
   def edit
+    @user = User.find(params[:id])
   end
   
   def update
     if @user.update(user_params)
-      redirect_to admin_customer_path, notice:"会員情報を更新しました。"
+      redirect_to admin_user_path, notice:"会員情報を更新しました。"
     else
       render :edit, alert:"入力内容に不備があります。"
     end
@@ -22,7 +24,7 @@ class Admin::UsersController < ApplicationController
   
   def destroy
     @user.destroy
-    redirect_to posts_path, notice:"ユーザーを完全に削除しました。"
+    redirect_to users_path, notice:"ユーザーを完全に削除しました。"
   end
   
   def search

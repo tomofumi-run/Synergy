@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0 mx-auto">
+     <h2>プロフィール編集</h2>
+      <%= form_with model:@user,url: admin_user_path,local:true do |f| %>
+      <%= render 'layouts/errors', obj: @user%>
+        <%= f.label :"名前" %>
+        <div class="d-flex justyfy-content-around my-2">
+          <%= f.text_field :last_name, autofocus: true,class:"form-control mr-2" %>
+          <%= f.text_field :first_name, autofocus: true,class:"form-control ml-2" %>
+        </div>
+        
+        <div class="field my-2">
+          <%= f.label :"学校所在地" %>
+          <%= f.collection_select :prefecture_code,JpPrefecture::Prefecture.all, :code, :name,{ prompt: "選択してください" }, class: "form-control" %>          
+        </div>
+        
+        <div class="field my-2">
+          <%= f.label :"所属先" %>
+          <%= f.text_field :work,class: "form-control"%>         
+        </div>
+        
+        <div class="field my-2">
+          <%= f.label :"教員歴" %>
+          <%= f.select :history_status, User.history_statuses.keys,{ prompt: "選択してください" },class: "form-control" %>          
+        </div>
+        
+        <div class="field my-2">
+          <%= f.label :"自己紹介" %>
+          <%= f.text_area :introduction,placeholder:"例）本やニュースで学んだことをサクッと皆さんと共有していきます。",class:"form-control"%>        
+        </div>
+        <div class="field my-2">
+          <%= f.label :"会員ステータス", class: "col-sm-4 control-label" %>
+          <%= f.radio_button :is_deleted, false %>
+          <%= f.label :is_deleted, "有効"%>
+          <%= f.radio_button :is_deleted, true %>
+          <%= f.label :is_deleted, "退会" %>        
+        </div>
+      
+      <div class="form-group col-xs-9 d-flex justify-content-around">
+        <%= f.submit '変更を保存する' ,class: "btn btn-success" %>
+        <%= link_to '会員詳細画面へ戻る',admin_user_path, class:"btn btn-outline-secondary"%>
+      </div>
+     <% end%>
+    </div>
+  </div>
+</div>
