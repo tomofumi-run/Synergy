@@ -26,14 +26,14 @@
     name:"ニュース"
     )
   
-  # User.all.each do |user|
-  #   user.posts.create!(
-  #     genre_id: 1,
-  #     title: 'タイトル',
-  #     content: 'txtxtxtxtxtxtxtxtxt',
-  #     post_image_id: open('./app/assets/images/kaeru.png'),
-  #   )
-  # end
+  User.all.each do |user|
+    user.posts.create!(
+      genre_id: 1,
+      title: 'タイトル',
+      content: 'txtxtxtxtxtxtxtxtxt',
+      post_image: open('./app/assets/images/kaeru.png'),
+    )
+  end
   
   Admin.create!(
     email: "admin@admin.com",

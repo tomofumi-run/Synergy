@@ -1,0 +1,7 @@
+<% provide(:title, "お気に入り一覧")%>
+<div class="container">
+  <h5>"<%= full_name(current_user)%>"さんのお気に入り一覧</h5>
+  <div class="row">
+    <%= render "public/posts/index", posts: @likes_list%>
+  </div>
+</div>
