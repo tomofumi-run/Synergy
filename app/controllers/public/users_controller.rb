@@ -7,6 +7,7 @@ class Public::UsersController < ApplicationController
   end
   
   def show
+    
   end
   
   def edit
@@ -42,7 +43,7 @@ class Public::UsersController < ApplicationController
   private
   
     def set_current
-      @user = current_user
+      @user = User.find(params[:id])
     end
   
     def user_params

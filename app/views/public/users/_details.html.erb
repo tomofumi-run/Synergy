@@ -1,0 +1,4 @@
+<% if current_user == user %>
+  <%= link_to '編集する',edit_user_path(current_user),class: "btn btn-success" %></br>
+  <%= link_to 'お気に入り',user_likes_path(current_user),class: "btn btn-success"%>
+<% end %>

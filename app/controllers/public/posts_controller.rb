@@ -15,7 +15,7 @@ class Public::PostsController < ApplicationController
   
   def update
     if @post.update(post_params)
-      redirect_to post_path,notice:"投稿を更新しました。"
+      redirect_to post_path(@post),notice:"投稿を更新しました。"
     else
       render :edit
     end
@@ -30,7 +30,7 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     
     if @post.save
-      redirect_to post_path, notice:"投稿が完了しました。"
+      redirect_to post_path(@post), notice:"投稿が完了しました。"
     else
       render :new
     end

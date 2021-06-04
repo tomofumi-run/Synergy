@@ -1,0 +1,11 @@
+<% provide(:title, "フォロワー一覧")%>
+<div class="container">
+ <h5><%= full_name(@user)%>さんのフォロワー</h5>
+  <div class="row">
+    <% if @users.exists? %>
+      <%= render 'public/users/index', users: @users %>
+    <% else %>
+      <p>ユーザーはいません</p>
+    <% end %>
+  </div>
+</div>

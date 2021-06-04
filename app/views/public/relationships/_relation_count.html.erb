@@ -1,0 +1,6 @@
+<tr id="followings-count_#{ @user.id }">
+  <th><%= link_to "#{ @user.followings.count }フォロー", user_followings_path(@user) %></th>
+</tr>
+<tr id="followers-count_#{ @user.id }">
+  <th><%= link_to "#{ @user.followers.count}フォロワー", user_followers_path(@user)%></th>
+</tr>
