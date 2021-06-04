@@ -1,5 +1,5 @@
 class Admin::GenresController < ApplicationController
-  before_action :authenicate_admin!
+  before_action :authenticate_admin!
   
   def index
     @genres = Genre.all
@@ -15,6 +15,7 @@ class Admin::GenresController < ApplicationController
     
       if @genre.save
         @genres = Genre.all
+        # redirect_to admin_genres_path
       else
         @genres = Genre.all
         render :index
@@ -35,6 +36,6 @@ class Admin::GenresController < ApplicationController
   private
     
     def genre_params
-      params.requre(:genre).permit(:name)
+      params.require(:genre).permit(:name)
     end
 end
