@@ -15,7 +15,8 @@ class Admin::PostsController < ApplicationController
   end
   
   def search
-    
+    @content = params[:content]
+    @records = Post.search_for(@content)
   end
   
   private
