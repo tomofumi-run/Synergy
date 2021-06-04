@@ -30,7 +30,8 @@ class Public::UsersController < ApplicationController
   end
   
   def likes
-    
+    likes = Like.where(user_id: current_user.id).pluck(:post_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
+    @likes_list = Post.find(likes) # postsテーブルから、お気に入り登録済みのレコードを取得
   end
   
   def search
