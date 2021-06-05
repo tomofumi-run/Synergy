@@ -1,0 +1,39 @@
+  <!-- ▼LINE風ここから -->
+  <div class="line__container">
+    <!-- タイトル -->
+    <div class="line__title"><%= full_name(@user)%></div>
+
+    <!-- ▼会話エリア scrollを外すと高さ固定解除 -->
+    <div class="line__contents scroll">
+    <% @chats.each do |chat|%>
+      <% if chat.user_id != current_user.id %>
+      <!-- 相手の吹き出し -->
+      <div class="line__left">
+        <figure>
+          <img>画像</img>
+        </figure>
+        <div class="line__left-text">
+          <div class="name"><%= full_name(@user)%></div>
+          <div class="text"><%= chat.talk%></div>
+        </div>
+      </div>
+
+      <% else %>
+
+      <!-- 自分の吹き出し -->
+      <div class="line__right">
+        <div class="name"><%= full_name(current_user)%></div>
+        <div class="text"><%= chat.talk%></div>
+      </div>
+      
+      <% end %>
+    <% end %>
+    </div>
+    <!--　▲会話エリア ここまで -->
+  </div>
+  <!--　▲LINE風ここまで -->
+<%= form_with model: @chat, remote: true do |f| %>
+  <%= f.text_field :talk %>
+  <%= f.hidden_field :room_id %>
+  <%= f.submit "送信", class:"btn btn-success" %>
+<% end %>
