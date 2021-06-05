@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     end
     
     resources :chats, only:[:index,:create]
-    get 'chat', to: 'chats#show'
+    get 'chat/:id', to: 'chats#show', as: 'chat'
     resources :contacts, only:[:new,:create] do
       collection do
         get 'thanx'
