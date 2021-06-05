@@ -2,7 +2,7 @@
   <div class="col-xs-12 col-md-6 col-lg-3">
     <div class="card my-2" style="width: 15rem;">
       <%= link_to post_path(post) do%>
-        <%= attachment_image_tag(post, :post_image,fallback: "no_image.png",class:"card-img-top")%>
+        <%= attachment_image_tag(post, :post_image,:fill,500,500,fallback: "no_image.png",class:"card-img-top")%>
       <% end %>
       <div class="card-body">
           <h5 class="card-title font-weight-bold border-bottom"><%= post.title%></h5>

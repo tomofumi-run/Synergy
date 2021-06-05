@@ -2,13 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@mixin img_size{
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+}
+
   .top-img{
     position: relative;
     background-image: image-url("top.jpg");
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
+    @include img_size;
 
       &.top-img::before{
         content: '';
@@ -17,10 +21,27 @@
       }
     .signup-space{
       position: absolute;
-      top: 30%;
-      left: 100px;
-      padding: 50px;
-      background-color: rgba(0,0,0,0.10);
+      top: 25%;
+      left: 30px;
+      background-color: rgba(0,0,0,0.30);
       color: #fff;
+      padding: 20px;
     }
+  }
+  
+  .teacher-img{
+    background-image: image-url("teacher.jpg");
+    @include img_size;
+  }
+  .time-img{
+    background-image: image-url("time.jpg");
+    @include img_size;
+  }
+  .communication-img{
+    background-image: image-url("communication.jpg");
+    @include img_size;
+  }
+  
+  .about-title{
+    border-bottom: 3px solid #00FF00;
   }

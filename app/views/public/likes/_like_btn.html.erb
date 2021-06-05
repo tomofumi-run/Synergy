@@ -1,5 +1,5 @@
 <% if post.liked_by?(current_user) %>
-  <%= link_to "#{post.likes.count}　お気に入りから外す", post_likes_path(post), method: :delete, remote: true, class: "fas fa-heart",style:"color:red" %>
+  <%= link_to "#{ post.likes.count }　お気に入りから外す", post_likes_path(post), method: :delete, remote: true, class: "fas fa-heart",style:"color:red" %>
 <% else %>
-  <%= link_to "#{post.likes.count}　お気に入りに追加", post_likes_path(post), method: :post, remote: true, class: "far fa-heart", style:"color:gray"%>
+  <%= link_to "#{ post.likes.count }　お気に入りに追加", post_likes_path(post), method: :post, remote: true, class: "far fa-heart", style:"color:gray"%>
 <% end %>

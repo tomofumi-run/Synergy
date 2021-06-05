@@ -3,9 +3,10 @@ class Public::RelationshipsController < ApplicationController
   
   def create
     current_user.follow(params[:user_id])
+    # byebug
   end
   
-  def destroy
+  def destroya
     current_user.unfollow(params[:user_id])
   end
   
