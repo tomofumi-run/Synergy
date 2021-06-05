@@ -10,7 +10,7 @@
     <% end %>
     <p class="card-text"><%= @post.content%></p>
     <tr id="post_<%= @post.id %>">
-      <td class="like_btn"><%= render "public/likes/like_btn", post: @post %></td>
+      <td id="like_btn"><%= render "public/likes/like_btn", post: @post %></td>
     </tr>
   </div>
 </div>
