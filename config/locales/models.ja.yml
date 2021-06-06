@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        last_name: 苗字
+        first_name: 名前
+        history_status: 教員歴
+        prefecture_code: 学校所在地
+        email: メールアドレス
+        password: パスワード
+      post:
+        post_image: 画像
+        title: タイトル
+        content: 本文
+        genre_id: カテゴリー

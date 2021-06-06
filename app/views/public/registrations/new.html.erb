@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-6  offset-3">
     <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+      <%= render 'layouts/errors', obj: resource%>
         
         <%= f.label :"名前" %>
         <div class="d-flex justyfy-content-around my-2">
@@ -13,12 +13,12 @@
         
         <div class="field my-2">
           <%= f.label :"学校所在地" %>
-          <%= f.collection_select :prefecture_code,JpPrefecture::Prefecture.all, :code, :name,{ prompt: "選択してください" }, class: "form-control" %>          
+          <%= f.collection_select :prefecture_code,JpPrefecture::Prefecture.all, :code, :name,{ prompt: "選択してください" },autofocus: true, class: "form-control" %>          
         </div>
         
         <div class="field my-2">
           <%= f.label :"教員歴" %>
-          <%= f.select :history_status, User.history_statuses.keys,{ prompt: "選択してください" },class: "form-control" %>          
+          <%= f.select :history_status, User.history_statuses.keys,{ prompt: "選択してください" },autofocus: true,class: "form-control" %>          
         </div>
         
         <div class="field my-2">
