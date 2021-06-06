@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="row">
+        <% @room_lists.each do |room|%>
+        <div class="col mx-auto">
+          <%= room.user.first_name%>
+          <%= link_to "show", chat_path(room.user_id) %>
+        </div>
+        <% end %>
+    </div>
+</div>

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   	resources :posts,only: [:index,:show,:destroy] do
   	  collection do
   	    get 'search'
-  	 end   
+  	 end
   	end
   	resources :genres,only: [:index,:create,:edit,:update]
   end
@@ -38,16 +38,17 @@ Rails.application.routes.draw do
       get 'likes'
       get 'search'
     end
-    
+
     resources :posts do
       resource :likes,only:[:create,:destroy]
       collection do
         get 'search'
       end
     end
-    
+
+    # resources :rooms, only:[:index]
     resources :chats, only:[:index,:create]
-    get 'chat/:id', to: 'chats#show', as: 'chat'
+    get 'chat/:user_id', to: 'chats#show', as: 'chat'
     resources :contacts, only:[:new,:create] do
       collection do
         get 'thanx'

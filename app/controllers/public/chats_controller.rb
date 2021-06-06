@@ -2,15 +2,17 @@ class Public::ChatsController < ApplicationController
   before_action :authenticate_user!,except: [:index]
 
   def index
-    @chats = Chat.where(room_id: current_user.user_room)
-    # ここはわからない
+    rooms = current_user.user_rooms.pluck(:room_id)#ユーザーに関連するroom_idを配列取得
+    @room_lists = UserRoom.where(room_id: rooms).where.not(user_id: current_user.id) #chat_roomsのデータを取り出す
+    #binding.pry
+
   end
-  
+
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     rooms = current_user.user_rooms.pluck(:room_id) #pluck=特定のカラムの値だけ
     user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
-    
+
       if user_rooms.nil?
         @room = Room.new
         @room.save
@@ -22,15 +24,16 @@ class Public::ChatsController < ApplicationController
     @chats = @room.chats
     @chat = Chat.new(room_id: @room.id)
   end
-  
+
   def create
     @chat = current_user.chats.new(chat_params)
     @chat.save
+    redirect_to request.referer
   end
-  
+
   private
-    
+
     def chat_params
-      params.require(:chat).permit(:room_id,:message)
+      params.require(:chat).permit(:room_id,:talk)
     end
 end
