@@ -26,11 +26,11 @@
                 <p><%= @user.introduction%></p>
               </div>
         </div>
-          <div id="follow-btn_<%= @user.id%>">
+          <div id="follow-btn">
             <%= render "public/relationships/relation_btn", user: @user%>
           </div>
             <%= render "public/chats/chat_btn", user: @user%>
-          <div id="follow-count_<%= @user.id%>">
+          <div id="follow-count">
             <%= render "public/relationships/relation_count", user: @user%>
           </div>
             <%= render "public/users/details", user: @user%>
