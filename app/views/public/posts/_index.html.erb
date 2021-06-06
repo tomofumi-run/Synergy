@@ -1,6 +1,6 @@
 <% posts.each do |post|%>
   <div class="col-xs-12 col-md-6 col-lg-3">
-    <div class="card my-2" style="width: 15rem;">
+    <div class="card my-2" style="width: 15rem; ">
       <%= link_to post_path(post) do%>
         <%= attachment_image_tag(post, :post_image,:fill,500,500,fallback: "no_image.png",class:"card-img-top")%>
       <% end %>
