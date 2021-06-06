@@ -15,7 +15,7 @@
             <%= link_to user_path(room.user) do%>
             <th><%= full_name(room.user)%></th>
             <% end %>
-            <th><%= link_to "チャットを続ける", chat_path(room.user_id) %></th>
+            <th><%= link_to "チャットを続ける",chat_path(room.user_id) %></th>
           </tr>
        </tbody>
        <% end %>

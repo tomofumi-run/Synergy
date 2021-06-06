@@ -32,7 +32,7 @@
     <!--　▲会話エリア ここまで -->
   </div>
   <!--　▲LINE風ここまで -->
-<%= form_with model: @chat do |f| %>
+<%= form_with model: @chat,method: :post, local: true do |f| %>
   <%= f.text_field :talk %>
   <%= f.hidden_field :room_id %>
   <%= f.submit "送信", class:"btn btn-success" %>

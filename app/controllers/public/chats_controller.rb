@@ -1,6 +1,6 @@
 class Public::ChatsController < ApplicationController
-  before_action :authenticate_user!,except: [:index]
-
+  before_action :authenticate_user!
+  
   def index
     rooms = current_user.user_rooms.pluck(:room_id)#ユーザーに関連するroom_idを配列取得
     @room_lists = UserRoom.where(room_id: rooms).where.not(user_id: current_user.id) #chat_roomsのデータを取り出す
@@ -27,13 +27,18 @@ class Public::ChatsController < ApplicationController
 
   def create
     @chat = current_user.chats.new(chat_params)
-    @chat.save
-    redirect_to request.referer
+    
+    if @chat.save
+      redirect_to request.referer
+    else
+      flash.now[:alert] = "メッセージを入力してください。"
+      render :show
+    end
   end
 
   private
 
     def chat_params
-      params.require(:chat).permit(:room_id,:talk)
+      params.require(:chat).permit(:user_id,:room_id,:talk)
     end
 end

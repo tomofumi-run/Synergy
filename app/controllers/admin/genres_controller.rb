@@ -15,9 +15,10 @@ class Admin::GenresController < ApplicationController
     
       if @genre.save
         @genres = Genre.all
-        redirect_to request.referer.
+        redirect_to request.referer,notice:"ジャンルを追加しました。"
       else
         @genres = Genre.all
+        flash.now[:alert] = "項目を入力してください。"
         render :index
       end
     
@@ -29,7 +30,8 @@ class Admin::GenresController < ApplicationController
     if @genre.update(genre_params)
       redirect_to admin_genres_path, notice:"変更内容を保存しました。"
     else
-      render "edit",alert:"変更内容に不備があります。"
+      flash.now[:alert] = "変更内容に不備があります。"
+      render "edit"
     end
   end
   

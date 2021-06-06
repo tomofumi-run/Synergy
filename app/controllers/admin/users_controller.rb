@@ -18,7 +18,8 @@ class Admin::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to admin_user_path, notice:"会員情報を更新しました。"
     else
-      render :edit, alert:"入力内容に不備があります。"
+      flash.now[:alert] = "入力内容に不備があります。"
+      render :edit
     end
   end
   
