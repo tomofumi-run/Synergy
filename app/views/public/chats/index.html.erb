@@ -1,10 +1,28 @@
 <div class="container">
-    <div class="row">
-        <% @room_lists.each do |room|%>
-        <div class="col mx-auto">
-          <%= room.user.first_name%>
-          <%= link_to "show", chat_path(room.user_id) %>
-        </div>
-        <% end %>
-    </div>
+  <h2>チャット一覧</h2>
+  <% if @room_lists.exists? %>
+  <div class="row">
+    <table class="table col-6 mx-auto">
+      <thead>
+        <tr>
+          <th>ユーザー名</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @room_lists.each do |room|%>
+      <tbody>
+          <tr>
+            <%= link_to user_path(room.user) do%>
+            <th><%= full_name(room.user)%></th>
+            <% end %>
+            <th><%= link_to "チャットを続ける", chat_path(room.user_id) %></th>
+          </tr>
+       </tbody>
+       <% end %>
+    </table>
+    <% else %>
+      <p>チャットはありません。</p>
+      <p><%= link_to "チャットする相手を探してみませんか？", users_path, class:"btn btn-primary"%></p>
+    <% end %>
+  </div>
 </div>
