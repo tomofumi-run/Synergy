@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_current, only: [:show,:edit,:update,:out]
+  before_action :ensure_correct_user, only: [:edit,:update,:quit,:out]
   
   def index
     @users = User.page(params[:page]).per(12)
@@ -17,6 +17,7 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path, notice:"ユーザー情報を更新しました。"
     else
+      flash.now[:alert] = "入力項目に不備があります。"
       render :edit
     end
   end
@@ -42,8 +43,11 @@ class Public::UsersController < ApplicationController
   
   private
   
-    def set_current
+    def ensure_correct_user
       @user = User.find(params[:id])
+      unless @user == current_user
+        redirect_to user_path(current_user),alert:"権限がありません。"
+      end
     end
   
     def user_params

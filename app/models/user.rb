@@ -30,6 +30,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+  validates :prefecture_code, presence: true
   
   # ---------- フォローとアンフォロー  ----------
   

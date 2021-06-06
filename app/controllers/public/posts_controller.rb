@@ -1,12 +1,13 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!,except: [:index]
-  before_action :set_post, only: [:show,:edit,:update,:destroy]
+  before_action :ensure_correct_user, only: [:edit,:update,:destroy]
   
   def index
     @posts = Post.page(params[:page]).per(12)
   end
   
   def show
+    @post = Post.find(params[:id])
     @like = Like.new
   end
   
@@ -17,6 +18,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post),notice:"投稿を更新しました。"
     else
+      flash.now[:alert] = "訂正内容に不備があります。"
       render :edit
     end
   end
@@ -32,6 +34,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice:"投稿が完了しました。"
     else
+      flash.now[:alert] = "登録内容に不備があります。"
       render :new
     end
   end
@@ -48,12 +51,17 @@ class Public::PostsController < ApplicationController
   
   private
   
-    def set_post
+    def ensure_correct_user
       @post = Post.find(params[:id])
+      unless @post.user == current_user
+        redirect_to posts_path, alert:"権限がありません。"
+      end
     end
     
     def post_params
       params.require(:post).permit(:user_id,:genre_id,:post_image,:title,:content)
     end
+    
+    
     
 end

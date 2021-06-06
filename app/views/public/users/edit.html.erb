@@ -41,7 +41,7 @@
       <div class="form-group d-flex justify-content-around">
        <%= link_to "戻る",user_path(current_user),class:"btn btn-secondary"%>
        <%= f.submit "更新する", class:"btn btn-success"%>
-       <%= link_to "退会ページへ進む", user_quit_path(current_user),class:"btn btn-danger"%>
+       <%= link_to "退会ページへ進む", quit_user_path(current_user),class:"btn btn-danger"%>
       </div>
       
      <% end%>

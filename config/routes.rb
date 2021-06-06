@@ -29,12 +29,15 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :users,only:[:index,:show,:edit,:update] do
+      member do
+        get 'quit'
+        patch 'out'
+      end
+      
       resource :relationships, only:[:create,:destroy]
       get 'followings', to: 'relationships#followings', as: 'followings'
       get 'followers', to: 'relationships#followers', as: 'followers'
       resources :notifications, only: :index
-      get 'quit'
-      patch 'out'
       get 'likes'
       get 'search'
     end
@@ -46,9 +49,8 @@ Rails.application.routes.draw do
       end
     end
 
-    # resources :rooms, only:[:index]
-    resources :chats, only:[:index,:create]
     get 'chat/:user_id', to: 'chats#show', as: 'chat'
+    resources :chats, only:[:index,:create]
     resources :contacts, only:[:new,:create] do
       collection do
         get 'thanx'
