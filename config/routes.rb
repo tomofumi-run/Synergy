@@ -34,10 +34,14 @@ Rails.application.routes.draw do
         patch 'out'
       end
       
-      resource :relationships, only:[:create,:destroy]
+      resource :relationships, only:[:create,:destroy] 
       get 'followings', to: 'relationships#followings', as: 'followings'
       get 'followers', to: 'relationships#followers', as: 'followers'
-      resources :notifications, only: :index
+      resources :notifications, only: :index do
+        collection do
+          delete '/' => 'notifications#destroy_all'
+        end
+      end
       get 'likes'
       get 'search'
     end
