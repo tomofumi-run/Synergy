@@ -5,21 +5,7 @@
     <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
       <%= render 'layouts/errors', obj: resource%>
         
-        <%= f.label :"名前" %>
-        <div class="d-flex justyfy-content-around my-2">
-          <%= f.text_field :last_name, autofocus: true, placeholder:"例）山田",class:"form-control mr-2" %>
-          <%= f.text_field :first_name, autofocus: true, placeholder:"例）太郎",class:"form-control ml-2" %>
-        </div>
-        
-        <div class="field my-2">
-          <%= f.label :"学校所在地" %>
-          <%= f.collection_select :prefecture_code,JpPrefecture::Prefecture.all, :code, :name,{ prompt: "選択してください" },autofocus: true, class: "form-control" %>          
-        </div>
-        
-        <div class="field my-2">
-          <%= f.label :"教員歴" %>
-          <%= f.select :history_status, User.history_statuses.keys,{ prompt: "選択してください" },autofocus: true,class: "form-control" %>          
-        </div>
+        <%= render "public/users/entry", f: f %>
         
         <div class="field my-2">
           <%= f.label :"メールアドレス" %>

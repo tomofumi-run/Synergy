@@ -1,4 +1,5 @@
 class Public::RelationshipsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: [:create,:destroy,:followings,:followers]
   
   def create

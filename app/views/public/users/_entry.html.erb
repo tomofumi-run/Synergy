@@ -1,0 +1,15 @@
+<%= f.label :"名前" %>
+<div class="d-flex justyfy-content-around my-2">
+  <%= f.text_field :last_name, placeholder:"例)坂本",autofocus: true,class:"form-control mr-2" %>
+  <%= f.text_field :first_name, placeholder:"例）金八", autofocus: true,class:"form-control ml-2" %>
+</div>
+
+<div class="field my-2">
+  <%= f.label :"学校所在地" %>
+  <%= f.collection_select :prefecture_code,JpPrefecture::Prefecture.all, :code, :name,{ prompt: "選択してください" }, class: "form-control" %>          
+</div>
+      
+<div class="field my-2">
+  <%= f.label :"教員歴" %>
+  <%= f.select :history_status, User.history_statuses.keys,{ prompt: "選択してください" },class: "form-control" %>          
+</div>

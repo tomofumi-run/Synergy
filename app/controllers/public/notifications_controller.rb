@@ -7,7 +7,6 @@ class Public::NotificationsController < ApplicationController
     @notifications.where(checked: false).each do |notification|
       notification.update_attributes(checked: true) #update_attributesでチェックを更新する
     end
-
   end
 
   def destroy_all

@@ -1,5 +1,4 @@
-<div class="container">
-  <h2>チャット一覧</h2>
+<h2 class="text-center">チャット一覧</h2>
   <% if @room_lists.exists? %>
   <div class="row">
     <table class="table col-6 mx-auto">
@@ -17,12 +16,11 @@
             <% end %>
             <th><%= link_to "チャットを続ける",chat_path(room.user_id) %></th>
           </tr>
-       </tbody>
-       <% end %>
+      </tbody>
+      <% end %>
     </table>
     <% else %>
       <p>チャットはありません。</p>
       <p><%= link_to "チャットする相手を探してみませんか？", users_path, class:"btn btn-primary"%></p>
-    <% end %>
-  </div>
+  <% end %>
 </div>

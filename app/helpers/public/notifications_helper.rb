@@ -5,9 +5,9 @@ module Public::NotificationsHelper
     
     case notification.action
       when "follow" then
-        tag.a(notification.visiter.first_name, href: user_path(@visiter)) + "があなたをフォローしました。"
+        tag.a(full_name(notification.visiter), href: user_path(@visiter)) + "があなたをフォローしました。"
       when "like" then
-        tag.a(notification.visiter.first_name, href: user_path(@visiter)) + "が" + tag.a('あたなの投稿', href: post_path(notification.post_id)) + "をお気に入りしました。"
+        tag.a(full_name(notification.visiter), href: user_path(@visiter)) + "が" + tag.a('あなたの投稿', href: post_path(notification.post_id)) + "をお気に入りしました。"
     end
   end
   
