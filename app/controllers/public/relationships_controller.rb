@@ -3,6 +3,7 @@ class Public::RelationshipsController < ApplicationController
   
   def create
     current_user.follow(params[:user_id])
+    @user.create_notificagtion_follow!(current_user) #通知を知らせる
   end
   
   def destroy
