@@ -6,7 +6,7 @@
   <hr>
   <% if @notifications.exists? %>
     <div class="users-index">
-      <%= render "public/notifications/index", notification: @notifications %>
+      <%= render "public/notifications/index", notifications: @notifications %>
     </div>
   <% else %>
     <p>通知はありません</p>

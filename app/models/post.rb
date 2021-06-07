@@ -1,17 +1,17 @@
 class Post < ApplicationRecord
   attachment :post_image
-  
+
   has_many :likes, dependent: :destroy
   has_many :notifications, dependent: :destroy
   belongs_to :user
   belongs_to :genre
-  
+
   validates :genre_id, presence: true
   validates :post_image, presence: true
   validates :title, presence: true, length: { maximum: 25 }
   validates :content, presence: true, length: { minimum: 30 }
-  
-  # ---------- userがlikeをしているかどうか  ----------  
+
+  # ---------- userがlikeをしているかどうか  ----------
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
@@ -21,8 +21,9 @@ class Post < ApplicationRecord
     return none if content.blank? #contentに記述なしの場合、何も表示させない。
     Post.where('title LIKE?', '%' + content + '%')
   end
-  
+
   # ---------- お気に入りの通知(post_id,visited_id,actionを格納) ----------
+  
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
       post_id: id,
