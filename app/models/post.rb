@@ -21,4 +21,14 @@ class Post < ApplicationRecord
     return none if content.blank? #contentに記述なしの場合、何も表示させない。
     Post.where('title LIKE?', '%' + content + '%')
   end
+  
+  # ---------- お気に入りの通知(post_id,visited_id,actionを格納) ----------
+  def create_notification_by(current_user)
+    notification = current_user.active_notifications.new(
+      post_id: id,
+      visited_id: user_id,
+      action: "like"
+      )
+    notification.save if notification.valid?
+  end
 end

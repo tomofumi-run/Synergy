@@ -31,8 +31,8 @@ class Public::ChatsController < ApplicationController
     if @chat.save
       redirect_to request.referer
     else
-      flash.now[:alert] = "メッセージを入力してください。"
-      render :show
+      flash[:alert] = "メッセージを入力してください。"
+      redirect_to request.referer
     end
   end
 
