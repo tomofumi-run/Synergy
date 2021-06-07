@@ -7,9 +7,10 @@ class Public::ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
-      ContactMailer.send_mail(@contact).deliver
-      redirect_to thanx_contact_path, notice:"お問合せありがとうございました。"
+      ContactMailer.contact_mail(@contact).deliver
+      redirect_to thanx_contacts_path, notice:"お問合せありがとうございました。"
     else
+      flash.now[:alert] = "未入力の箇所があります。"
       render :new
     end
   end
