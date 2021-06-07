@@ -1,0 +1,29 @@
+<div class="container">
+ <h2 class="text-center">お問い合わせフォーム</h2>
+ <div class="row">
+  <div class="col-6 mx-auto">
+    <%= form_with model: @contact, local:true do |f| %>
+      <%= render 'layouts/errors', obj: @contact%>
+        <div class="field mt-2">
+          <%= f.label :"お名前"%>
+          <%= f.text_field :name ,placeholder:"名前を入力してください。",class: "form-control"%>
+        </div>
+        <div class="field mt-2">
+          <%= f.label :"メールアドレス"%>
+          <%= f.email_field :email ,placeholder:"メールアドレスを入力してください。",class: "form-control"%>
+        </div>
+        <div class="field mt-2">
+          <%= f.label :"件名"%>
+          <%= f.text_field :subject ,placeholder:"20文字以内",class: "form-control"%>
+        </div>
+        <div class="field mt-2">
+          <%= f.label :"お問合せ内容"%>
+          <%= f.text_area :message ,placeholder:"件名に関する内容を記載してください。",class: "form-control",size:"5x5"%>
+        </div>
+        <div class="field text-center mt-2">
+          <%= f.submit "送信", class:"btn btn-primary btn-lg"%>
+        </div>
+    <% end %>
+  </div>
+ </div>
+</div>
