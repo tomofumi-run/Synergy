@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   attachment :post_image
+  is_impressionable counter_cashe: true
 
   has_many :likes, dependent: :destroy
   has_many :notifications, dependent: :destroy
