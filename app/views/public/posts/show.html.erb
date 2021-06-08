@@ -1,16 +1,17 @@
 <% provide(:title, "投稿詳細")%>
 <div class="row">
   <div class="col">
-    <div class="card mb-3 w-50 mx-auto">
-      <h3 class="card-title font-weight-bold"><%= @post.title%></h3>
-      <p class="card-text"><small class="text-muted"><%= @post.created_at.strftime("%Y-%m-%d")%></small></p>
+    <div class="mx-auto">
+      <h3 class="font-weight-bold"><%= @post.title%></h3>
+      <p><small class="text-muted"><%= @post.created_at.strftime("%Y-%m-%d")%></small></p>
       <%= render "public/posts/drop", post: @post%>
-      <div class="text-center"><%= attachment_image_tag(@post, :post_image,:fill,300,300,fallback: "no_image.png")%></div>
-      <div class="card-body border-top mt-3">
+      <div class="text-center"><%= attachment_image_tag(@post, :post_image,size:"500x500",fallback: "no_image.png")%></div>
+      <div class="border-top mt-3">
         <%= link_to user_path(@post.user) do%>
-          <p><%= full_name(@post.user)%></p>
+          <%= attachment_image_tag @post.user, :profile_image, :fill,100,100, fallback: "no_image.png", size: "50x50"%>
+          <h5 class="d-inline text-dark"><%= full_name(@post.user)%></h5>
         <% end %>
-        <p class="card-text"><%== @post.content%></p>
+        <p class="mt-3"><%== @post.content%></p>
           <div id="like_btn"><%= render "public/likes/like_btn", post: @post %></div>
       </div>
     </div>

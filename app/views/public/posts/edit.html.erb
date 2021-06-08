@@ -12,22 +12,7 @@
         </div>
         <%= attachment_image_tag(@post, :post_image,:fill,200,200,fallback: "no_image.png")%>
       </div>
-
-      <div class="field my-2">
-        <%= f.label :"カテゴリーを選んでください" %>
-        <%= f.collection_select :genre_id, Genre.all, :id, :name,{ prompt: "選択してください" }, class: "form-control" %>          
-      </div>
-      
-      <div class="field my-2">
-        <%= f.label :"タイトル" %>
-        <%= f.text_field :title,class: "form-control"%>         
-      </div>
-      
-      <div class="field my-2">
-        <%= f.label :"本文" %>
-        <%= f.text_area :content,class:"form-control"%>        
-      </div>   
-      
+      <%= render "public/posts/form", f: f%> 
       <div class="form-group d-flex justify-content-around">
        <%= f.submit "更新する", class:"btn btn-success"%>
        <%= link_to "投稿詳細画面へ戻る", post_path,class:"btn btn-secondary"%>
