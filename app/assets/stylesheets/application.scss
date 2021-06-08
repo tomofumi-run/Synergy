@@ -18,15 +18,41 @@
   @import 'font-awesome';
   @import 'summernote-bs4';
   
+  $Greencolor: #E6FFE9;
+  
   body,html{
     margin: 0;
     padding: 0;
-    background-color: #EEEEEE;
+    background: #EEEEEE;
   }
   
   header{
-    background-color: #CCFFCC;
+    background: $Greencolor;
     .nav-item{
       margin: 0 20px;
     }
   }
+  
+  footer{
+    background: $Greencolor;
+  }
+  
+// linkのhover
+
+.top-radius {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 8px 10px 5px 10px;
+  text-decoration: none;
+  color: #111111;
+  background: #43FF6B;
+  border-bottom: solid 4px #009900;
+  border-radius: 15px 15px 0 0;
+  transition: .4s;
+}
+
+.top-radius:hover {
+  background: #ADFF2F;
+  color: #FFF;
+}
