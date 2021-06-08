@@ -2,12 +2,15 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!,except: [:index]
   before_action :ensure_correct_user, only: [:edit,:update,:destroy]
   
+  impressionist :actions => [:show] #PV数を計測
+  
   def index
     @posts = Post.page(params[:page]).per(12)
   end
   
   def show
     @post = Post.find(params[:id])
+    impressionist(@post)
     @like = Like.new
   end
   

@@ -4,6 +4,7 @@
     <div class="mx-auto">
       <h3 class="font-weight-bold"><%= @post.title%></h3>
       <p><small class="text-muted"><%= @post.created_at.strftime("%Y-%m-%d")%></small></p>
+      <p><small class="text-muted">閲覧数:<%= @post.impressionist_count%></small></p>
       <%= render "public/posts/drop", post: @post%>
       <div class="text-center"><%= attachment_image_tag(@post, :post_image,size:"500x500",fallback: "no_image.png")%></div>
       <div class="border-top mt-3">
