@@ -1,6 +1,7 @@
 <h2 class="text-center">チャット一覧</h2>
-  <% if @room_lists.exists? %>
+<hr>
   <div class="row">
+  <% if @room_lists.exists? %>
     <table class="table col-6 mx-auto">
       <thead>
         <tr>
@@ -20,7 +21,10 @@
       <% end %>
     </table>
     <% else %>
-      <p>チャットはありません。</p>
-      <p><%= link_to "チャットする相手を探してみませんか？", users_path, class:"btn btn-primary"%></p>
+    <div class="coll mx-auto">
+      <p>まだチャットをした相手がいません。</p>
+      <p><%= link_to "会員一覧をチェックしてみましょう", users_path, class:"btn btn-primary"%></p>
+    </div>
   <% end %>
+  </div>
 </div>

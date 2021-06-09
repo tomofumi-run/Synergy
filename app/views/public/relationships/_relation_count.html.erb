@@ -1,6 +1,6 @@
-<div>
-  <%= link_to "#{ user.followings.count }フォロー", user_followings_path(user) %>
+<div class="d-inline-block mr-1">
+  <%= link_to "#{ user.followings.count }フォロー中", user_followings_path(user), class:"text-dark" %>
 </div>
-<div>
-  <%= link_to "#{ user.followers.count}フォロワー", user_followers_path(user) %>
+<div class="d-inline-block ml-1">
+  <%= link_to "#{ user.followers.count}フォロワー", user_followers_path(user), class:"text-dark" %>
 </div>
