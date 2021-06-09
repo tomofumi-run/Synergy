@@ -8,6 +8,11 @@
           <div class="border-bottom pb-2">
             <p class="card-title font-weight-bold"><%= post.title%></p>
             <span>カテゴリー :<p class="btn btn-light  btn-sm mt-2 ml-2"><%= post.genre.name %></p></span>
+            
+            <div id="post_<%= post.id %>">
+              <div id="like_btn"><%= render "public/likes/like_btn", post: post%></div>
+            </div>
+            
           </div>
             <p class="d-inline">from:<%= full_name(post.user)%></p>
         </div>
