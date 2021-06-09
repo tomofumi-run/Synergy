@@ -4,4 +4,7 @@
   <div class="row">
     <%= render "public/users/index", users: @users%>
   </div>
+  <div class="d-flex justify-content-center my-3">
+    <%= paginate @users %>
+  </div>
 </div>
