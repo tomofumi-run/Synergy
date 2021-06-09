@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   is_impressionable counter_cashe: true
 
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
   belongs_to :user
   belongs_to :genre
@@ -26,11 +27,19 @@ class Post < ApplicationRecord
   # ---------- お気に入りの通知(post_id,visited_id,actionを格納) ----------
   
   def create_notification_by(current_user)
-    notification = current_user.active_notifications.new(
-      post_id: id,
-      visited_id: user_id,
-      action: "like"
-      )
-    notification.save if notification.valid?
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
+    
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        post_id: id,
+        visited_id: user_id,
+        action: 'like'
+        )
+      if notification.visited_id == notification.visited_id
+        notification.checked = true
+      end
+      
+      notification.save if notification.valid?
+    end
   end
 end

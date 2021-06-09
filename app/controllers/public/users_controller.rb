@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit,:update,:quit,:out]
   
   def index
-    @users = User.page(params[:page]).per(12)
+    @users = User.page(params[:page]).per(12).reverse_order
   end
   
   def show

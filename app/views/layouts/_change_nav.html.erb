@@ -11,10 +11,10 @@
   <li class="nav-item">
     <%= link_to"マイページ", user_path(current_user),class: 'nav-link top-radius mb-2'%>
   </li>
-  <% if unchecked_notifications.any? %>
-    <i class="fa fa-circle" style="color: gold;"></i>
-  <% end %>
   <li class="nav-item">
+    <% if unchecked_notifications.any? %>
+      <i class="fa fa-circle" style="color: gold;"></i>
+    <% end %>
     <%= link_to"通知", user_notifications_path(current_user),class: 'nav-link top-radius mb-2'%>
   </li>
   <li class="nav-item">

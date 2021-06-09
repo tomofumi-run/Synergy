@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-sm-12 col-lg-5 text-center">
       <div>
-        <div><%= attachment_image_tag(@user, :profile_image,:fill,300,300,fallback: "no_image.png")%></div>
+        <div><%= attachment_image_tag(@user, :profile_image,size:"300x350",fallback: "no_image.png")%></div>
         <h5 class="mt-3"><%= full_name(@user)%></h5>
         <div id="follow-count">
           <%= render "public/relationships/relation_count", user: @user%>
