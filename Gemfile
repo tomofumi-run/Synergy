@@ -76,6 +76,7 @@ gem 'faker'
 gem 'simple_form'
 gem 'summernote-rails'
 gem 'impressionist', '~>1.6.1'
+gem 'bullet'
 
 group :production do
   gem 'mysql2'
