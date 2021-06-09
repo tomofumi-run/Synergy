@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0 mx-auto">
-     <h2>プロフィール編集</h2>
+     <h2 class="mb-3">プロフィール編集</h2>
       <%= form_with model:@user, local:true do |f| %>
       <%= render 'layouts/errors', obj: @user%>
       <div class="field my-2 d-flex">
@@ -10,14 +10,14 @@
          <%= f.label :"プロフィール画像" %>
          <%= f.attachment_field :profile_image,class:"form-control-file"%>
         </div>
-        <%= attachment_image_tag(@user, :profile_image,:fill,100,100,fallback: "no_image.png",class:"rounded-circle")%>
+        <%= attachment_image_tag(@user, :profile_image,:fill,200,200,fallback: "no_image.png")%>
       </div>
       
       <%= render "public/users/entry", f: f %>
       
       <div class="field my-2">
         <%= f.label :"所属先" %>
-        <%= f.text_field :work,class: "form-control"%>         
+        <%= f.text_field :work,placeholder:"例）◯◯市立△△小学校",class: "form-control"%>         
       </div>
       
       <div class="field my-2">

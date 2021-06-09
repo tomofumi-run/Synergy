@@ -9,7 +9,7 @@ class Post < ApplicationRecord
 
   validates :genre_id, presence: true
   validates :post_image, presence: true
-  validates :title, presence: true, length: { maximum: 25 }
+  validates :title, presence: true, length: { maximum: 15 }
   validates :content, presence: true, length: { minimum: 30 }
 
   # ---------- userがlikeをしているかどうか  ----------

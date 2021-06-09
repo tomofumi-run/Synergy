@@ -1,45 +1,49 @@
 <% provide(:title, "ユーザー詳細")%>
-<div class="container">
+    <!--user情報-->
   <div class="row">
-    <!--左側-->
-    <div class="col-lg-3">
-      <div class="container">
-        <div>
-          <div><%= attachment_image_tag(@user, :profile_image,:fill,200,200,fallback: "no_image.png")%></div>
-          <p><%= full_name(@user)%></p>
+    <div class="col-sm-12 col-lg-5 text-center">
+      <div>
+        <div><%= attachment_image_tag(@user, :profile_image,:fill,300,300,fallback: "no_image.png")%></div>
+        <h5 class="mt-3"><%= full_name(@user)%></h5>
+        <div id="follow-count">
+          <%= render "public/relationships/relation_count", user: @user%>
         </div>
-          <div class="container">
-              <div class="row mt-3">
-                <h5 class="mr-4">学校所在地:</h5>
-                <p><%= @user.prefecture_name%></p>
-              </div>
-              <div class="row mt-3">
-                <h5 class="mr-4">所属先:</h5>
-                <p><%= @user.work%></p>
-              </div>
-              <div class="row mt-3">
-                <h5 class="mr-4">教員歴:</h5>
-                <p><%= @user.history_status%></p>
-              </div>
-              <div class="row mt-3">
-                <h5 class="mr-4">自己紹介:</h5>
-                <p><%= @user.introduction%></p>
-              </div>
+        <div id="follow-btn" class="mt-2">
+          <%= render "public/relationships/relation_btn", user: @user%>
+          <%= render "public/chats/chat_btn", user: @user%>
         </div>
-          <div id="follow-btn">
-            <%= render "public/relationships/relation_btn", user: @user%>
-          </div>
-            <%= render "public/chats/chat_btn", user: @user%>
-          <div id="follow-count">
-            <%= render "public/relationships/relation_count", user: @user%>
-          </div>
-            <%= render "public/users/details", user: @user%>
+          <%= render "public/users/details", user: @user%>
       </div>
     </div>
     
-    <!--右側-->
-    <div class="col-lg-7">
-
+    <div class="col-sm-12 col-lg-7 profile-border bg-white">
+      <h2 class="text-center font-weight-bold">プロフィール</h2>
+      <div class="container profile-content">
+        <div class="row mt-3">
+          <h3 class="mr-4">学校所在地:</h3>
+          <h5 class="font-weight-normal"><%= @user.prefecture_name%></h5>
+        </div>
+        <div class="row mt-3">
+          <h3 class="mr-4">所属先:</h3>
+          <p><%= @user.work%></p>
+        </div>
+          <div class="row mt-3">
+          <h3 class="mr-4">教員歴:</h3>
+          <h5><%= @user.history_status%></h5>
+        </div>
+        <div class="row mt-3">
+          <h3 class="mr-4">自己紹介:</h3>
+          <p><%= @user.introduction%></p>
+        </div>      
+      </div>
     </div>
   </div>
-</div>
+    <!--右側-->
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="font-weight-bold mt-5"><%= full_name(@user)%>さんの投稿</h2>
+        <div class="row">
+          <%= render "public/posts/index", posts: @posts%>
+        </div>
+      </div>
+    </div>
