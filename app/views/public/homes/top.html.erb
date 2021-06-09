@@ -1,9 +1,10 @@
 <div class="slider">
   <div class="signup-space">
     <h2 class="mb-5">教員の学びを楽しく</h2>
-    <p class="text-center mt-5">
-      <%= link_to "利用する", new_user_registration_path, class:"btn btn-success btn-lg" %>
-    </p>
+    <div class="text-center mt-5">
+      <%= link_to "新規登録はこちら", new_user_registration_path, class:"btn btn-success btn-lg mb-1" %><br>
+      <%= link_to 'ログインはこちら', new_user_session_path, class:"btn btn-primary btn-lg mt-1" %>
+    </div>
   </div>
   <div class="theTarget">
     <div class="slide-image01"></div>
@@ -14,4 +15,7 @@
 </div>
   <div class="container mt-5">
     <h2>最新の投稿</h2>
+    <div class="row">
+      <%= render "public/homes/new_post", posts: @posts%>
+    </div>
   </div>
