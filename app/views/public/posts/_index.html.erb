@@ -9,8 +9,9 @@
             <p class="card-title font-weight-bold"><%= post.title%></p>
             <span>カテゴリー :<p class="btn btn-light  btn-sm mt-2 ml-2"><%= post.genre.name %></p></span>
             
-            <div id="post_<%= post.id %>">
+            <div id="post_<%= post.id %>" class="d-flex">
               <div id="like_btn"><%= render "public/likes/like_btn", post: post%></div>
+              <div id="comments-count" class="ml-3"><i class="far fa-comment"></i><%= post.comments.count %></div>
             </div>
             
           </div>

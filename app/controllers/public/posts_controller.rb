@@ -10,6 +10,7 @@ class Public::PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
     impressionist(@post)
   end
   
