@@ -5,13 +5,14 @@ class Public::PostsController < ApplicationController
   impressionist :actions => [:show] #PV数を計測
   
   def index
-    @posts = Post.page(params[:page]).per(12).reverse_order #最新投稿を表示
+    @posts = Post.includes(:user, :genre).page(params[:page]).per(12).reverse_order #最新投稿を表示
   end
   
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    impressionist(@post)
+    impressionist(@post,unique: [:session_hash])
+    # impressionist(@post)
   end
   
   def edit
