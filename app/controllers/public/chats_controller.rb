@@ -3,8 +3,7 @@ class Public::ChatsController < ApplicationController
   
   def index
     rooms = current_user.user_rooms.pluck(:room_id)#ユーザーに関連するroom_idを配列取得
-    @room_lists = UserRoom.where(room_id: rooms).where.not(user_id: current_user.id) #chat_roomsのデータを取り出す
-    #binding.pry
+    @room_lists = UserRoom.includes([:user]).where(room_id: rooms).where.not(user_id: current_user.id) #chat_roomsのデータを取り出す
 
   end
 
@@ -27,8 +26,10 @@ class Public::ChatsController < ApplicationController
 
   def create
     @chat = current_user.chats.new(chat_params)
+    @room_chat = @chat.room
     
     if @chat.save
+      @room_chat.create_notification_chat!(current_user, @chat.id)
       redirect_to request.referer
     else
       flash[:alert] = "メッセージを入力してください。"
