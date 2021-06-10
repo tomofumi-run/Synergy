@@ -1,8 +1,23 @@
-<%= form_with url: search_posts_path(current_user), local: true, method: :get do |f|%>
-<div class="d-flex">
-  <%= f.text_field :content, placeholder: "投稿を検索する", class: 'form-control' %>
-  <%= f.button :type => "submit", class:"btn btn-outline-secondary" do%>
-    <i class="fas fa-search"></i>
-  <% end %>
+<div class="row d-flex justify-content-between">
+  <div class="col-lg-4 offset-1 my-1">
+    <%= form_with url: search_genre_posts_path, local: true, method: :get do |f| %>
+    <div class="d-flex">
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "ジャンル検索"}, {class: "form-control"}%>
+      <%= f.button :type => "submit", class:"btn btn-outline-secondary" do%>
+        <i class="fas fa-search"></i>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+  
+  <div class="col-lg-6 offset-1 my-1">
+    <%= form_with url: search_posts_path, local: true, method: :get do |f|%>
+    <div class="d-flex">
+      <%= f.text_field :content, placeholder: "投稿検索", class: 'form-control' %>
+      <%= f.button :type => "submit", class:"btn btn-outline-secondary" do%>
+        <i class="fas fa-search"></i>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
 </div>
-<% end %>
