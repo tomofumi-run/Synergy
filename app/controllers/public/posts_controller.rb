@@ -50,7 +50,13 @@ class Public::PostsController < ApplicationController
   
   def search
     @content = params[:content]
-    @records = Post.search_for(@content)
+    contents = Post.search_for(@content)
+    @records = contents.includes(:user, :genre).page(params[:page]).per(12).reverse_order 
+  end
+  
+  def search_genre
+    @content = Genre.find_by(id: params[:genre_id])
+    @records = Post.includes(:user, :genre).where(genre_id: @content).page(params[:page]).per(12).reverse_order 
   end
   
   private
