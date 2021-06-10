@@ -8,7 +8,7 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.includes([:genre])
   end
   
   def edit
