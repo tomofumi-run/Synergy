@@ -7,7 +7,7 @@
       <div class="card-body">
           <div class="border-bottom pb-2">
             <p class="card-title font-weight-bold"><%= post.title%></p>
-            <span>カテゴリー :<p class="btn btn-light  btn-sm mt-2 ml-2"><%= post.genre.name %></p></span>
+            <span>ジャンル :<p class="btn btn-light  btn-sm mt-2 ml-2"><%= post.genre.name %></p></span>
             
             <div id="post_<%= post.id %>" class="d-flex">
               <div id="like_btn"><%= render "public/likes/like_btn", post: post%></div>

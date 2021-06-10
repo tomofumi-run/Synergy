@@ -46,7 +46,7 @@
     password: "123456",
     history_status: 3,
     prefecture_code: 2,
-    )
+  )
   
   User.create!(
     email: "abe@test.com",
@@ -56,7 +56,7 @@
     password: "123456",
     history_status: 15,
     prefecture_code: 35,
-    )
+  )
   
   User.create!(
     email: "satou@test.com",
@@ -66,7 +66,7 @@
     password: "123456",
     history_status: 13,
     prefecture_code: 11,
-    )
+  )
     
   User.create!(
     email: "eikura@test.com",
@@ -76,7 +76,7 @@
     password: "123456",
     history_status: 2,
     prefecture_code: 9,
-    )
+  )
     
   User.create!(
     email: "nakama@test.com",
@@ -86,7 +86,7 @@
     password: "123456",
     history_status: 10,
     prefecture_code: 2,
-    )
+  )
   
   User.create!(
     email: "amami@test.com",
@@ -96,15 +96,19 @@
     password: "123456",
     history_status: 14,
     prefecture_code: 4,
-    )
+  )
   
   Genre.create!(
     name:"書籍"
-    )
+  )
   
   Genre.create!(
     name:"ニュース"
-    )
+  )
+    
+  Genre.create!(
+    name:"質問"
+  )
   
   Admin.create!(
     email: "admin@admin.com",
@@ -117,7 +121,7 @@
     post_image: File.open('./app/assets/images/kaeru.png'),
     title: 'タイトル',
     content: 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト',
-    )
+  )
   end
   
   

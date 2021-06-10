@@ -51,6 +51,7 @@ Rails.application.routes.draw do
       resources :comments,only:[:create,:destroy]
       collection do
         get 'search'
+        get 'search/genre' => 'posts#search_genre'
       end
     end
 
