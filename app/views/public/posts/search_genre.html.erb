@@ -1,8 +1,8 @@
-<% provide(:title, "ワード検索")%>
+<% provide(:title, "ジャンル検索結果")%>
 <%= render "public/posts/post_search"%>
 
 <div class="container">
-  <h5>検索ワード　"<%= @content %>"</h5>
+  <h5>検索ジャンル　"<%= @content.name %>"</h5>
   <div class="row">
     <%= render "public/posts/index", posts: @records%>
   </div>
