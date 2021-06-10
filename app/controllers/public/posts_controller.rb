@@ -11,8 +11,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    impressionist(@post,unique: [:session_hash])
-    # impressionist(@post)
+    impressionist(@post,nil,unique: [:session_hash.to_s])
   end
   
   def edit
