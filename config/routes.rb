@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :users,only:[:index,:show,:edit,:update] do
       member do
+        get 'likes'
         get 'quit'
         patch 'out'
       end
@@ -42,7 +43,6 @@ Rails.application.routes.draw do
           delete '/' => 'notifications#destroy_all'
         end
       end
-      get 'likes'
       get 'search'
     end
 

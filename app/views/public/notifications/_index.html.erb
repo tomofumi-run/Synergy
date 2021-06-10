@@ -7,5 +7,9 @@
       <%= attachment_image_tag visiter, :profile_image, :fill,100,100, fallback: "no_image.png", size: "50x50"%>
     <% end %>
     <%= notification_form(notification) %><%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
+    
+    <% if @comment.present? %>
+      <%= @comment %> <!---commentがあれば表示>
+    <% end %>
   </div>
 <% end %>

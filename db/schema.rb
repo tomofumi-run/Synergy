@@ -92,7 +92,9 @@ ActiveRecord::Schema.define(version: 2021_06_09_131850) do
     t.integer "visiter_id"
     t.integer "visited_id"
     t.integer "post_id"
+    t.integer "comment_id"
     t.integer "chat_id"
+    t.integer "room_id"
     t.string "action"
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false

@@ -1,4 +1,5 @@
 <% users.each do |user|%>
+  <% if user.is_deleted == false %>
   <div class="col-12 col-md-6 col-lg-4">
     <div class="card my-2" style="width: 18rem;">
       <%= attachment_image_tag(user, :profile_image,size:"200x250",fallback: "no_image.png",class:"card-img-top")%>
@@ -13,4 +14,5 @@
         </div>
     </div>
   </div>
+  <% end %>
 <% end %>
