@@ -290,9 +290,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    simple_form (5.1.0)
-      actionpack (>= 5.2)
-      activemodel (>= 5.2)
     sinatra (2.0.8.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -372,7 +369,6 @@ DEPENDENCIES
   rspec-rails
   rubocop-airbnb
   sass-rails (~> 5.0)
-  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

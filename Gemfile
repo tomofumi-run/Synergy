@@ -73,7 +73,7 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'jp_prefecture'
 gem 'dotenv-rails'
 gem 'faker'
-gem 'simple_form'
+
 gem 'summernote-rails'
 gem 'impressionist', '~>1.6.1'
 gem 'bullet'
