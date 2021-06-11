@@ -27,7 +27,8 @@ class Public::ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
     @room_chat = @chat.room
-    
+    # binding.pry
+    # visited_idとれてない where.not使ってcurrent_user以外のデータで持ってくる？
     if @chat.save
       @room_chat.create_notification_chat!(current_user, @chat.id)
       redirect_to request.referer
