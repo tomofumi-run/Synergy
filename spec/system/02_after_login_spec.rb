@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe '[02] ユーザーのログイン後のテスト' do
    let(:user) { create(:user) }
-   let!(:other_user) { create(:user) }
+   let(:other_user) { create(:other_user) }
    let!(:post) { create(:post, user: user) }
    let!(:other_post) { create(:post, user: other_user) }
  
@@ -83,6 +83,89 @@ describe '[02] ユーザーのログイン後のテスト' do
     end
   end
   
+  describe '自分のユーザー詳細画面のテスト' do
+    before do
+      visit user_path(user)
+    end
+    
+    context '表示の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/users/' + user.id.to_s
+      end
+      it '投稿一覧に自分の投稿が表示され、リンクが正しい' do
+        expect(page).to have_link '', href: post_path(post)
+      end
+      it '他人の投稿は表示されない' do
+        expect(page).not_to have_link '', href: user_path(other_user)
+        expect(page).not_to have_content other_post.title
+      end
+    end
+  end
+  
+  describe '自分のユーザー情報編集画面のテスト' do
+    before do
+      visit edit_user_path(user)
+    end
+    
+    context '表示の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/users/' + user.id.to_s + '/edit'
+      end
+      it '名前編集フォームに自分の名前が表示される' do
+        expect(page).to have_field 'user[last_name]', with: user.last_name
+        expect(page).to have_field 'user[first_name]', with: user.first_name
+      end
+      it '画像編集フォームが表示される' do
+        expect(page).to have_field 'user[profile_image]', with: user.profile_image
+      end
+      it '学校所在地フォームが表示される' do
+        expect(page).to have_field 'user[prefecture_code]', with: user.prefecture_code
+      end
+      it '教員歴フォームが表示される' do
+        expect(page).to have_field 'user[histroy_status]', with: user.histroy_status
+      end
+      it '自己紹介編集フォームが表示される' do
+        expect(page).to have_field 'user[introduction]'
+      end
+      it '更新するボタンが表示される' do
+        expect(page).to have_button '更新する'
+      end
+    end
+    
+    context '更新成功のテスト' do
+      before do
+        @user_old_ln = user.last_name
+        @user_old_fn = user.first_name
+        @user_old_image = user.profile_image
+        @user_old_prf = user.prefecture_code
+        @user_old_history = user.history_status
+        fill_in 'user[last_name]', with: Fakere::Lorem.characters(numbere: 5)
+        fill_in 'user[first_name]', with: Fakere::Lorem.characters(numbere: 5)
+        attach_file "post[plofile_image_id]", "app/assets/images/abe.jpg"
+        select '青森', from: 'user[prefecture_code]' #select
+        select '5年目', from: 'user[history_status]'
+        fill_in 'user[introduction]', with: Fakere::Lorem.characters(numberes: 30)
+        click_button '更新する'
+      end
+      it '名前が正しく更新されている' do
+        expect(user.reload.last_name).not_to eq @user_old_ln
+        expect(user.reload.first_name).not_to eq @user_old_fn
+      end
+      it 'プロフィール画像が正しく更新されている' do
+        expect(user.reload.profile_image).not_to eq @user_old_image
+      end
+      it '学校所在地が正しく更新されている' do
+        expect(user.reload.prefecture_code).not_to eq @user_old_prf
+      end
+      it '教員歴が正しく更新されている' do
+        expect(user.reload.histroy_status).not_to eq @user_old_history
+      end
+      it 'リダイレクト先が自分のユーザー詳細画面になっている' do
+        expect(page).to eq '/users/' + user.id.to_s
+      end
+    end
+  end
+  
   describe '投稿一覧画面のテスト' do
     before do
       visit posts_path
@@ -148,5 +231,37 @@ describe '[02] ユーザーのログイン後のテスト' do
         expect(page).to have_button '詳細へ戻る', href: post_path(post)
       end
     end
+    
+    context '編集成功のテスト' do
+      before do
+        @post_old_image = post.post_image
+        @post_old_genre = post.genre
+        @post_old_title = post.title
+        @post_old_content = post.content
+        select 'ニュース', from: 'post[genre_id]'
+        attach_file "post[post_image_id]", "app/assets/images/abe.jpg"
+        fill_in 'post[title]', with: Faker::Lorem.characters(number: 8)
+        fill_in 'post[content]', with: Fakere::Lorem.characters(number: 40)
+        click_button '更新する'
+      end
+      
+      it 'ジャンルが正しく更新される' do
+        expect(post.reload.genre).not_to eq @post_old_genre
+      end
+      it '画像が正しく更新される' do
+        expect(post.reload.post_image).not_to eq @post_old_image
+      end
+      it 'タイトルが正しく更新される' do
+        expect(post.reload.title).not_to eq @post_old_title
+      end
+      it '内容が正しく更新される' do
+        expect(post.reload.content).not_to eq @post_old_content
+      end
+      it 'リダイレクト先が、更新した投稿の詳細画面になっている' do
+        expect(current_path).to eq '/posts/'+ post.id.to_s
+      end
+    end
+    
+    
   end
 end

@@ -1,7 +1,7 @@
 $(document).on 'turbolinks:load', ->
   $('[data-provider="summernote"]').each ->
     $(this).summernote
-      placeholder: '学びをアウトプットしてみよ'
+      placeholder: '学びをアウトプットしてみよう'
       lang: 'ja-JP'
       height: 300
       toolbar: [
