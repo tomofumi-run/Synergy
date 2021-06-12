@@ -12,7 +12,6 @@
 
 //= require jquery3
 //= require jquery
-//= require jquery_ujs
 //= require popper
 //= require bootstrap
 //= require summernote/summernote-bs4.min
@@ -51,5 +50,5 @@ document.addEventListener("turbolinks:load",function () {
 //logoの表示
 $(window).on('turbolinks:load',function(){
   $("#splash").delay(1500).fadeOut('slow');//ローディング画面を1.5秒（1500ms）待機してからフェードアウト
-  $("#splash_logo").delay(1200).fadeOut('slow');//ロゴを1.2秒（1200ms）待機してからフェードアウト
+  $("#splash_logo").delay(1000).fadeOut('slow');//ロゴを1.2秒（1200ms）待機してからフェードアウト
 });

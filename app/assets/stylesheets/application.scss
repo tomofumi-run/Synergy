@@ -71,7 +71,7 @@
   height: 100%;
   z-index: 999;
   background: white;
-  text-align:center;
+  text-align: center;
 }
 
 /* Loading画像中央配置　*/
@@ -84,5 +84,27 @@
 
 /* Loading アイコンの大きさ設定　*/
 #splash_logo img {
-  width:260px;
+  width: 260px;
+}
+
+/* fadeUpをするアイコンの動き */
+
+.fadeUp{
+animation-name: fadeUpAnime;
+animation-duration: 0.5s;
+animation-fill-mode:forwards;
+opacity: 0;
+}
+
+
+@keyframes fadeUpAnime{
+  from {
+    opacity: 0;
+  transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+  transform: translateY(0);
+  }
 }
