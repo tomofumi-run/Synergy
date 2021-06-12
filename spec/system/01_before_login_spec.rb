@@ -129,7 +129,7 @@ describe '[01] ユーザーのログイン前のテスト' do
       before do
         fill_in 'user[last_name]', with: '星野'
         fill_in 'user[first_name]', with: '結衣'
-        select '北海道', from: 'user[prefecture_code]' #selectでの
+        select '北海道', from: 'user[prefecture_code]' #select
         select '2年目', from: 'user[history_status]'
         fill_in 'user[email]', with: 'hoshinoyui@nigehaji.com'
         fill_in 'user[password]', with: '123456'
@@ -223,8 +223,8 @@ describe '[01] ユーザーのログイン前のテスト' do
         expect(mypage_link).to match("マイページ")
       end
       it 'navの5番目が「通知」' do
-        mypage_link = find_all('a')[5].native.inner_text
-        expect(mypage_link).to match("通知")
+        notification_link = find_all('a')[5].native.inner_text
+        expect(notification_link).to match("通知")
       end
       it 'navの6番目が「ログアウト」' do
         logout_link = find_all('a')[6].native.inner_text
