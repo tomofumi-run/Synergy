@@ -3,7 +3,7 @@
   <div class="col">
     <div class="mx-auto">
       <h3 class="font-weight-bold"><%= @post.title%></h3>
-      <p><small class="text-muted"><%= @post.created_at.strftime("%Y-%m-%d")%></small></p>
+      <p><small class="text-muted">投稿日:<%= @post.created_at.strftime("%Y-%m-%d")%></small></p>
       <p><small class="text-muted"><i class="far fa-eye"></i>閲覧数:<%= @post.impressionist_count(:filter=>:session_hash)%></small></p> 
       <!--:filter => session_hash とすることでカウント方法を指定-->
       

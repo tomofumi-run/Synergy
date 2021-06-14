@@ -57,6 +57,7 @@ Rails.application.routes.draw do
 
     get 'chat/:user_id', to: 'chats#show', as: 'chat'
     resources :chats, only:[:index,:create]
+    resources :user_rooms, only:[:destroy]
     resources :contacts, only:[:new,:create] do
       collection do
         get 'thanx'
