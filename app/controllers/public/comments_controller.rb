@@ -5,9 +5,9 @@ class Public::CommentsController < ApplicationController
   @post = Post.find(params[:post_id])
   @comment = current_user.comments.new(comment_params)
   @comment.post_id = @post.id
-  @comment_post = @comment.post
+  comment_post = @comment.post
   @comment.save
-  @comment_post.create_notification_comment!(current_user, @comment.id)
+  comment_post.create_notification_comment!(current_user, @comment.id)
  end
  
  def destroy

@@ -1,21 +1,21 @@
 FactoryBot.define do
   factory :user do
-    last_name { "坂本" }
-    first_name { "金八" }
+    last_name { Faker::Lorem.characters(number: 5) }
+    first_name { Faker::Lorem.characters(number: 5) }
     prefecture_code { 5 }
     history_status { 5 }
-    email { "kinpachi@hito.com" }
-    password { "123456" }
-    password_confirmation { "123456" }
+    email { Faker::Internet.email(name: 'kinpachi') }
+    password { Faker::Internet.password(min_length: 6)}
+    password_confirmation { password }
   end
   
   factory :other_user do
-    last_name { "武田" }
-    first_name { "鉄矢" }
-    prefecture_code { 5 }
-    history_status { 5 }
-    email { "takeda@hito.com" }
-    password { "123456" }
-    password_confirmation { "123456" }
+    last_name { Faker::Lorem.characters(number: 5) }
+    first_name { Faker::Lorem.characters(number: 5) }
+    prefecture_code { 11 }
+    history_status { 2 }
+    email { Faker::Internet.email(name: 'kinpachi') }
+    password { Faker::Internet.password(min_length: 6)}
+    password_confirmation { password }
   end
 end

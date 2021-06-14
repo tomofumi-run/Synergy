@@ -3,7 +3,7 @@ class Room < ApplicationRecord
   has_many :chats
   has_many :notifications, dependent: :destroy
   
-  def create_notification_chat!(current_user,chat_id)
+  def create_notification_chat!(current_user,chat_id, another_user_room)
     # 自分以外のコメントしている人を全取得、全員に通知を送る
     temp_ids = Chat.select(:user_id).where(room_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp|
@@ -11,7 +11,7 @@ class Room < ApplicationRecord
     end
     
     #誰ともチャットしていない場合、本人に通知を送る
-    save_notification_chat!(current_user, chat_id, user_id ) if temp_ids.blank?
+    save_notification_chat!(current_user, chat_id, another_user_room.user_id ) if temp_ids.blank?
   end
   
   def save_notification_chat!(current_user, chat_id, visited_id)

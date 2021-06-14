@@ -1,9 +1,9 @@
 <h3 class="text-center">通知</h3>
   <div class="row">
     <div class="col-xs-12 col-md-10 mx-auto">
-          <%= link_to  user_notifications_path, method: :delete do %>
+          <%= link_to  user_notifications_path,class:"text-dark", method: :delete do %>
             <i class="fas fa-trash"></i>
-            <h7 style="color: black;">全削除</h7>
+            <h7>全削除</h7>
           <% end %>
         <hr>
         <% if @notifications.exists? %>
