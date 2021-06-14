@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe '[02] ユーザーのログイン後のテスト' do
    let(:user) { create(:user) }
-   let(:other_user) { create(:other_user) }
+   let!(:other_user) { create(:user) }
    let!(:post) { create(:post, user: user) }
    let!(:other_post) { create(:post, user: other_user) }
  
@@ -49,17 +49,6 @@ describe '[02] ユーザーのログイン後のテスト' do
         end
       end
   end
-  # describe 'チャット一覧画面のテスト' do
-  #   before do
-  #     visit chats_path
-  #   end
-    
-  #   context '表示内容の確認' do
-  #     it 'URLが正しい' do
-  #       expect(current_path).to eq '/chats'
-  #     end
-  #   end
-  # end
   
   describe 'ユーザー一覧画面のテスト' do
     before do
@@ -70,11 +59,15 @@ describe '[02] ユーザーのログイン後のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users'
       end
-      it '他人の画像が表示される: 一覧で表示されるのは12人' do
-        expect(all('img').size).to eq(12)
+      it '他人の画像が表示される: 一覧で表示されるのは2人' do
+        expect(all('img').size).to eq(3) #userとotherの二人?
       end
-      it '他人の名前と教員歴が表示される' do
-        expect(page).to have_content other_user.name
+      it '自分と他人の名前と教員歴が表示される' do
+        expect(page).to have_content user.last_name
+        expect(page).to have_content user.first_name
+        expect(page).to have_content user.history_status
+        expect(page).to have_content other_user.last_name
+        expect(page).to have_content other_user.first_name
         expect(page).to have_content other_user.history_status
       end
       it '他人の詳細リンクが表示される' do
@@ -96,7 +89,7 @@ describe '[02] ユーザーのログイン後のテスト' do
         expect(page).to have_link '', href: post_path(post)
       end
       it '他人の投稿は表示されない' do
-        expect(page).not_to have_link '', href: user_path(other_user)
+        expect(page).not_to have_link '', href: post_path(other_post)
         expect(page).not_to have_content other_post.title
       end
     end
@@ -122,7 +115,7 @@ describe '[02] ユーザーのログイン後のテスト' do
         expect(page).to have_field 'user[prefecture_code]', with: user.prefecture_code
       end
       it '教員歴フォームが表示される' do
-        expect(page).to have_field 'user[histroy_status]', with: user.histroy_status
+        expect(page).to have_field 'user[history_status]', with: user.history_status
       end
       it '自己紹介編集フォームが表示される' do
         expect(page).to have_field 'user[introduction]'
@@ -139,12 +132,12 @@ describe '[02] ユーザーのログイン後のテスト' do
         @user_old_image = user.profile_image
         @user_old_prf = user.prefecture_code
         @user_old_history = user.history_status
-        fill_in 'user[last_name]', with: Fakere::Lorem.characters(numbere: 5)
-        fill_in 'user[first_name]', with: Fakere::Lorem.characters(numbere: 5)
-        attach_file "post[plofile_image_id]", "app/assets/images/abe.jpg"
+        fill_in 'user[last_name]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'user[first_name]', with: Faker::Lorem.characters(number: 5)
+        attach_file "user[profile_image]", "app/assets/images/abe.jpg"
         select '青森', from: 'user[prefecture_code]' #select
-        select '5年目', from: 'user[history_status]'
-        fill_in 'user[introduction]', with: Fakere::Lorem.characters(numberes: 30)
+        select '4年目', from: 'user[history_status]'
+        fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 30)
         click_button '更新する'
       end
       it '名前が正しく更新されている' do
@@ -158,7 +151,7 @@ describe '[02] ユーザーのログイン後のテスト' do
         expect(user.reload.prefecture_code).not_to eq @user_old_prf
       end
       it '教員歴が正しく更新されている' do
-        expect(user.reload.histroy_status).not_to eq @user_old_history
+        expect(user.reload.history_status).not_to eq @user_old_history
       end
       it 'リダイレクト先が自分のユーザー詳細画面になっている' do
         expect(page).to eq '/users/' + user.id.to_s
@@ -172,7 +165,7 @@ describe '[02] ユーザーのログイン後のテスト' do
     end
     context '表示内容の確認' do
       it 'URLが正しい' do
-        expect(curret_path).to eq '/posts'
+        expect(current_path).to eq '/posts'
       end
       it '他人の画像のリンク先が正しい' do
         expect(page).to have_link '', href: post_path(other_post)
@@ -184,14 +177,15 @@ describe '[02] ユーザーのログイン後のテスト' do
     
     context '投稿成功のテスト' do
       before do
-        visit new_posts_path
-        select '書籍', from: 'post[genre_id]'
-        attach_file "post[post_image_id]", "app/assets/images/abe.jpg" #画像はattach
+        visit new_post_path
+        # select '書籍', from: 'post[genre_id]'
+        find("#post_genre_id").find("option[value='2']").select_option
+        attach_file "post[post_image]", "app/assets/images/abe.jpg" #画像はattach
         fill_in 'post[title]', with: Faker::Lorem.characters(number: 10)
-        fill_in 'post[content]', with: Fakere::Lorem.characters(number: 30)
+        fill_in 'post[content]', with: Faker::Lorem.characters(number: 30)
       end
       it '自分の新しい投稿が正しく保存される' do
-        expect { click_button '投稿' }.to change(user.posts, count).by(1)
+        expect { click_button '投稿' }.to change(user.posts, :count).by(1)
       end
       it 'リダレクト先が保存できた投稿の詳細画面' do
         click_button '投稿'
@@ -216,7 +210,7 @@ describe '[02] ユーザーのログイン後のテスト' do
         expect(page).to have_field 'post[post_image]', with: post.post_image
       end
       it 'ジャンル編集フォームが表示される' do
-        expect(page).to have_field 'post[genre]', with: post.genre
+        expect(page).to have_field 'post[genre_id]', with: post.genre
       end
       it 'タイトル編集フォームが表示される' do
         expect(page).to have_field 'post[title]', with: post.title
@@ -227,9 +221,6 @@ describe '[02] ユーザーのログイン後のテスト' do
       it '更新するボタンが表示される' do
         expect(page).to have_button '更新する'
       end
-      it '詳細へ戻るボタンが表示される' do
-        expect(page).to have_button '詳細へ戻る', href: post_path(post)
-      end
     end
     
     context '編集成功のテスト' do
@@ -238,10 +229,11 @@ describe '[02] ユーザーのログイン後のテスト' do
         @post_old_genre = post.genre
         @post_old_title = post.title
         @post_old_content = post.content
-        select 'ニュース', from: 'post[genre_id]'
-        attach_file "post[post_image_id]", "app/assets/images/abe.jpg"
+        # select '書籍', from: 'post[genre_id]'
+        find("#post_genre_id").find("option[value='2']").select_option
+        attach_file "post[post_image]", "app/assets/images/abe.jpg"
         fill_in 'post[title]', with: Faker::Lorem.characters(number: 8)
-        fill_in 'post[content]', with: Fakere::Lorem.characters(number: 40)
+        fill_in 'post[content]', with: Faker::Lorem.characters(number: 40)
         click_button '更新する'
       end
       
