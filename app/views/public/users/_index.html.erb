@@ -1,18 +1,17 @@
 <% users.each do |user|%>
-  <% if user.is_deleted == false %>
   <div class="col-12 col-md-6 col-lg-4">
     <div class="card my-2" style="width: 18rem;">
-      <%= attachment_image_tag(user, :profile_image,size:"200x250",fallback: "no_image.png",class:"card-img-top")%>
-        <div class="card-body">
-          <h5 class="card-title">
-            <%= link_to user_path(user) do%>
-              <%= full_name(user)%>
-            <% end %>
-          </h5>
-          <p class="card-text"><%= user.prefecture_name%></p>
-          <p class="card-text"><%= user.history_status%></p>
-        </div>
+      <%= link_to user_path(user) do%>
+        <%= attachment_image_tag(user, :profile_image,size:"200x250",fallback: "no_image.png",class:"card-img-top")%>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title">
+            <%= full_name(user)%>
+        </h5>
+        <p class="card-text"><i class="fas fa-school"></i>  <%= user.prefecture_name%></p>
+        <p class="card-text"><i class="fas fa-chalkboard-teacher"></i>  <%= user.history_status%></p>
+        <p class="card-text"><i class="fas fa-book"></i>  <%= user.posts.count%>件の投稿</p>
+      </div>
     </div>
   </div>
-  <% end %>
 <% end %>

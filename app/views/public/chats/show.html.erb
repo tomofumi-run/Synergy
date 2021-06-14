@@ -1,39 +1,42 @@
-  <!-- ▼LINE風ここから -->
-  <div class="line__container">
-    <!-- タイトル -->
-    <div class="line__title"><%= full_name(@user)%></div>
-
-    <!-- ▼会話エリア scrollを外すと高さ固定解除 -->
-    <div class="line__contents scroll">
-    <% @chats.each do |chat|%>
-      <% if chat.user_id != current_user.id %>
-      <!-- 相手の吹き出し -->
-      <div class="line__left">
-        <figure>
-          <img>画像</img>
-        </figure>
-        <div class="line__left-text">
-          <div class="name"><%= full_name(@user)%></div>
-          <div class="text"><%= chat.talk%></div>
+<div class="chat_container">
+  <div class="chat_title"><%= full_name(@user)%></div>
+    <div class="chat_contents scroll">
+      <% @chats.each do |chat|%>
+        <% if chat.user_id != current_user.id %>
+        <div class="left_chat">
+          <div class="left_image">
+            <%= link_to user_path(@user) do%>
+              <%= attachment_image_tag(@user, :profile_image,size:"50x50",class:"rounded-circle")%>
+            <% end %>
+          </div>
+          <div class="left-text">
+            <div class="name"><%= full_name(@user)%></div>
+            <div class="text"><%= chat.talk%></div>
+            <div class="text-white"><%= chat.created_at.strftime("%H:%M")%></div>
+          </div>
         </div>
-      </div>
-
-      <% else %>
-
-      <!-- 自分の吹き出し -->
-      <div class="line__right">
-        <div class="name"><%= full_name(current_user)%></div>
-        <div class="text"><%= chat.talk%></div>
-      </div>
-      
+  
+        <% else %>
+  
+        <div class="right_chat">
+          <div class="text"><%= chat.talk%></div>
+          <div class="text-right"><%= chat.created_at.strftime("%H:%M")%></div>
+        </div>
+        
+        <% end %>
       <% end %>
-    <% end %>
-    </div>
-    <!--　▲会話エリア ここまで -->
   </div>
-  <!--　▲LINE風ここまで -->
+</div>
 <%= form_with model: @chat,method: :post, local: true do |f| %>
-  <%= f.text_field :talk %>
-  <%= f.hidden_field :room_id %>
-  <%= f.submit "送信", class:"btn btn-success" %>
+<div class="d-flex justify-content-center">
+  <div class="field col-7">
+    <%= f.text_field :talk , class:"form-control"%>
+    <%= f.hidden_field :room_id %>
+  </div>
+  <div class="field">
+    <%= f.button :type => "submit", class:"btn btn-primary"  do %>
+      <i class="fas fa-comments fa-lg"></i>
+    <% end %>
+  </div>
+</div>
 <% end %>

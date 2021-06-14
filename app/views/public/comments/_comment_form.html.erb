@@ -1,6 +1,10 @@
 <%= form_with model:[@post,@comment] do |f|%>
-  <div class="form-floating">
+  <div class="field">
     <%= f.text_area :comment, rows:'5',class:"form-control"%>
   </div>
-    <%= f.submit 'コメントする',class:"btn btn-outline-success"%>
+  <div class="field text-center">
+    <%= f.button :type => 'submit', class:"btn btn-outline-success px-5 my-1" do%>
+      <i class="far fa-comment-alt fa-2x"></i>
+    <% end %>
+  </div>
 <% end %>
