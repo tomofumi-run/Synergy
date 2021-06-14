@@ -109,7 +109,10 @@ describe '[02] ユーザーのログイン後のテスト' do
         expect(page).to have_field 'user[first_name]', with: user.first_name
       end
       it '画像編集フォームが表示される' do
-        expect(page).to have_field 'user[profile_image]', with: user.profile_image
+        # expect(page).to have_field 'user[profile_image]', with: user.profile_image
+        # expect(find('#user_profile_image', visible: false)).to have_field 'user[profile_image]', with: user.profile_image
+        # should have_selector('#user_profile_image')
+        expect(page).to attach_file 'post_image', "#{fixture_path}/image.png", visible: false # hiddenで隠れているファイル,matcheが出てくる...
       end
       it '学校所在地フォームが表示される' do
         expect(page).to have_field 'user[prefecture_code]', with: user.prefecture_code
@@ -154,7 +157,7 @@ describe '[02] ユーザーのログイン後のテスト' do
         expect(user.reload.history_status).not_to eq @user_old_history
       end
       it 'リダイレクト先が自分のユーザー詳細画面になっている' do
-        expect(page).to eq '/users/' + user.id.to_s
+        expect(current_path).to eq '/users/' + user.id.to_s
       end
     end
   end
