@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'UserRoomモデルのテスト', type: :model do
@@ -7,7 +9,7 @@ RSpec.describe 'UserRoomモデルのテスト', type: :model do
         expect(UserRoom.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
-    
+
     context 'Roomモデルとの関係' do
       it 'N:1となっている' do
         expect(UserRoom.reflect_on_association(:room).macro).to eq :belongs_to

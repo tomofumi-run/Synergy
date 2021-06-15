@@ -29,9 +29,9 @@ class Public::SessionsController < Devise::SessionsController
     @user = User.find_by(email: params[:user][:email].downcase)
     # ログイン時に入力されたemailが存在するか探す。
     if @customer
-      if (@customer.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false))
-    # 入力されたパスワードが正しいこと 且つ　active_for_authentication?メソッドがfalseであるかどうか。
-        redirect_to new_customer_session_path,alert:"このアカウントは退会済みです。"
+      if @customer.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false)
+        # 入力されたパスワードが正しいこと 且つ　active_for_authentication?メソッドがfalseであるかどうか。
+        redirect_to new_customer_session_path, alert: 'このアカウントは退会済みです。'
       end
     end
   end

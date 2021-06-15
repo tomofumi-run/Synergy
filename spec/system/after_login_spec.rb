@@ -1,66 +1,68 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe '[02] ユーザーのログイン後のテスト' do
-   let(:user) { create(:user) }
-   let!(:other_user) { create(:user) }
-   let!(:post) { create(:post, user: user) }
-   let!(:other_post) { create(:post, user: other_user) }
- 
-   before do
-     visit new_user_session_path
-     fill_in 'user[email]', with: user.email
-     fill_in 'user[password]', with: user.password
-     click_button 'ログイン'
-   end
-   
-  describe 'ヘッダーのテスト： ログイン時' do
-      context 'リンクの内容' do
-        subject { current_path } #テスト対象の明確化
-        
-        it 'チャットを押すと、チャット一覧に遷移' do
-          chat_link = find_all('a')[1].native.inner_text
-          chat_link = chat_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-          click_link chat_link
-          is_expected.to eq '/chats'
-        end
-        it 'ユーザー一覧を押すと、ユーザー一覧に遷移' do
-          users_link = find_all('a')[2].native.inner_text
-          users_link = users_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-          click_link users_link
-          is_expected.to eq '/users'
-        end
-        it '投稿一覧を押すと、投稿一覧に遷移' do
-          posts_link = find_all('a')[3].native.inner_text
-          posts_link = posts_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-          click_link posts_link
-          is_expected.to eq '/posts'
-        end
-        it 'マイページを押すと、詳細画面に遷移' do
-          mypage_link = find_all('a')[4].native.inner_text
-          mypage_link = mypage_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-          click_link mypage_link
-          is_expected.to eq '/users/' + user.id.to_s
-        end
-        it '通知を押すと、通知一覧へ遷移' do
-          notification_link = find_all('a')[5].native.inner_text
-          notification_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-          click_link notification_link
-          is_expected.to eq '/users/' + user.id.to_s + '/notifications'
-        end
-      end
+  let(:user)        { create(:user)                   }
+  let!(:other_user) { create(:user)                   }
+  let!(:post)       { create(:post, user: user)       }
+  let!(:other_post) { create(:post, user: other_user) }
+
+  before do
+    visit new_user_session_path
+    fill_in 'user[email]', with: user.email
+    fill_in 'user[password]', with: user.password
+    click_button 'ログイン'
   end
-  
+
+  describe 'ヘッダーのテスト： ログイン時' do
+    context 'リンクの内容' do
+      subject { current_path } # テスト対象の明確化
+
+      it 'チャットを押すと、チャット一覧に遷移' do
+        chat_link = find_all('a')[1].native.inner_text
+        chat_link = chat_link.delete("\n").gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link chat_link
+        is_expected.to eq '/chats'
+      end
+      it 'ユーザー一覧を押すと、ユーザー一覧に遷移' do
+        users_link = find_all('a')[2].native.inner_text
+        users_link = users_link.delete("\n").gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link users_link
+        is_expected.to eq '/users'
+      end
+      it '投稿一覧を押すと、投稿一覧に遷移' do
+        posts_link = find_all('a')[3].native.inner_text
+        posts_link = posts_link.delete("\n").gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link posts_link
+        is_expected.to eq '/posts'
+      end
+      it 'マイページを押すと、詳細画面に遷移' do
+        mypage_link = find_all('a')[4].native.inner_text
+        mypage_link = mypage_link.delete("\n").gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link mypage_link
+        is_expected.to eq '/users/' + user.id.to_s
+      end
+      it '通知を押すと、通知一覧へ遷移' do
+        notification_link = find_all('a')[5].native.inner_text
+        notification_link.delete("\n").gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link notification_link
+        is_expected.to eq '/users/' + user.id.to_s + '/notifications'
+      end
+    end
+  end
+
   describe 'ユーザー一覧画面のテスト' do
     before do
       visit users_path
     end
-    
+
     context '表示内容の確認' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users'
       end
       it '他人の画像が表示される: 一覧で表示されるのは2人' do
-        expect(all('img').size).to eq(3) #userとotherの二人?
+        expect(all('img').size).to eq(3) # userとotherの二人?
       end
       it '自分と他人の名前と教員歴が表示される' do
         expect(page).to have_content user.last_name
@@ -75,12 +77,12 @@ describe '[02] ユーザーのログイン後のテスト' do
       end
     end
   end
-  
+
   describe '自分のユーザー詳細画面のテスト' do
     before do
       visit user_path(user)
     end
-    
+
     context '表示の確認' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/' + user.id.to_s
@@ -94,12 +96,12 @@ describe '[02] ユーザーのログイン後のテスト' do
       end
     end
   end
-  
+
   describe '自分のユーザー情報編集画面のテスト' do
     before do
       visit edit_user_path(user)
     end
-    
+
     context '表示の確認' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/' + user.id.to_s + '/edit'
@@ -127,7 +129,7 @@ describe '[02] ユーザーのログイン後のテスト' do
         expect(page).to have_button '更新する'
       end
     end
-    
+
     context '更新成功のテスト' do
       before do
         @user_old_ln = user.last_name
@@ -137,12 +139,13 @@ describe '[02] ユーザーのログイン後のテスト' do
         @user_old_history = user.history_status
         fill_in 'user[last_name]', with: Faker::Lorem.characters(number: 5)
         fill_in 'user[first_name]', with: Faker::Lorem.characters(number: 5)
-        attach_file "user[profile_image]", "app/assets/images/abe.jpg"
-        select '青森', from: 'user[prefecture_code]' #select
+        attach_file 'user[profile_image]', 'app/assets/images/abe.jpg'
+        select '青森', from: 'user[prefecture_code]' # select
         select '4年目', from: 'user[history_status]'
         fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 30)
         click_button '更新する'
       end
+
       it '名前が正しく更新されている' do
         expect(user.reload.last_name).not_to eq @user_old_ln
         expect(user.reload.first_name).not_to eq @user_old_fn
@@ -161,11 +164,12 @@ describe '[02] ユーザーのログイン後のテスト' do
       end
     end
   end
-  
+
   describe '投稿一覧画面のテスト' do
     before do
       visit posts_path
     end
+
     context '表示内容の確認' do
       it 'URLが正しい' do
         expect(current_path).to eq '/posts'
@@ -177,16 +181,17 @@ describe '[02] ユーザーのログイン後のテスト' do
         expect(page).to have_content other_post.title
       end
     end
-    
+
     context '投稿成功のテスト' do
       before do
         visit new_post_path
         # select '書籍', from: 'post[genre_id]'
-        find("#post_genre_id").find("option[value='2']").select_option
-        attach_file "post[post_image]", "app/assets/images/abe.jpg" #画像はattach
+        find('#post_genre_id').find("option[value='2']").select_option
+        attach_file 'post[post_image]', 'app/assets/images/abe.jpg' # 画像はattach
         fill_in 'post[title]', with: Faker::Lorem.characters(number: 10)
         fill_in 'post[content]', with: Faker::Lorem.characters(number: 30)
       end
+
       it '自分の新しい投稿が正しく保存される' do
         expect { click_button '投稿' }.to change(user.posts, :count).by(1)
       end
@@ -196,12 +201,12 @@ describe '[02] ユーザーのログイン後のテスト' do
       end
     end
   end
-  
+
   describe '自分の投稿詳細画面のテスト' do
     before do
       visit edit_post_path(post)
     end
-    
+
     context '表示の確認' do
       it 'URLが正しい' do
         expect(current_path).to eq '/posts/' + post.id.to_s + '/edit'
@@ -225,7 +230,7 @@ describe '[02] ユーザーのログイン後のテスト' do
         expect(page).to have_button '更新する'
       end
     end
-    
+
     context '編集成功のテスト' do
       before do
         @post_old_image = post.post_image
@@ -233,13 +238,13 @@ describe '[02] ユーザーのログイン後のテスト' do
         @post_old_title = post.title
         @post_old_content = post.content
         # select '書籍', from: 'post[genre_id]'
-        find("#post_genre_id").find("option[value='2']").select_option
-        attach_file "post[post_image]", "app/assets/images/abe.jpg"
+        find('#post_genre_id').find("option[value='2']").select_option
+        attach_file 'post[post_image]', 'app/assets/images/abe.jpg'
         fill_in 'post[title]', with: Faker::Lorem.characters(number: 8)
         fill_in 'post[content]', with: Faker::Lorem.characters(number: 40)
         click_button '更新する'
       end
-      
+
       it 'ジャンルが正しく更新される' do
         expect(post.reload.genre).not_to eq @post_old_genre
       end
@@ -253,10 +258,8 @@ describe '[02] ユーザーのログイン後のテスト' do
         expect(post.reload.content).not_to eq @post_old_content
       end
       it 'リダイレクト先が、更新した投稿の詳細画面になっている' do
-        expect(current_path).to eq '/posts/'+ post.id.to_s
+        expect(current_path).to eq '/posts/' + post.id.to_s
       end
     end
-    
-    
   end
 end

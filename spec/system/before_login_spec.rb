@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe '[01] ユーザーのログイン前のテスト' do
@@ -29,7 +31,6 @@ describe '[01] ユーザーのログイン前のテスト' do
     end
   end
 
-
   describe 'アバウト画面のテスト' do
     before do
       visit '/about'
@@ -41,7 +42,6 @@ describe '[01] ユーザーのログイン前のテスト' do
       end
     end
   end
-
 
   describe 'ヘッダーのテスト: ログイン前' do
     before do
@@ -68,19 +68,19 @@ describe '[01] ユーザーのログイン前のテスト' do
 
       it 'サイトについてを押すと、サイト詳細画面に遷移する' do
         about_link = find_all('a')[1].native.inner_text
-        about_link = about_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        about_link = about_link.delete("\n").gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link about_link
         is_expected.to eq '/about'
       end
       it '新規登録を押すと、新規登録画面に遷移する' do
         sign_up_link = find_all('a')[2].native.inner_text
-        sign_up_link = sign_up_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        sign_up_link = sign_up_link.delete("\n").gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link sign_up_link
         is_expected.to eq '/users/sign_up'
       end
       it 'ログインを押すと、ログイン画面に遷移する' do
         log_in_link = find_all('a')[3].native.inner_text
-        log_in_link = log_in_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        log_in_link = log_in_link.delete("\n").gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link log_in_link
         is_expected.to eq '/users/sign_in'
       end
@@ -129,7 +129,7 @@ describe '[01] ユーザーのログイン前のテスト' do
       before do
         fill_in 'user[last_name]', with: '星野'
         fill_in 'user[first_name]', with: '結衣'
-        select '北海道', from: 'user[prefecture_code]' #select
+        select '北海道', from: 'user[prefecture_code]' # select
         select '2年目', from: 'user[history_status]'
         fill_in 'user[email]', with: 'hoshinoyui@nigehaji.com'
         fill_in 'user[password]', with: '123456'
@@ -189,6 +189,7 @@ describe '[01] ユーザーのログイン前のテスト' do
         fill_in 'user[password]', with: ''
         click_button 'ログイン'
       end
+
       it 'ログインに失敗し、ログイン画面にリダレクトされる' do
         expect(current_path).to eq '/users/sign_in'
       end
@@ -208,44 +209,44 @@ describe '[01] ユーザーのログイン前のテスト' do
     context 'ヘッダーの表示確認' do
       it 'navの1番目が「チャット」' do
         chat_link = find_all('a')[1].native.inner_text
-        expect(chat_link).to match("チャット")
+        expect(chat_link).to match('チャット')
       end
       it 'navの2番目が「ユーザー一覧」' do
         users_link = find_all('a')[2].native.inner_text
-        expect(users_link).to match("ユーザー一覧")
+        expect(users_link).to match('ユーザー一覧')
       end
       it 'navの3番目が「投稿一覧」' do
         posts_link = find_all('a')[3].native.inner_text
-        expect(posts_link).to match("投稿一覧")
+        expect(posts_link).to match('投稿一覧')
       end
       it 'navの4番目が「マイページ」' do
         mypage_link = find_all('a')[4].native.inner_text
-        expect(mypage_link).to match("マイページ")
+        expect(mypage_link).to match('マイページ')
       end
       it 'navの5番目が「通知」' do
         notification_link = find_all('a')[5].native.inner_text
-        expect(notification_link).to match("通知")
+        expect(notification_link).to match('通知')
       end
       it 'navの6番目が「ログアウト」' do
         logout_link = find_all('a')[6].native.inner_text
-        expect(logout_link).to match("ログアウト")
+        expect(logout_link).to match('ログアウト')
       end
     end
   end
-  
+
   describe 'ユーザーログアウトのテスト' do
     let(:user) { create(:user) }
-    
+
     before do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_button 'ログイン'
       logout_link = find_all('a')[6].native.inner_text
-      logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+      logout_link = logout_link.delete("\n").gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
       click_link logout_link
     end
-    
+
     context 'ログアウト機能のテスト' do
       it '正しくログアウト出来ている： ログアウト後に「サイトについて」のリンクが存在する' do
         expect(page).to have_link '', href: '/about'
