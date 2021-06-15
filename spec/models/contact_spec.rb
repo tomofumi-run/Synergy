@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Contactモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     let(:contact) { create(:contact) }
+
     context 'nameカラム' do
       it '空欄はNG' do
         contact.name = ''
@@ -17,10 +20,10 @@ RSpec.describe 'Contactモデルのテスト', type: :model do
         expect(contact).to be_valid
       end
     end
-    
+
     context 'emailカラム' do
       it '空欄はNG' do
-        contact.email = '' 
+        contact.email = ''
         expect(contact).not_to be_valid
       end
       it '正規表記でしか登録できないこと' do
@@ -38,7 +41,7 @@ RSpec.describe 'Contactモデルのテスト', type: :model do
 
         contact.email = 'foo@bar+baz.com'
         expect(contact).to be_invalid
-      end     
+      end
     end
 
     context 'subjectカラム' do
@@ -55,7 +58,7 @@ RSpec.describe 'Contactモデルのテスト', type: :model do
         expect(contact).to be_valid
       end
     end
-    
+
     context 'messageカラム' do
       it '空欄はNG' do
         contact.message = ''

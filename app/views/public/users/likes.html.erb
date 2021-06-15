@@ -1,14 +1,12 @@
 <% provide(:title, "お気に入り一覧")%>
-<div class="container">
-  <h2>"<%= full_name(current_user)%>"さんのお気に入り一覧</h2>
-  <div class="row">
-    <% if @likes_list.blank? %>
-    <div class="col mx-auto">
-      <h5>まだお気に入りをした投稿がありません。</h5>
-      <h5><%= link_to "気になる投稿", posts_path %>を探しに行きましょう。</h5>
-    </div>
-    <% else %>
-      <%= render "public/posts/index", posts: @likes_list%>
-    <% end %>
+<h2>"<%= full_name(current_user)%>"さんのお気に入り一覧</h2>
+<div class="row">
+  <% if @likes_list.blank? %>
+  <div class="col mx-auto">
+    <h5>まだお気に入りをした投稿がありません。</h5>
+    <h5><%= link_to "気になる投稿", posts_path %>を探しに行きましょう。</h5>
   </div>
+  <% else %>
+    <%= render "public/posts/index", posts: @likes_list%>
+  <% end %>
 </div>

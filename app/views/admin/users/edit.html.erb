@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="row">
+<% provide(:title, "ユーザー編集")%>
+<div class="row">
     <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0 mx-auto">
      <h2>プロフィール編集</h2>
       <%= form_with model:@user,url: admin_user_path,local:true do |f| %>
@@ -43,5 +43,4 @@
       </div>
      <% end%>
     </div>
-  </div>
 </div>
