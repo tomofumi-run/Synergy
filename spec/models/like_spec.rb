@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Likeモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
-    subject { post.valid? }
-    
     let(:user) { create(:user) }
     let(:post) { build(:post, user_id: user.id) }
     let(:like) { create(:like, user_id: user.id, post_id: post.id)}
