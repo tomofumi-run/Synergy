@@ -3,26 +3,25 @@ require 'rails_helper'
 RSpec.describe 'Relationshipモデルのテスト', type: :model do
   let(:relationship) { FactoryBot.create(:relationship) }
   describe 'フォロー可能のテスト' do
-    # context '保存できる場合' do
-    #   it 'パラメーターが揃っていれば保存可能' do
-    #     expect(relationship).to be_valid
-    #   end
-    # end
+    context '保存できる場合' do
+      it 'パラメーターが揃っていれば保存可能' do
+        expect(relationship).to be_valid
+      end
+    end
     
-    # context '一意性のテスト' do
-    #   before do
-    #     @relation = FactoryBot.create(:relationship)
-    #     @user = FactoryBot.build(:relationship)
-    #   end
-    #   it 'follower_idとfollowed_idの組み合わせが一意でなければ保存できない' do
-    #     relation2 = FactoryBot.build(:relationship, follower_id: @relation.follower_id, followed_id: @relation.followed_id)
-    #     expect(relation2).to be_valid
-    #   end
-    #   it 'follower_idが同じでも、followed_idが違うなら保存可能' do
-    #     relation2 = FactoryBot.build(:relationship, follower_id: @relation.follower_id, followed_id: @user.followed_id)
-    #     expect(relation2).to be_valid
-    #   end
-    # end
+    context "保存できない場合" do
+      it "follower_idがnilの場合は保存できない" do
+        relationship.follower_id = nil
+        relationship.valid?
+        expect(relationship.errors[:follower_id]).to include("を入力してください")
+      end
+
+      it "followed_idがnilの場合は保存できない" do
+        relationship.followed_id = nil
+        relationship.valid?
+        expect(relationship.errors[:followed_id]).to include("を入力してください")
+      end
+    end    
   end
   
   describe 'アソシエーションのテスト' do
