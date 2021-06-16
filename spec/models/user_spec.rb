@@ -34,19 +34,19 @@ RSpec.describe 'Userモデルのテスト', type: :model do
       end
       it '正規表記でしか登録できないこと' do
         user.email = 'user@example,com'
-        expect(user).to be_invalid
+        expect(user).not_to be_valid
 
         user.email = 'user_at_foo.org'
-        expect(user).to be_invalid
+        expect(user).not_to be_valid
 
         user.email = 'user.name@example.'
-        expect(user).to be_invalid
+        expect(user).not_to be_valid
 
         user.email = 'foo@bar_baz.com'
-        expect(user).to be_invalid
+        expect(user).not_to be_valid
 
         user.email = 'foo@bar+baz.com'
-        expect(user).to be_invalid
+        expect(user).not_to be_valid
       end
     end
 

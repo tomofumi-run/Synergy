@@ -28,19 +28,19 @@ RSpec.describe 'Contactモデルのテスト', type: :model do
       end
       it '正規表記でしか登録できないこと' do
         contact.email = 'user@example,com'
-        expect(contact).to be_invalid
+        expect(contact).not_to be_valid
 
         contact.email = 'user_at_foo.org'
-        expect(contact).to be_invalid
+        expect(contact).not_to be_valid
 
         contact.email = 'user.name@example.'
-        expect(contact).to be_invalid
+        expect(contact).not_to be_valid
 
         contact.email = 'foo@bar_baz.com'
-        expect(contact).to be_invalid
+        expect(contact).not_to be_valid
 
         contact.email = 'foo@bar+baz.com'
-        expect(contact).to be_invalid
+        expect(contact).not_to be_valid
       end
     end
 
