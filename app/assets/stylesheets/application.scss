@@ -20,10 +20,16 @@
   
   $Greencolor: #E6FFE9;
   
+// -- 全体の見栄え調整 -- //
   body,html{
     margin: 0;
     padding: 0;
     background: #EEEEEE;
+  }
+  
+  a{
+    text-decoration: none;
+    color: #000;
   }
   
   #wrapper{
@@ -40,32 +46,66 @@
   }
   footer{
     background: $Greencolor;
+    color: black;
     margin-top: auto;
+    
+    #copyright{
+      font-size: 10px;
+      color: #6c757d;
+    }
   }
   
-// linkのhover
+// -- -- //
 
-.top-radius {
+// -- headerのボタン -- //
+
+.nav-item{
+  font-family: 'Kosugi Maru', sans-serif;
+}
+
+.btn-vertical-border {
   position: relative;
   display: inline-block;
   font-weight: bold;
-  padding: 8px 10px 5px 10px;
+  padding: 5px 11px 5px 15px;
   text-decoration: none;
-  color: #111111;
-  background: #43FF6B;
-  border-bottom: solid 4px #009900;
-  border-radius: 15px 15px 0 0;
+  color: #67c5ff;
   transition: .4s;
 }
 
-.top-radius:hover {
-  background: #ADFF2F;
-  color: #FFF;
+.btn-vertical-border:before {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  width: 4px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 3px;
+  background:#67c5ff;
 }
 
-/* Loading背景画面設定　*/
+.btn-vertical-border:after {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  width: 4px;
+  height: 100%;
+  top:0;
+  left: 100%;
+  border-radius: 3px;
+  background:#67c5ff;
+}
+
+.btn-vertical-border:hover:before, .btn-vertical-border:hover:after {
+  -webkit-transform: rotate(10deg);
+  transform: rotate(10deg);
+}
+
+// -- -- //
+
+// -- Topページの画面全体レイアウト -- //
 #splash {
-/*fixedで全面に固定*/
   position: fixed;
   width: 100%;
   height: 100%;
@@ -74,7 +114,6 @@
   text-align: center;
 }
 
-/* Loading画像中央配置　*/
 #splash_logo {
   position: absolute;
   top: 50%;
@@ -82,29 +121,23 @@
   transform: translate(-50%, -50%);
 }
 
-/* Loading アイコンの大きさ設定　*/
 #splash_logo img {
   width: 260px;
 }
+// -- -- //
 
-/* fadeUpをするアイコンの動き */
+// -- cardが浮き出るレイアウト -- //
 
-.fadeUp{
-animation-name: fadeUpAnime;
-animation-duration: 0.5s;
-animation-fill-mode:forwards;
-opacity: 0;
-}
+.card-wrap{
+  transition-duration: 0.5s;
+  background-color: white;
+  cursor: pointer;
 
-
-@keyframes fadeUpAnime{
-  from {
-    opacity: 0;
-  transform: translateY(100px);
-  }
-
-  to {
-    opacity: 1;
-  transform: translateY(0);
+  &:hover{
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+    transform: translateY(-0.5px);
+    transition-duration: 0.3s;
   }
 }
+
+// -- -- //

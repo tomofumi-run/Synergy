@@ -1,10 +1,13 @@
 <footer>
-  <p class="text-center">© Synergy</p>
-  <div class="d-flex justify-content-center">
-    <a href="#" class="mx-1 text-dark"><i class="fab fa-twitter fa-2x"></i></a>
-    <a href="#" class="mx-5 text-dark"><i class="fab fa-instagram fa-2x"></i></a>
+  <div class="d-flex justify-content-center mt-2">
+    <%= link_to root_path do%>
+      <p>Learning Is Fun</p>
+    <% end%>
     <%= link_to new_contact_path do%>
-      <i class="far fa-envelope fa-2x"></i>
+      <i class="far fa-envelope fa-lg ml-2"></i>
     <% end %>
+  </div>
+    <div class="d-flex justify-content-center">
+    <p id="copyright">Copyright © SYNERGY All Rights Reserved</p>
   </div>
 </footer>
