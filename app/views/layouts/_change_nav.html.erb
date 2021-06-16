@@ -1,24 +1,24 @@
 <% if user_signed_in?%>
   <li class="nav-item">
-     <%= link_to"チャット", chats_path,class: 'nav-link top-radius mb-2'%>
+     <%= link_to"チャット", chats_path,class: 'nav-link btn-vertical-border px-2 mb-2'%>
   </li>
   <li class="nav-item">
-      <%= link_to"ユーザー一覧", users_path,class: 'nav-link top-radius mb-2'%>
+      <%= link_to"ユーザー一覧", users_path,class: 'nav-link btn-vertical-border px-2 mb-2'%>
   </li>
   <li class="nav-item">
-      <%= link_to"投稿一覧", posts_path,class: 'nav-link top-radius mb-2'%>
+      <%= link_to"投稿一覧", posts_path,class: 'nav-link btn-vertical-border px-2 mb-2'%>
   </li>
   <li class="nav-item">
-    <%= link_to"マイページ", user_path(current_user),class: 'nav-link top-radius mb-2'%>
+    <%= link_to"マイページ", user_path(current_user),class: 'nav-link btn-vertical-border px-2 mb-2'%>
   </li>
   <li class="nav-item">
     <% if unchecked_notifications.any? %>
       <i class="fa fa-circle" style="color: gold;"></i>
     <% end %>
-    <%= link_to"通知", user_notifications_path(current_user),class: 'nav-link top-radius mb-2'%>
+    <%= link_to"通知", user_notifications_path(current_user),class: 'nav-link btn-vertical-border px-2 mb-2'%>
   </li>
   <li class="nav-item">
-    <%= link_to"ログアウト", destroy_user_session_path,method: :delete,class: 'nav-link top-radius mb-2'%>
+    <%= link_to"ログアウト", destroy_user_session_path,method: :delete,class: 'nav-link btn-vertical-border px-2 mb-2'%>
   </li>
   
 <% elsif admin_signed_in? %>
@@ -26,26 +26,26 @@
     <div class="btn btn-danger text-white">管理者画面</div>
   </li>
   <li class="nav-item">
-    <%= link_to "ユーザー一覧", admin_users_path,class: 'nav-link top-radius mb-2' %>
+    <%= link_to "ユーザー一覧", admin_users_path,class: 'nav-link btn-vertical-border px-2 mb-2' %>
   </li>
   <li class="nav-item">
-    <%= link_to "投稿一覧", admin_posts_path, class:'nav-link top-radius mb-2'%>
+    <%= link_to "投稿一覧", admin_posts_path, class:'nav-link btn-vertical-border px-2 mb-2'%>
   </li>
    <li class="nav-item">
-    <%= link_to "ジャンル一覧", admin_genres_path, class:'nav-link top-radius mb-2'%>
+    <%= link_to "ジャンル一覧", admin_genres_path, class:'nav-link btn-vertical-border px-2 mb-2'%>
   </li>
   <li class="nav-item">
-    <%= link_to "ログアウト",destroy_admin_session_path, method: :delete,class: 'nav-link top-radius mb-2'%>
+    <%= link_to "ログアウト",destroy_admin_session_path, method: :delete,class: 'nav-link btn-vertical-border px-2 mb-2'%>
   </li>
   
 <% else %>
   <li class="nav-item">
-    <%= link_to"サイトについて", about_path,class: 'nav-link top-radius mb-2'%>
+    <%= link_to"サイトについて", about_path,class: 'nav-link btn-vertical-border px-2 mb-2'%>
   </li>
   <li class="nav-item">
-    <%= link_to"新規登録", new_user_registration_path,class: 'nav-link top-radius mb-2'%>
+    <%= link_to"新規登録", new_user_registration_path,class: 'nav-link btn-vertical-border px-2 mb-2'%>
   </li>
   <li class="nav-item">
-    <%= link_to"ログイン", new_user_session_path,class: 'nav-link top-radius mb-2'%>
+    <%= link_to"ログイン", new_user_session_path,class: 'nav-link btn-vertical-border px-2 mb-2'%>
   </li>
 <% end %>
