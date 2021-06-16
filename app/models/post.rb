@@ -17,6 +17,11 @@ class Post < ApplicationRecord
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
+  
+  # ---------- userのお気に入り取得 ----------
+  def self.like_posts(current_user)
+    includes(%i(user genre)).find(Like.where(user_id: current_user).pluck(:post_id) )
+  end
 
   # ---------- postの部分一致  ----------
   def self.search_for(content)

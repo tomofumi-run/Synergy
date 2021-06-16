@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe '[01] ユーザーのログイン前のテスト' do
+describe 'ユーザーのログイン前のテスト' do
   describe 'トップ画面のテスト' do
     before do
       visit root_path
