@@ -28,10 +28,8 @@ class Public::ChatsController < ApplicationController
 
     if @chat.save
       room = @chat.room
-      user_room = UserRoom.where(room_id: room.id).where.not(user_id: current_user.id)
-      another_user_room = user_room.find_by(room_id: room.id)
-      # binding.pry
-      room.create_notification_chat!(current_user, @chat.id, another_user_room)
+      user_room = UserRoom.where(room_id: room.id).where.not(user_id: current_user.id).first # firstで配列から変換
+      room.create_notification_chat!(current_user, @chat.id, user_room)
       redirect_to request.referer
     else
       flash[:alert] = 'メッセージを入力してください。'
