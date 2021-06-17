@@ -1,24 +1,21 @@
 <% provide(:title, "投稿ジャンル一覧") %>
-<div class="container">
-    <div class="row text-center">
-        <div class="col">
-            <h2>投稿ジャンル一覧</h2>
-        </div>
-    </div>
-    <%= render "admin/genres/new", genre: @genre%>
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>ジャンル</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="genre_ajax">
-            <%= render 'admin/genres/index', genres: @genres %>
-          </tbody>
-        </table>
-      </div>
-    </div>
+<div class="row text-center">
+  <div class="col">
+      <h3 class="page-title">投稿ジャンル一覧</h3>
+  </div>
+</div>
+<%= render "admin/genres/new", genre: @genre%>
+<div class="row">
+  <div class="col-md-8 offset-2 mx-auto">
+    <table id="genre_ajax" class="table">
+      <thead>
+        <tr>
+          <th>ジャンル</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <%= render 'admin/genres/index', genres: @genres %>
+    </table>
+  </div>
 </div>

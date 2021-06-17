@@ -1,12 +1,9 @@
 <% provide(:title, "投稿ジャンル検索")%>
 <%= render "public/posts/post_search"%>
-
-<div class="container">
-  <h5>検索ジャンル　"<%= @content.name %>"</h5>
+<h5 class="page-title">検索ジャンル　"<%= @content.name %>"で検索した結果、該当する投稿が<%= @records.count%>件</h5>
   <div class="row">
     <%= render "public/posts/index", posts: @records%>
   </div>
   <div class="d-flex justify-content-center my-3">
     <%= paginate @records %>
   </div>
-</div>

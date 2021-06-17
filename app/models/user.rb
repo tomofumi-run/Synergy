@@ -72,6 +72,7 @@ class User < ApplicationRecord
     l_name = User.where('last_name LIKE ?', '%' + content + '%')
 
     user = f_name + l_name
+    
   end
 
   def create_notificagtion_follow!(current_user)

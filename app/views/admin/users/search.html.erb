@@ -1,9 +1,13 @@
 <% provide(:title, "ユーザー検索")%>
 <%= render "admin/users/user_search"%>
-
-<div class="container">
-  <h5>検索ワード　"<%= @content %>"</h5>
-  <div class="row">
-      <%= render "admin/users/index", users: @records  %>
-  </div>
+<h5 class="page-title my-3">検索ワード　"<%= @content %>"</h5>
+<div class="row">
+  <% if @records.first.nil?%>
+    <div class="mx-auto text-center">
+      <p><i class="fas fa-users-slash fa-5x"></i></p>
+      <h2 class="page-title my-5">該当するユーザーがいません。</h2>
+    </div>
+  <% else %>
+    <%= render "admin/users/index", users: @records  %>
+  <% end %>
 </div>
