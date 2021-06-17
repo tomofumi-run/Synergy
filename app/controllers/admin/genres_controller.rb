@@ -12,7 +12,7 @@ class Admin::GenresController < ApplicationController
 
   def create
     @genre = Genre.new(genre_params)
-
+    
     if @genre.save
       @genres = Genre.all
       redirect_to request.referer, notice: 'ジャンルを追加しました。'
@@ -32,6 +32,12 @@ class Admin::GenresController < ApplicationController
       flash.now[:alert] = '変更内容に不備があります。'
       render 'edit'
     end
+  end
+  
+  def destroy
+    genre = Genre.find(params[:id])
+    genre.destroy
+    redirect_to admin_genres_path
   end
 
   private

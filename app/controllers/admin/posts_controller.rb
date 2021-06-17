@@ -3,7 +3,7 @@ class Admin::PostsController < ApplicationController
   before_action :set_post, only: %i(show destroy)
 
   def index
-    @posts = Post.page(params[:page]).per(12)
+    @posts = Post.includes(:user).page(params[:page]).per(12)
   end
 
   def show; end
@@ -15,7 +15,7 @@ class Admin::PostsController < ApplicationController
 
   def search
     @content = params[:content]
-    @records = Post.search_for(@content)
+    @records = Post.search_for(@content).includes(:user)
   end
 
   private

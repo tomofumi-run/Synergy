@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         get 'search'
       end
     end
-    resources :genres, only: %i(index create edit update)
+    resources :genres, only: %i(index create edit update destroy)
   end
 
   devise_for :users, controllers: {

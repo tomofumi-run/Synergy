@@ -1,0 +1,14 @@
+<% provide(:title, "ジャンル編集") %>
+<h3 class="page-title text-center">ジャンル編集</h3>
+  <div class="row justify-content-center">
+    <%= form_with model: @genre,url: admin_genre_path, method: :patch, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label "ジャンル名",class:"form-label" %>
+        <%= f.text_field :name,class:"form-control" %>
+      </div>
+      <div>
+        <%=f.submit "変更を保存", class:"btn btn-success my-3 mr-3" %>
+        <%= link_to "ジャンル一覧へ戻る",admin_genres_path, class:"btn btn-outline-secondary"%>
+      </div>
+    <% end %>
+  </div>
