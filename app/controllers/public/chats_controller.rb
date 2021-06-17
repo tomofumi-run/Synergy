@@ -3,7 +3,7 @@ class Public::ChatsController < ApplicationController
 
   def index
     rooms = current_user.user_rooms.pluck(:room_id) # ユーザーに関連するroom_idを配列取得
-    @room_lists = UserRoom.includes([:user]).where(room_id: rooms).where.not(user_id: current_user.id) # chat_roomsのデータを取り出す
+    @room_lists = UserRoom.current_rooms(rooms, current_user)
   end
 
   def show
@@ -28,7 +28,7 @@ class Public::ChatsController < ApplicationController
 
     if @chat.save
       room = @chat.room
-      user_room = UserRoom.where(room_id: room.id).where.not(user_id: current_user.id).first # firstで配列から変換
+      user_room = UserRoom.current_rooms(room, current_user).first # firstで配列から変換
       room.create_notification_chat!(current_user, @chat.id, user_room)
       redirect_to request.referer
     else
