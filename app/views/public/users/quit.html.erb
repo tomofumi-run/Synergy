@@ -3,7 +3,7 @@
     <div class="mx-auto text-center">
       <div>
         <p><i class="fas fa-exclamation-triangle fa-5x"></i></p>
-        <h2 class="my-5">退会手続きの前にご確認ください。</h2>
+        <h2 class="page-title my-5">退会手続きの前にご確認ください。</h2>
         <p>
           退会手続きを行い、退会が完了された場合<br>
           <span class="text-danger font-weight-bold">すべてのデータが削除されます閲覧できなくなります。</span><br>
@@ -12,7 +12,7 @@
       </div>
       <div class="d-flex justify-content-around mt-5">
         <%= link_to "退会しない",user_path(current_user),class:"btn btn-primary"%>
-        <%= link_to "退会する",out_user_path(current_user),method: :patch,class:"btn btn-danger"%>
+        <%= link_to "退会する",out_user_path(current_user),method: :patch, data: { confirm: '本当に退会しますか？' },class:"btn btn-danger"%>
       </div>
     </div>
   </div>

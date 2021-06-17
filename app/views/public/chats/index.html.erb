@@ -1,12 +1,13 @@
 <% provide(:title, "チャット一覧")%>
-<h2 class="text-center">チャット一覧</h2>
+<h2 class="page-title text-center">チャット一覧</h2>
   <div class="row">
   <% if @room_lists.exists? %>
-    <table class="table col-8 mx-auto">
+    <table class="table mx-auto">
       <thead>
         <tr>
           <th></th>
           <th>ユーザー名</th>
+          <th></th>
           <th></th>
         </tr>
       </thead>
@@ -14,11 +15,21 @@
       <tbody>
           <tr>
           <th><%= attachment_image_tag(room.user, :profile_image,size:"50x50",class:"rounded-circle")%></th>
-            <%= link_to user_path(room.user) do%>
-            <th><%= full_name(room.user)%></th>
-            <% end %>
-            <th><%= link_to "チャットを続ける",chat_path(room.user_id) %></th>
-            <th><%= link_to "チャット削除", user_room_path(room), method: :delete, data: { confirm: '本当に消しますか？'}, class:"btn btn-danger"%></th>
+              <th>
+                <%= link_to user_path(room.user) do%>
+                  <%= full_name(room.user)%>
+                <% end %>
+              </th>
+            <th>
+              <%= link_to chat_path(room.user_id), class:"btn btn-primary" do %>
+                <i class="far fa-comments"><span class="mr-2"></span>チャットする</i>
+              <% end %>
+            </th>
+            <th>
+              <%= link_to user_room_path(room), method: :delete, data: { confirm: '本当に消しますか？'}, class:"btn btn-danger" do %>
+                <i class="fas fa-trash"><span class="mr-2"></span>チャット削除</i>
+              <% end %>
+            </th>
           </tr>
       </tbody>
       <% end %>

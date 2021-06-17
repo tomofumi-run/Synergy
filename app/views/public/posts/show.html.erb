@@ -25,6 +25,9 @@
         <div id="post_comments">
           <%= render "public/comments/comment_index", post: @post%>
         </div>
+        <div id="error_comment">
+          <%= render 'layouts/errors', obj: @comment%>
+        </div>
           <%= render "public/comments/comment_form", post: @post, comment: @comment%>
       </div>
     </div>

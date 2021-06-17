@@ -1,10 +1,9 @@
 <% provide(:title, "通知一覧")%>
-<h3 class="text-center">通知</h3>
+<h3 class="page-title text-center">通知</h3>
   <div class="row">
     <div class="col-xs-12 col-md-10 mx-auto">
           <%= link_to  user_notifications_path,class:"text-dark", method: :delete do %>
-            <i class="fas fa-trash"></i>
-            <h7>全削除</h7>
+            <i class="fas fa-trash"><span class="mr-2"></span>全削除</i>
           <% end %>
         <hr>
         <% if @notifications.exists? %>

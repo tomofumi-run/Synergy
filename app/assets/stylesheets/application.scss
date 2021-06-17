@@ -30,6 +30,10 @@
   a{
     text-decoration: none;
     color: #000;
+    
+    &:hover{
+      text-decoration: none;
+      }
   }
   
   #wrapper{
@@ -54,6 +58,10 @@
       color: #6c757d;
     }
   }
+
+.page-title{
+  font-family: 'Kosugi Maru', sans-serif;
+}
   
 // -- -- //
 

@@ -1,7 +1,8 @@
 <% provide(:title, "ユーザー一覧")%>
 <%= render "admin/users/user_search"%>
-<div class="container">
-  <div class="row">
+<div class="row">
   <%= render "admin/users/index", users: @users%>
-  </div>
+</div>
+<div class="d-flex justify-content-center my-3">
+  <%= paginate @users %>
 </div>
