@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Userコントローラーのテスト' do
+describe 'Users', type: :system do
   let(:user)        { create(:user)                   }
   let!(:other_user) { create(:user)                   }
   let!(:post)       { create(:post, user: user)       }
