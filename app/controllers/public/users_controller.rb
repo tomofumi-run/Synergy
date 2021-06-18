@@ -3,7 +3,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: %i(edit update likes quit out)
-  before_action :delete_user, only: [:show]
+  before_action :out_user, only: [:show]
 
   def index
     @users = User.page(params[:page]).per(12).reverse_order
@@ -44,16 +44,12 @@ class Public::UsersController < ApplicationController
 
   private
 
-  # current_userでしか操作してほしくない部分
   def ensure_correct_user
     @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to user_path(current_user), alert: '権限がありません。'
-    end
+    redirect_to user_path(current_user), alert: '権限がありません。' unless @user == current_user
   end
 
-  # 論理削除したユーザーは退会済みとする
-  def delete_user
+  def out_user
     user = User.find(params[:id])
     unless user.is_deleted == false
       flash.now[:alert] = '退会済みユーザーになります。'
