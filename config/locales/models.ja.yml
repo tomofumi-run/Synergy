@@ -13,6 +13,8 @@ ja:
         title: タイトル
         content: 本文
         genre_id: カテゴリー
+      comment:
+        comment: コメント
       contact:
         email: メールアドレス
         name: お名前

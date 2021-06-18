@@ -8,9 +8,7 @@ class Public::CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
     comment_post = @comment.post
-    unless @comment.save
-      render :error
-    end
+    render :error unless @comment.save # unlessだった場合 renderさせる後置
     comment_post.create_notification_comment!(current_user, @comment.id)
   end
 
