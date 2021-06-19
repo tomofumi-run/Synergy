@@ -53,11 +53,14 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '>= 2.15' # ブラウザ操作検査
+  gem 'capybara'
+  gem 'webdrivers'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'rspec-rails' # モデル検査
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

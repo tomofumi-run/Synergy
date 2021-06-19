@@ -37,6 +37,7 @@ end
 RSpec.configure do |config|
   config.include SignInSupport
   config.include WaitForCss
+  config.include WaitForAjax
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -68,4 +69,14 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.include FactoryBot::Syntax::Methods
+  
+  config.before(:each) do |example|
+    if example.metadata[:type] == :system
+      if example.metadata[:js]
+        driven_by :selenium_chrome_headless, screen_size: [1400, 1400]
+      else
+        driven_by :rack_test
+      end
+    end
+  end
 end

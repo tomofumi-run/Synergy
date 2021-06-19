@@ -1,3 +1,4 @@
+# 非同期テストx
 require 'rails_helper'
 
 RSpec.describe "Relationships", type: :system do
