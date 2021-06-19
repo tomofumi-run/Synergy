@@ -45,6 +45,22 @@
 
 <br>
 
+##　 🔍機能一覧
+
+* ユーザー＆管理者認証（devise） 
+* 投稿機能
+   * 画像投稿(refile)
+   * リッチテキスト(summernote)
+* お気に入り機能(Ajax)
+* コメント機能(Ajax)
+* フォロー機能(Ajax)
+* DM機能
+* ページング機能(kaminari)
+* お問合せ機能
+* 会員と投稿の検索機能
+* 閲覧数表示機能(impressionist)
+* 画像スライド(skipper)
+
 ## 📕チャレンジ要素一覧
 
 https://docs.google.com/spreadsheets/d/12Q-OzbBB7sKLiqnmzHqpcgDZdR5KlurBs_gXRjrEx_0/edit#gid=0
