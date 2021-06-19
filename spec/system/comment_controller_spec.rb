@@ -1,3 +1,4 @@
+# 非同期テストx
 require 'rails_helper'
 
 RSpec.describe "Comments", type: :system do
@@ -21,6 +22,7 @@ RSpec.describe "Comments", type: :system do
         it '投稿に対して、コメントとコメント削除ができる', js: true do
           fill_in 'comment[comment]', with: comment.comment
           find('#comment_comment').click
+          wait_for_ajax
           expect(comment.comment.count).to eq(1)
           
           find('.btn-outline-danger').click
