@@ -1,21 +1,21 @@
 <% provide(:title, "ログイン")%>
-<h3 class="page-title text-center">ログイン</h3>
-  <div class="row">
-    <div class="col-6 offset-3">
-      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-      <%= render 'layouts/errors', obj: resource%>
-        <div class="field my-2">
-          <%= f.label :"メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true, placeholder:"例）kaeru@example.com", autocomplete: "email",class:"form-control" %>
-        </div>
-        <div class="field my-2">
-          <%= f.label :"パスワード" %><br />
-          <%= f.password_field :password, placeholder:"例）xxxxxx", autocomplete: "current-password",class:"form-control" %>
-        </div>
-        <div class="my-3 text-center">
-          <%= f.submit "ログイン",class: "btn btn-primary"%>
-        </div>
-      <% end %>
+  <h3 class="page-title text-center">ログイン</h3>
+    <div class="row">
+      <div class="col-6 offset-3">
+        <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+        <%= render 'layouts/errors', obj: resource%>
+          <div class="field my-2">
+            <%= f.label :"メールアドレス" %><br />
+            <%= f.email_field :email, autofocus: true, placeholder:"例）kaeru@example.com", autocomplete: "email",class:"form-control" %>
+          </div>
+          <div class="field my-2">
+            <%= f.label :"パスワード" %><br />
+            <%= f.password_field :password, placeholder:"例）xxxxxx", autocomplete: "current-password",class:"form-control" %>
+          </div>
+          <div class="my-3 text-center">
+            <%= f.submit "ログイン",class: "btn btn-primary"%>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
-<p class="text-center">会員登録がお済みでない⽅は<%= link_to "こちら", new_user_registration_path, class:"public_login"%>からログインしてください。</p>
+  <p class="text-center">会員登録がお済みでない⽅は<%= link_to "こちら", new_user_registration_path, class:"public_login"%>からログインしてください。</p>

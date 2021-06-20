@@ -1,11 +1,11 @@
 <% provide(:title, "フォロワー一覧")%>
-<div class="container">
- <h5><%= full_name(@user)%>さんのフォロワー</h5>
-  <div class="row">
+<h3 class="page-title"><%= full_name(@user)%>さんのフォロワー</h3>
     <% if @users.exists? %>
       <%= render 'public/users/index', users: @users %>
     <% else %>
-      <p>ユーザーはいません</p>
+      <div class="mx-auto text-center">
+        <p><i class="fas fa-users-slash fa-5x"></i></p>
+        <h2 class="page-title my-5">フォロワーはいません。</h2>
+      </div>
     <% end %>
   </div>
-</div>

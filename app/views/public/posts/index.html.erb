@@ -1,17 +1,15 @@
 <% provide(:title, "投稿一覧")%>
-<div class="container">
   <div class="row">
     <div class="col-md-2">
-      <%= link_to "投稿する", new_post_path, class:"btn btn-info btn-lg"%>
+      <%= link_to new_post_path, class:"btn btn-info btn-lg" do %>
+        <i class="fas fa-frog"><span class="mr-2"></span>投稿</i>
+      <% end %>
     </div>
     <div class="col-md-8 mt-2">
       <%= render "public/posts/post_search"%>
     </div>
   </div>
-  <div class="row mt-4">
-      <%= render "public/posts/index", posts: @posts%>
-  </div>
-  <div class="d-flex justify-content-center my-3">
+  <div class="row jscroll mt-4">
+    <%= render "public/posts/index", posts: @posts%>
     <%= paginate @posts %>
   </div>
-</div>

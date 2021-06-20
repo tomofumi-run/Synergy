@@ -2,7 +2,7 @@
   <div class="col-lg-4 offset-1 my-1">
     <%= form_with url: search_genre_posts_path, local: true, method: :get do |f| %>
     <div class="d-flex">
-      <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "ジャンル検索"}, {class: "form-control"}%>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: "ジャンル検索" }, { class: "form-control" } %>
       <%= f.button :type => "submit", class:"btn btn-outline-secondary" do%>
         <i class="fas fa-search"></i>
       <% end %>
