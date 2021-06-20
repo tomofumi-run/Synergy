@@ -66,6 +66,7 @@
 * 会員と投稿の検索機能
 * 閲覧数表示機能(impressionist)
 * 画像スライド(skipper)
+* 無限スクロール(jscroll)
 
 <br>
 
