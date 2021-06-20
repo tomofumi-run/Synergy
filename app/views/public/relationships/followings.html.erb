@@ -1,11 +1,12 @@
 <% provide(:title, "フォロー一覧")%>
-<div class="container">
- <h5><%= full_name(@user)%>さんのフォロー</h5>
+<h3 class="page-title"><%= full_name(@user)%>さんのフォロー</h3>
   <div class="row">
     <% if @users.exists? %>
       <%= render 'public/users/index', users: @users %>
     <% else %>
-      <p>ユーザーはいません</p>
+      <div class="mx-auto text-center">
+        <p><i class="fas fa-users-slash fa-5x"></i></p>
+        <h2 class="page-title my-5">フォローしている人はいません。</h2>
+      </div>
     <% end %>
   </div>
-</div>

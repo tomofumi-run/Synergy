@@ -38,7 +38,7 @@
       </div>
     </div>
   </div>
-    <!--右側-->
+  <% if @posts.present? %>
     <div class="row">
       <div class="col-md-12">
         <h2 class="page-title mt-5"><%= full_name(@user)%>さんの投稿</h2>
@@ -47,3 +47,5 @@
         </div>
       </div>
     </div>
+  <% else %>
+  <% end %>
