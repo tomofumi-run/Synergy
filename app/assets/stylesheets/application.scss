@@ -17,31 +17,31 @@
   @import 'font-awesome-sprockets';
   @import 'font-awesome';
   @import 'summernote-bs4';
-  
+
   $Greencolor: #E6FFE9;
-  
+
 // -- 全体の見栄え調整 -- //
   body,html{
     margin: 0;
     padding: 0;
     background: #EEEEEE;
   }
-  
+
   a{
     text-decoration: none;
     color: #000;
-    
+
     &:hover{
       text-decoration: none;
       }
   }
-  
+
   #wrapper{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
   }
-  
+
   header{
     background: $Greencolor;
     .nav-item{
@@ -52,7 +52,7 @@
     background: $Greencolor;
     color: black;
     margin-top: auto;
-    
+
     #copyright{
       font-size: 10px;
       color: #6c757d;
@@ -62,7 +62,7 @@
 .page-title{
   font-family: 'Kosugi Maru', sans-serif;
 }
-  
+
 // -- -- //
 
 // -- headerのボタン -- //
@@ -153,4 +153,14 @@
 .public_login{
   border-bottom: thick double #32a1ce;
   font-weight: bold;
+}
+
+
+.pagination {
+  display: none;
+}
+
+.jscroll-inner {
+  display: flex;
+  flex-wrap: wrap;
 }

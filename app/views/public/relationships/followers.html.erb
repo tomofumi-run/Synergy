@@ -1,6 +1,5 @@
 <% provide(:title, "フォロワー一覧")%>
 <h3 class="page-title"><%= full_name(@user)%>さんのフォロワー</h3>
-  <div class="row">
     <% if @users.exists? %>
       <%= render 'public/users/index', users: @users %>
     <% else %>
