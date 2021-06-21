@@ -1,8 +1,7 @@
 <% provide(:title, "新規投稿")%>
-<div class="container">
-  <div class="row">
+<div class="row">
     <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0 mx-auto">
-     <h2 class="text-center mb-2">新規投稿</h2>
+     <h2 class="page-title text-center mb-2">新規投稿</h2>
       <%= form_with model:@post, local:true do |f| %>
       <%= render 'layouts/errors', obj: @post%>
       <div class="form-group my-2 d-flex">
@@ -19,5 +18,4 @@
       
      <% end%>
     </div>
-  </div>
 </div>
