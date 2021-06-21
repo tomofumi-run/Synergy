@@ -81,8 +81,8 @@ Genre.create!(
 )
 
 Admin.create!(
-  email: ENV['ADMIN_MAIL'],
-  password: ENV['ADMIN_PASS']
+  email: "admin@admin.com",
+  password: 123456
 )
 3.times do |n|
   User.all.find_each do |user|
