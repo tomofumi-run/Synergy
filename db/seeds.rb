@@ -8,97 +8,65 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-20.times do |n|
+5.times do |n|
   User.create!(
     email: "test#{n + 1}@test.com",
-    first_name: "名前#{n + 1}",
-    last_name: "苗字#{n + 1}",
-    profile_image: File.open('./app/assets/images/test.jpg'),
+    first_name: "太郎#{n + 1}",
+    last_name: "田中#{n + 1}",
+    profile_image: File.open('./app/assets/images/test1.jpg'),
     password: '123456',
-    history_status: 2,
-    prefecture_code: 2
+    history_status: 10,
+    prefecture_code: 27
   )
 end
 
-User.create!(
-  email: 'kinpachi@test.com',
-  first_name: '金八',
-  last_name: '坂本',
-  profile_image: File.open('./app/assets/images/kinpachi.jpeg'),
-  password: '123456',
-  history_status: 20,
-  prefecture_code: 20
-)
+5.times do |n|
+  User.create!(
+    email: "test1#{n + 1}@test.com",
+    first_name: "花子#{n + 1}",
+    last_name: "山田#{n + 1}",
+    profile_image: File.open('./app/assets/images/test3.jpg'),
+    password: '123456',
+    history_status: 7,
+    prefecture_code: 23
+  )
+end
 
-User.create!(
-  email: 'suda@test.com',
-  first_name: '将暉',
-  last_name: '菅田',
-  profile_image: File.open('./app/assets/images/suda.jpg'),
-  password: '123456',
-  history_status: 5,
-  prefecture_code: 23
-)
+5.times do |n|
+  User.create!(
+    email: "test2#{n + 1}@test.com",
+    first_name: "守#{n + 1}",
+    last_name: "黒崎#{n + 1}",
+    profile_image: File.open('./app/assets/images/test2.jpg'),
+    password: '123456',
+    history_status: 25,
+    prefecture_code: 34
+  )
+end
 
-User.create!(
-  email: 'chiba@test.com',
-  first_name: '雄大',
-  last_name: '千葉',
-  profile_image: File.open('./app/assets/images/chiba.jpg'),
-  password: '123456',
-  history_status: 3,
-  prefecture_code: 2
-)
+5.times do |n|
+  User.create!(
+    email: "test3#{n + 1}@test.com",
+    first_name: "優子#{n + 1}",
+    last_name: "佐藤#{n + 1}",
+    profile_image: File.open('./app/assets/images/test4.jpg'),
+    password: '123456',
+    history_status: 2,
+    prefecture_code: 40
+  )
+end
 
-User.create!(
-  email: 'abe@test.com',
-  first_name: '寛',
-  last_name: '阿部',
-  profile_image: File.open('./app/assets/images/abe.jpg'),
-  password: '123456',
-  history_status: 15,
-  prefecture_code: 35
-)
-
-User.create!(
-  email: 'satou@test.com',
-  first_name: '隆太',
-  last_name: '佐藤',
-  profile_image: File.open('./app/assets/images/satou.jpg'),
-  password: '123456',
-  history_status: 13,
-  prefecture_code: 11
-)
-
-User.create!(
-  email: 'eikura@test.com',
-  first_name: '奈々',
-  last_name: '榮倉',
-  profile_image: File.open('./app/assets/images/eikura.jpg'),
-  password: '123456',
-  history_status: 2,
-  prefecture_code: 9
-)
-
-User.create!(
-  email: 'nakama@test.com',
-  first_name: '由紀恵',
-  last_name: '仲間',
-  profile_image: File.open('./app/assets/images/nakama.jpg'),
-  password: '123456',
-  history_status: 10,
-  prefecture_code: 2
-)
-
-User.create!(
-  email: 'amami@test.com',
-  first_name: '祐希',
-  last_name: '天海',
-  profile_image: File.open('./app/assets/images/amami.jpeg'),
-  password: '123456',
-  history_status: 14,
-  prefecture_code: 4
-)
+5.times do |n|
+  User.create!(
+    email: "test4#{n + 1}@test.com",
+    first_name: "恵#{n + 1}",
+    last_name: "原田#{n + 1}",
+    profile_image: File.open('./app/assets/images/test5.jpg'),
+    password: '123456',
+    history_status: 1,
+    prefecture_code: 1
+  )
+end
 
 Genre.create!(
   name: '書籍'
@@ -113,15 +81,39 @@ Genre.create!(
 )
 
 Admin.create!(
-  email: 'admin@admin.com',
-  password: '123456'
+  email: ENV['ADMIN_MAIL'],
+  password: ENV['ADMIN_PASS']
 )
-
-User.all.find_each do |user|
-  user.posts.create!(
-    genre_id: '1',
-    post_image: File.open('./app/assets/images/kaeru.png'),
-    title: 'タイトル',
-    content: 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト'
-  )
+3.times do |n|
+  User.all.find_each do |user|
+    user.posts.create!(
+      genre_id: '3',
+      post_image: File.open('./app/assets/images/kaeru.png'),
+      title: '初任の悩み',
+      content: '4月から小学校教員として働き始めました。業務終了後に教材研究をしておりますが、集中力も切れ始めている中だとうまくできません。皆さんはどのようにして教材研究を進めていますか？ご教授願います。'
+    )
+  end
 end
+
+3.times do |n|
+  User.all.find_each do |user|
+    user.posts.create!(
+      genre_id: '1',
+      post_image: File.open('./app/assets/images/post1.jpg'),
+      title: '知識の宝',
+      content: '教員として働く上での考え方や、子どもとの向き合い方を考えさせられる内容になっています。'
+    )
+  end
+end
+
+3.times do |n|
+  User.all.find_each do |user|
+    user.posts.create!(
+      genre_id: '2',
+      post_image: File.open('./app/assets/images/post2.jpg'),
+      title: 'GIGAスクール構想のニュース',
+      content: '子供たち一人ひとりに個別最適化され、創造性を育む教育ICT環境の実現に向けて、令和元年12月19日、文部科学大臣を本部長とする「GIGAスクール実現推進本部」を設置しました。'
+    )
+  end
+end
+
