@@ -1,6 +1,6 @@
 <% provide(:title, "ユーザー一覧")%>
 <%= render "public/users/user_search"%>
-<div class="row jscroll">
+<div class="row jscroll mt-4">
   <%= render "public/users/index", users: @users%>
   <%= paginate @users %>
 </div>
