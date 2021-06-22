@@ -164,3 +164,55 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+#page_top{
+  width: 70px;
+  height: 50px;
+  position: fixed;
+  right: 30px;
+  bottom: 50px;
+  opacity: 0.8;
+  border-radius: 15px;
+  background-color: #008000;
+  
+  &:hover{
+    opacity: 0.5;
+    animation: jump 0.9s linear 0s 5; // jumpアニメを0.9s一定に5回繰り返す
+  }
+}
+
+#page_top a{
+  position: relative;
+  display: block;
+  width: 70px;
+  height: 35px;
+  text-decoration: none;
+  text-align: center;
+  
+  &:before{
+    font-family: "Font Awesome 5 Free";
+    content: '\f52e';
+    font-weight: 900;
+    font-size: 25px;
+    color: #fff;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 10px;
+    bottom: 10px;
+    right: 0;
+    left: 0;
+    margin: auto;
+  }
+}
+
+@keyframes jump {
+  0%   { transform: scale(1.0, 1.0) translate(0%, 0%); }
+  10%  { transform: scale(1.1, 0.9) translate(0%, 5%); }
+  40%  { transform: scale(1.2, 0.8) translate(0%, 15%); }
+  50%  { transform: scale(1.0, 1.0) translate(0%, 0%); }
+  60%  { transform: scale(0.9, 1.2) translate(0%, -100%); }
+  75%  { transform: scale(0.9, 1.2) translate(0%, -20%); }
+  85%  { transform: scale(1.2, 0.8) translate(0%, 15%); }
+  100% { transform: scale(1.0, 1.0) translate(0%, 0%); }
+}

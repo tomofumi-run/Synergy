@@ -52,3 +52,22 @@ $(document).on('turbolinks:load', function() {
     contentSelector: '.jscroll',
   });
 });
+
+
+document.addEventListener("turbolinks:load",function(){
+  var pagetop = $('#page_top');
+  // ボタン非表示
+  pagetop.hide();
+  // 100px スクロールしたらボタン表示
+  $(window).scroll(function () {
+     if ($(this).scrollTop() > 1000) {
+          pagetop.fadeIn();
+     } else {
+          pagetop.fadeOut();
+     }
+  });
+  pagetop.click(function () {
+     $('body, html').animate({ scrollTop: 0 }, 1000);
+     return false;
+  });
+});
