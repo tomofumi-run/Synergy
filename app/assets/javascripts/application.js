@@ -73,5 +73,5 @@ document.addEventListener("turbolinks:load",function(){
 });
 
 $(function(){
-  $(".alert-success").fadeOut(3000);
+  $(".alert-success").fadeOut(5000);
 });
