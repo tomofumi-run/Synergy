@@ -14,7 +14,7 @@
       <% @room_lists.each do |room|%>
       <tbody>
           <tr>
-          <th><%= attachment_image_tag(room.user, :profile_image,size:"50x50",class:"rounded-circle")%></th>
+          <th><%= attachment_image_tag(room.user, :profile_image,size:"50x50",fallback: "no_image.png",class:"rounded-circle")%></th>
               <th>
                 <%= link_to user_path(room.user) do%>
                   <%= full_name(room.user)%>
