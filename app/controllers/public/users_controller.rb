@@ -4,6 +4,7 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: %i(edit update likes quit out)
   before_action :out_user, only: [:show]
+  before_action :ensure_normal_user, only:  %i(edit update destroy quit out)
 
   def index
     @users = User.page(params[:page]).per(12).reverse_order

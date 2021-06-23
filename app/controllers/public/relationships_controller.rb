@@ -3,6 +3,7 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: %i(create destroy followings followers)
+  # before_action :ensure_normal_user, only:  %i(create)
 
   def create
     current_user.follow(params[:user_id])

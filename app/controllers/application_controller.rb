@@ -24,4 +24,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: %i(email last_name first_name history_status prefecture_code))
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
   end
+  
+  def ensure_normal_user
+    if current_user.email == 'aaa@aaa.com'
+      redirect_to users_path, alert: 'ゲストユーザーに権限はありません。'
+    end
+  end  
 end

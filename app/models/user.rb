@@ -86,4 +86,18 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+  
+  def self.guest
+    find_or_create_by!(email: 'aaa@aaa.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      user.last_name = 'ゲスト'
+      user.first_name = 'ユーザー'
+      user.history_status = 1
+      user.prefecture_code =  1
+      user.work = '無所属（ゲストユーザーです。）'
+      user.introduction = '「SYNERGY」へようこそ。ゲストユーザーでは、ユーザーの編集機能と退会機能、お問合せ機能のご利用を制限させて頂いております。'
+      user.profile_image = 'images/guest.png'
+    end  
+  end
 end
