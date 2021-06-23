@@ -35,8 +35,9 @@
       <% end %>
     </table>
     <% else %>
-    <div class="coll mx-auto">
-      <p>まだチャットをした相手がいません。</p>
+    <div class="page-title mx-auto">
+      <p class="text-center"><i class="fas fa-comment-slash fa-5x"></i></p>
+      <p class="mt-5">まだチャットをした相手がいません。</p>
       <p><%= link_to "会員一覧をチェックしてみましょう", users_path, class:"btn btn-primary"%></p>
     </div>
   <% end %>

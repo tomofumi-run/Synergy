@@ -2,8 +2,9 @@
 <h3 class="page-title text-center"><%= full_name(current_user)%>さんのお気に入り一覧</h3>
 <div class="row">
   <% if @likes_list.blank? %>
-  <div class="col mx-auto">
-    <h5>まだお気に入りをした投稿がありません。</h5>
+  <div class="mx-auto page-title">
+    <p class="text-center"><i class="far fa-thumbs-up fa-5x"></i></p>
+    <h5 class="mt-5">まだお気に入りをした投稿がありません。</h5>
     <h5><%= link_to "気になる投稿", posts_path, class:"btn btn-primary" %>を探しに行きましょう。</h5>
   </div>
   <% else %>

@@ -1,7 +1,7 @@
 <% post.comments.each do |comment| %>
     <div class="border mb-3">
       <div class="mt-1">
-      <%= attachment_image_tag(comment.user, :profile_image,:fill,60,60)%>
+      <%= attachment_image_tag(comment.user, :profile_image,:fill,60,60, size:"60x60", fallback: "no_image.png")%>
        <%=link_to full_name(comment.user), user_path(comment.user),class:"text-dark" %>
       </div>
        
