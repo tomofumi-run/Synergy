@@ -1,41 +1,36 @@
 <% provide(:title, "会員詳細")%>
-  <div class="row">
-      <div class="mx-auto">
-        <h2 class="page-title"><%= full_name(@user)%>さんの会員情報</h2>
-          <table class="table row">
-            <tr>
-              <th class="col-3">学校所在地</th>
-              <td class="col-7"><%= @user.prefecture_name%></td>
-            </tr>
-            <tr>
-              <th class="col-3">所属先</th>
-              <td class="col-7"><%= @user.work%></td>
-            </tr>
-            <tr>
-              <th class="col-3">教員歴</th>
-              <td class="col-7"><%= @user.history_status%></td>
-            </tr>
-            <tr>
-              <th class="col-3">自己紹介</th>
-              <td class="col-7"><%= @user.introduction%></td>
-            </tr>
-            <tr>
-              <th class="col-3">メールアドレス</th>
-              <td class="col-7"><%= @user.email%></td>
-            </tr>
-            <tr>
-              <th class="col-3">会員ステータス</th>
-              <% if @user.is_deleted == true%>
-               <td class="text-secondary">退会済み</td>
-              <% else %>
-               <td class="text-success">有効</td>
-              <% end %>
-            </tr>            
-          </table>      
-          <div class="d-flex justify-content-around">
-            <p><%= link_to "編集する",edit_admin_user_path, class:"btn btn-success"%></p>
-            <p><%= link_to "完全削除する",admin_user_path,method: :delete,data: { confirm: '完全に削除しますか？' }, class:"btn btn-danger"%></p>
-          </div>
-      </div>
-  </div>
-</div>
+<h2 class="page-title text-center"><%= full_name(@user)%>さんの会員情報</h2>
+  <table class="table col-8 offset-2">
+    <tr>
+      <th class="col-3">学校所在地</th>
+      <td class="col-5"><%= @user.prefecture_name%></td>
+    </tr>
+    <tr>
+      <th class="col-3">所属先</th>
+      <td class="col-5"><%= @user.work%></td>
+    </tr>
+    <tr>
+      <th class="col-3">教員歴</th>
+      <td class="col-5"><%= @user.history_status%></td>
+    </tr>
+    <tr>
+      <th class="col-3">自己紹介</th>
+      <td class="col-5"><%= @user.introduction%></td>
+    </tr>
+    <tr>
+      <th class="col-3">メールアドレス</th>
+      <td class="col-5"><%= @user.email%></td>
+    </tr>
+    <tr>
+      <th class="col-3">会員ステータス</th>
+        <% if @user.is_deleted == true%>
+          <td class="text-secondary col-5">退会済み</td>
+        <% else %>
+          <td class="text-success col-5">有効</td>
+        <% end %>
+    </tr>
+    <tr>
+      <th class="col-3"><%= link_to "編集する",edit_admin_user_path, class:"btn btn-success"%></th>
+      <td class="col-5"><%= link_to "完全削除する",admin_user_path,method: :delete,data: { confirm: '完全に削除しますか？' }, class:"btn btn-danger"%></td>
+    </tr>
+  </table>

@@ -1,5 +1,7 @@
 class Public::ContactsController < ApplicationController
   before_action :authenticate_user!  
+  before_action :ensure_normal_user, only:  %i(new create)
+  
   def new
     @contact = Contact.new
   end

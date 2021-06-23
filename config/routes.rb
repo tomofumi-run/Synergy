@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     registrations: 'public/registrations',
     passwords: 'public/passwords',
   }
+  
+  devise_scope :user do
+    post 'guest/sign_in', to: 'guests/sessions#new_guest'
+  end
 
   get 'about' => 'public/homes#about'
   root 'public/homes#top'
