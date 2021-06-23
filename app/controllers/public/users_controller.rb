@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.includes([:genre])
+    @posts = @user.posts.includes([:genre]).reverse_order
   end
 
   def edit; end
@@ -35,7 +35,7 @@ class Public::UsersController < ApplicationController
   end
 
   def likes
-    @likes_list = Post.like_posts(current_user.id)
+    @likes_list = Post.like_posts(current_user.id).reverse
   end
 
   def search

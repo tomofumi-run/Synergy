@@ -1,6 +1,6 @@
 <% provide(:title, "投稿ジャンル検索")%>
 <%= render "public/posts/post_search"%>
-<h5 class="page-title">検索ジャンル　"<%= @content.name %>"で検索した結果、該当する投稿が<%= @records.count%>件</h5>
+<h5 class="page-title">検索ジャンル　"<%= @content.name %>"で検索した結果、該当する投稿が<%= @contents.count%>件</h5>
 <div class="row">
   <% if @records.first.nil?%>
     <div class="page-title mx-auto text-center">
@@ -8,5 +8,8 @@
       <h2 class="my-5">該当する投稿がありません。</h2>
     </div>
   <% else %>
+  <div class="row jscroll mt-4">
     <%= render "public/posts/index", posts: @records%>
+    <%= paginate @records %>
+  </div>
   <% end %>

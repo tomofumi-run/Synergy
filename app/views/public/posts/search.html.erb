@@ -1,6 +1,6 @@
 <% provide(:title, "投稿ワード検索")%>
 <%= render "public/posts/post_search"%>
-<h5 class="page-title">検索ワード　"<%= @content %>"で検索した結果、該当する投稿が<%= @records.count%>件ありました。</h5>
+<h5 class="page-title">検索ワード　"<%= @content %>"で検索した結果、該当する投稿が<%= @contents.count%>件ありました。</h5>
 <div class="row">
   <% if @records.first.nil?%>
     <div class="page-title mx-auto text-center">
@@ -9,6 +9,9 @@
       <p>気になる本やニュース、質問などのタイトルで検索してみてください。</p>
     </div>
   <% else %>
+  <div class="row jscroll mt-4">
     <%= render "public/posts/index", posts: @records%>
+    <%= paginate @records %>
+  </div>
   <% end %>
 </div>
