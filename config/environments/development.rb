@@ -81,4 +81,5 @@ Rails.application.configure do
   }
   
   config.web_console.whitelisted_ips = '122.130.201.144'
+  # 携帯での新規登録エラー解消に必要？
 end
