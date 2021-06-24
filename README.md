@@ -81,17 +81,18 @@
 
 ## 📕チャレンジ要素一覧
 
-https://docs.google.com/spreadsheets/d/12Q-OzbBB7sKLiqnmzHqpcgDZdR5KlurBs_gXRjrEx_0/edit#gid=0
+[チャレンジ要素一覧はこちら](https://docs.google.com/spreadsheets/d/12Q-OzbBB7sKLiqnmzHqpcgDZdR5KlurBs_gXRjrEx_0/edit#gid=0)
 
 <br>
 
 ##  🛠設計書一覧
 
-テーブル定義書<br>
-https://docs.google.com/spreadsheets/d/1LRihiyE3TrEAaQbRJtgtWZSZVUAr2wfA/edit?rtpof=true#gid=1084071982
+[テーブル定義書はこちら](https://docs.google.com/spreadsheets/d/1LRihiyE3TrEAaQbRJtgtWZSZVUAr2wfA/edit?rtpof=true#gid=10840719820)
 
-アプリケーション詳細設計<br>
-https://docs.google.com/spreadsheets/d/100K-Qk3GvVyEdK8h1Mno07XNBqIDqmFL/edit?rtpof=true#gid=97260084
+
+[アプリケーション設計はこちら](https://docs.google.com/spreadsheets/d/100K-Qk3GvVyEdK8h1Mno07XNBqIDqmFL/edit?rtpof=true#gid=97260084)
+
+[ER図はこちら](https://app.diagrams.net/#G1Ecg0Dy4tNYlIXQp6YZ2DEVguaTPiSZiS)
 
 <br>
 
@@ -106,8 +107,6 @@ https://docs.google.com/spreadsheets/d/100K-Qk3GvVyEdK8h1Mno07XNBqIDqmFL/edit?rt
 
 ## 🎁使用素材
 
-Photo AC　さん
-https://www.photo-ac.com/main/search?q=%E6%9C%AC&srt=dlrank&qt=&pp=70&p=1&pt=C
+[Photo AC　さん](https://www.photo-ac.com/main/search?q=%E6%9C%AC&srt=dlrank&qt=&pp=70&p=1&pt=C)
 
-DesignEvo さん
-https://www.designevo.com/jp/
+[DesignEvo さん](https://www.designevo.com/jp/)
