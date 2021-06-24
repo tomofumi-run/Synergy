@@ -3,8 +3,8 @@ require 'capybara/rspec'
 
 Capybara.configure do |config|
 
-  config.default_driver = :chrome
-  config.javascript_driver = :chrome
+  Capybara.default_driver = :rack_test
+  Capybara.javascript_driver = :selenium_chrome_headless
   config.run_server = true
   config.default_selector = :css 
   config.default_max_wait_time = 5  

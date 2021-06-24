@@ -38,7 +38,7 @@ describe '投稿一覧画面のテスト' do
       before do
         visit new_post_path
         find('#post_genre_id').find("option[value='1']").select_option
-        attach_file 'post[post_image]', 'app/assets/images/abe.jpg' # 画像はattach
+        attach_file 'post[post_image]', 'app/assets/images/follow.jpg' # 画像はattach
         fill_in 'post[title]', with: Faker::Lorem.characters(number: 10)
         fill_in 'post[content]', with: Faker::Lorem.characters(number: 30)
       end
@@ -90,7 +90,7 @@ describe '投稿一覧画面のテスト' do
         @post_old_content = post.content
         # select '書籍', from: 'post[genre_id]'
         find('#post_genre_id').find("option[value='2']").select_option
-        attach_file 'post[post_image]', 'app/assets/images/abe.jpg'
+        attach_file 'post[post_image]', 'app/assets/images/follow.jpg'
         fill_in 'post[title]', with: Faker::Lorem.characters(number: 8)
         fill_in 'post[content]', with: Faker::Lorem.characters(number: 40)
         click_button '更新する'

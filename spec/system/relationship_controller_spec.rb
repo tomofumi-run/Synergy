@@ -22,11 +22,4 @@ before do
       expect(@user2.followers.count).to eq(1)      
     end
   end
-  
-  # describe 'フォロー一覧の表示' do
-  #   it '自分自身のフォロー一覧を表示できる' do
-  #     click_link '/users/' + @user2.id.to_s + '/followings'
-  #     expect(current_path).to have_content('フォロー一覧')
-  #   end
-  # end
 end

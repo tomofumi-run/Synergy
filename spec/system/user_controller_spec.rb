@@ -102,7 +102,7 @@ describe 'Users', type: :system do
         @user_old_history = user.history_status
         fill_in 'user[last_name]', with: Faker::Lorem.characters(number: 5)
         fill_in 'user[first_name]', with: Faker::Lorem.characters(number: 5)
-        attach_file 'user[profile_image]', 'app/assets/images/abe.jpg'
+        attach_file 'user[profile_image]', 'app/assets/images/follow.jpg'
         select '青森', from: 'user[prefecture_code]' # select
         select '4年目', from: 'user[history_status]'
         fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 30)
