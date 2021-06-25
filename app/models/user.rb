@@ -72,7 +72,7 @@ class User < ApplicationRecord
     l_name = User.where('last_name LIKE ?', '%' + content + '%')
 
     user = f_name + l_name
-    
+
   end
 
   def create_notificagtion_follow!(current_user)
@@ -86,7 +86,7 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
   def self.guest
     find_or_create_by!(email: 'aaa@aaa.com') do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -98,6 +98,6 @@ class User < ApplicationRecord
       user.work = '無所属（ゲストユーザーです。）'
       user.introduction = '「SYNERGY」へようこそ。ゲストユーザーでは、ユーザーの編集機能と退会機能、お問合せ機能のご利用を制限させて頂いております。'
       user.profile_image = 'images/guest.png'
-    end  
+    end
   end
 end

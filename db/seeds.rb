@@ -16,57 +16,119 @@
     profile_image: File.open('./app/assets/images/test1.jpg'),
     password: '123456',
     history_status: 10,
-    prefecture_code: 27
+    prefecture_code: 27,
+    introduction: "こんにちは。教員をしています。多くのことを皆さんと学びたいと考えて登録しております。どうぞよろしくお願いいたします。"
   )
 end
 
-5.times do |n|
   User.create!(
-    email: "test1#{n + 1}@test.com",
-    first_name: "花子#{n + 1}",
-    last_name: "山田#{n + 1}",
+    email: "itou@test.com",
+    first_name: "博文",
+    last_name: "伊藤",
+    profile_image: File.open('./app/assets/images/test1.jpg'),
+    password: '123456',
+    history_status: 20,
+    prefecture_code: 27,
+    introduction: "明治時代に4度にわたって内閣制度発足以降の内閣総理大臣を務めていました。皆さんと学びを共有出来れば良いなと考えています。"
+  )
+
+  User.create!(
+    email: "ookuma@test.com",
+    first_name: "重信",
+    last_name: "大隈",
     profile_image: File.open('./app/assets/images/test3.jpg'),
     password: '123456',
-    history_status: 7,
-    prefecture_code: 23
+    history_status: 15,
+    prefecture_code: 23,
+    introduction: "武士から色々あって総理大臣になった経験があります。早稲田大学という学校も創りました。学校教育に関心があるので、気になる方を見つけたらフォローさせて頂きます。"
   )
-end
 
-5.times do |n|
   User.create!(
-    email: "test2#{n + 1}@test.com",
-    first_name: "守#{n + 1}",
-    last_name: "黒崎#{n + 1}",
+    email: "tuda@test.com",
+    first_name: "梅子",
+    last_name: "津田",
     profile_image: File.open('./app/assets/images/test2.jpg'),
     password: '123456',
-    history_status: 25,
-    prefecture_code: 34
+    history_status: 2,
+    prefecture_code: 34,
+    introduction: "岩倉使節団に随行して6歳で渡米したことがあります。女性教育に関心があり、現在の津田塾大学を創りました。女性にも学びの機会を保障していくためにこれからも行動していきます。"
   )
-end
 
-5.times do |n|
   User.create!(
-    email: "test3#{n + 1}@test.com",
-    first_name: "優子#{n + 1}",
-    last_name: "佐藤#{n + 1}",
+    email: "kanou@test.com",
+    first_name: "治五郎",
+    last_name: "嘉納",
     profile_image: File.open('./app/assets/images/test4.jpg'),
     password: '123456',
-    history_status: 2,
-    prefecture_code: 40
+    history_status: 25,
+    prefecture_code: 40,
+    introduction: "東洋初のIOC委員に選ばれました。柔道・スポーツ・教育分野の発展や日本のオリンピック初参加に尽力した経験を生かして子どもたちの心の教育にも力を入れていくことが大切だと考えています。"
   )
-end
 
-5.times do |n|
   User.create!(
-    email: "test4#{n + 1}@test.com",
-    first_name: "恵#{n + 1}",
-    last_name: "原田#{n + 1}",
+    email: "nitobe@test.com",
+    first_name: "稲造",
+    last_name: "新戸部",
+    profile_image: File.open('./app/assets/images/test5.jpg'),
+    password: '123456',
+    history_status: 5,
+    prefecture_code: 1,
+    introduction: "私の著書[武士道]に全てが書いてあります。「武士道は知識を重んじるものではない。重んずるものは行動である。」若輩者ですが、どうぞよろしくお願いいたします。"
+  )
+  
+  User.create!(
+    email: "fukuzawa@test.com",
+    first_name: "諭吉",
+    last_name: "福沢",
+    profile_image: File.open('./app/assets/images/test5.jpg'),
+    password: '123456',
+    history_status: 23,
+    prefecture_code: 9,
+    introduction: "武士、蘭学者、著述家、啓蒙思想家、教育者とか色々やってきました。慶應義塾大学という学校も創りました。これからの時代に合った学校を新たに創りたいと考えているところです。"
+  )
+  User.create!(
+    email: "mori@test.com",
+    first_name: "有礼",
+    last_name: "森",
     profile_image: File.open('./app/assets/images/test5.jpg'),
     password: '123456',
     history_status: 1,
-    prefecture_code: 1
+    prefecture_code: 9,
+    introduction: "明治六大教育家の一人です。アメリカの有識者に日本の教育について意見を求めたりしてきた経験もあり、日本と海外教育の良い部分を取り入れていく教育を目指しています。"
   )
-end
+
+  User.create!(
+    email: "simoda@test.com",
+    first_name: "歌子",
+    last_name: "下田",
+    profile_image: File.open('./app/assets/images/test5.jpg'),
+    password: '123456',
+    history_status: 23,
+    prefecture_code: 32,
+    introduction: "オックスフォード大卒。歌人でもあり、教育者です。女子教育の先駆者として現在も活動中。"
+  )
+
+  User.create!(
+    email: "ishii@test.com",
+    first_name: "筆子",
+    last_name: "石井",
+    profile_image: File.open('./app/assets/images/test5.jpg'),
+    password: '123456',
+    history_status: 7,
+    prefecture_code: 17,
+    introduction: "こんにちは。日本初の知的障害者福祉の創始者の一人である石井筆子です。学園長経験もあります。"
+  )  
+
+  User.create!(
+    email: "noguchi@test.com",
+    first_name: "英世",
+    last_name: "野口",
+    profile_image: File.open('./app/assets/images/test5.jpg'),
+    password: '123456',
+    history_status: 3,
+    prefecture_code: 29,
+    introduction: "主に細菌学の研究に従事しております。科学はとても楽しい科目です。"
+  )
 
 Genre.create!(
   name: '書籍'
@@ -84,6 +146,7 @@ Admin.create!(
   email: "admin@admin.com",
   password: 123456
 )
+
 3.times do |n|
   User.all.find_each do |user|
     user.posts.create!(
