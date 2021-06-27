@@ -20,10 +20,15 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require_tree
 
-document.addEventListener("turbolinks:load",function () {
+// 無限スクロール
+$(document).ready(function() {
+  $('.jscroll').jscroll({
+    nextSelector: 'a[rel=next].page-link',
+    contentSelector: '.jscroll',
+  });
   $(".theTarget").skippr({
     transition : 'slide',
     speed : 2000,
@@ -38,27 +43,17 @@ document.addEventListener("turbolinks:load",function () {
   });
 });
 
-//logoの表示
-$(window).on('turbolinks:load',function(){
+//ロゴ表示
+$(window).ready(function(){
   $("#splash").delay(1500).fadeOut('slow');
   $("#splash_logo").delay(1000).fadeOut('slow');
 });
 
 
-
-$(document).on('turbolinks:load', function() {
-  $('.jscroll').jscroll({
-    nextSelector: 'a[rel=next].page-link',
-    contentSelector: '.jscroll',
-  });
-});
-
-
-document.addEventListener("turbolinks:load",function(){
+// ページトップへの遷移
+$(document).ready(function(){
   var pagetop = $('#page_top');
-  // ボタン非表示
   pagetop.hide();
-  // 100px スクロールしたらボタン表示
   $(window).scroll(function () {
      if ($(this).scrollTop() > 1000) {
           pagetop.fadeIn();
@@ -72,6 +67,7 @@ document.addEventListener("turbolinks:load",function(){
   });
 });
 
+// サクセスアラートのフェードアウト
 $(function(){
   $(".alert-success").fadeOut(5000);
 });
