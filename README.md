@@ -4,6 +4,7 @@
   <img width="1668" alt="スクリーンショット 2021-06-19 21 00 25" src="https://user-images.githubusercontent.com/80461169/122641672-c13cd180-d141-11eb-8ea1-59b533607e56.png">
 </p>
 
+**「SYNERGY」紹介動画はこちら👉** https://www.youtube.com/watch?v=sq7sqadrkUQ
 
 ### 👨‍🏫サイト概要
 **Synergy**は、学校現場で働く先生方の学びを支えるサービスです。
@@ -49,6 +50,8 @@
 
 ## 🔍機能一覧
 
+**「SYNERGY」のサイト👉** https://synergy2021.xyz/
+
 * ユーザー＆管理者認証（devise） 
    * 日本語化
    * ゲストログイン
@@ -75,7 +78,7 @@
 
 * RSpec
   * 単体テスト（Model）
-  * 統合テスト（Controller）
+  * ログイン系統,User,Post,統合テスト（Controller）
 
 <br>
 
