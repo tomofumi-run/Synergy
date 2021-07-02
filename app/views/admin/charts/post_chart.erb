@@ -2,16 +2,14 @@
 
 <script>
   $(document).ready(function(){
-    var ctx = document.getElementById("myLineChart");
-    var myLineChart = new Chart(ctx, {
+    let ctx = document.getElementById("myLineChart");
+    let myLineChart = new Chart(ctx, {
       type: 'line',
       data: {
-       //データ項目のラベル
         labels: ['7日前','6日前', '5日前', '4日前', '3日前', '2日前', '前日', '今日'],
         datasets: [
           {
-           //凡例のラベル
-            label: '投稿された本の数',
+            label: '投稿された数',
             data: [
               <%= @one_week_ago_post %>,
               <%= @six_days_ago_post %>,
@@ -21,8 +19,8 @@
               <%= @two_days_ago_post %>,
               <%= @yesterday_post %>,
               <%= @today_post %>
-              ], //グラフのデータ
-            borderColor: "rgba(200,112,126,1)",
+              ],
+            borderColor: "rgba(0, 0, 255, 1)",
             backgroundColor: "rgba(0,0,0,0)"
           }
         ],
@@ -30,7 +28,6 @@
       options: {
         title: {
           display: true,
-          //グラフタイトル
           text: '7日間の投稿数の比較'
         },
         scales: {

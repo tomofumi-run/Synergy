@@ -1,6 +1,6 @@
 <% provide(:title, "投稿一覧")%>
 <%= render "admin/posts/post_search"%>
-<%= link_to 'ちゃーと', admin_post_chart_path %>
+<%= link_to '1週間の投稿データ', admin_chart_path, class:"btn btn-primary mt-3" %>
 <div class="row jscroll mt-4">
   <%= render "admin/posts/index", posts: @posts%>
   <%= paginate @posts %>
