@@ -1,2 +1,48 @@
-post_chart
-<%= @two_days_ago_book %>
+<canvas id="myLineChart"></canvas>
+
+<script>
+  $(document).ready(function(){
+    var ctx = document.getElementById("myLineChart");
+    var myLineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+       //データ項目のラベル
+        labels: ['7日前','6日前', '5日前', '4日前', '3日前', '2日前', '前日', '今日'],
+        datasets: [
+          {
+           //凡例のラベル
+            label: '投稿された本の数',
+            data: [
+              <%= @one_week_ago_post %>,
+              <%= @six_days_ago_post %>,
+              <%= @five_days_ago_post %>,
+              <%= @four_days_ago_post %>,
+              <%= @three_days_ago_post %>,
+              <%= @two_days_ago_post %>,
+              <%= @yesterday_post %>,
+              <%= @today_post %>
+              ], //グラフのデータ
+            borderColor: "rgba(200,112,126,1)",
+            backgroundColor: "rgba(0,0,0,0)"
+          }
+        ],
+      },
+      options: {
+        title: {
+          display: true,
+          //グラフタイトル
+          text: '7日間の投稿数の比較'
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              suggestedMax: 10,  //最大値
+              suggestedMin: 0,  //最小値
+              stepSize: 1, //縦ラベルの数値単位
+            }
+          }]
+        },
+      }
+    });
+  });
+</script>

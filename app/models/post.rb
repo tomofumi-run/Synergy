@@ -80,4 +80,8 @@ class Post < ApplicationRecord
 
     notification.save if notification.valid?
   end
+  
+  def self.chart_data(n)
+    where(created_at: n.days.ago.all_day).count
+  end
 end
