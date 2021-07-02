@@ -1,0 +1,45 @@
+<canvas id="myLineChart"></canvas>
+
+<script>
+  $(document).ready(function(){
+    let ctx = document.getElementById("myLineChart");
+    let myLineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['7日前','6日前', '5日前', '4日前', '3日前', '2日前', '前日', '今日'],
+        datasets: [
+          {
+            label: '投稿された数',
+            data: [
+              <%= @one_week_ago_post %>,
+              <%= @six_days_ago_post %>,
+              <%= @five_days_ago_post %>,
+              <%= @four_days_ago_post %>,
+              <%= @three_days_ago_post %>,
+              <%= @two_days_ago_post %>,
+              <%= @yesterday_post %>,
+              <%= @today_post %>
+              ],
+            borderColor: "rgba(0, 0, 255, 1)",
+            backgroundColor: "rgba(0,0,0,0)"
+          }
+        ],
+      },
+      options: {
+        title: {
+          display: true,
+          text: '7日間の投稿数の比較'
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              suggestedMax: 10,  //最大値
+              suggestedMin: 0,  //最小値
+              stepSize: 1, //縦ラベルの数値単位
+            }
+          }]
+        },
+      }
+    });
+  });
+</script>

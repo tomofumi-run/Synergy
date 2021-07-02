@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       end
     end
     resources :genres, only: %i(index create edit update destroy)
+    get 'chart' => 'charts#post_chart'
   end
 
   devise_for :users, controllers: {

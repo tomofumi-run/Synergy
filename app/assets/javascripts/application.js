@@ -52,7 +52,7 @@ $(window).ready(function(){
 
 // ページトップへの遷移
 $(document).ready(function(){
-  var pagetop = $('#page_top');
+  let pagetop = $('#page_top');
   pagetop.hide();
   $(window).scroll(function () {
      if ($(this).scrollTop() > 1000) {
