@@ -4,7 +4,8 @@
   <img width="1668" alt="スクリーンショット 2021-06-19 21 00 25" src="https://user-images.githubusercontent.com/80461169/122641672-c13cd180-d141-11eb-8ea1-59b533607e56.png">
 </p>
 
-**「SYNERGY」紹介動画はこちら👉** https://www.youtube.com/watch?v=sq7sqadrkUQ
+[**「SYNERGY」紹介スライドはこちら👉**](https://docs.google.com/presentation/d/1R9stSeW_iYiBjahnfWZc18X3EdQLG_InS_WIHszeQno/edit#slide=id.p)<br>
+[**「SYNERGY」紹介動画はこちら👉**](https://www.youtube.com/watch?v=sq7sqadrkUQ)
 
 ### 👨‍🏫サイト概要
 **Synergy**は、学校現場で働く先生方の学びを支えるサービスです。
@@ -50,7 +51,7 @@
 
 ## 🔍機能一覧
 
-**「SYNERGY」のサイト👉** https://synergy2021.xyz/
+[**「SYNERGY」のサイト👉**](https://synergy2021.xyz/)
 
 * ユーザー＆管理者認証（devise） 
    * 日本語化
