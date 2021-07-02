@@ -3,8 +3,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :ensure_correct_user, only: %i(edit update destroy)
-  # before_action :ensure_normal_user, only:  %i(create)
-
   impressionist actions: [:show] # PV数を計測
 
   def index

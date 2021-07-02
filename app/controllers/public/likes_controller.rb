@@ -2,7 +2,6 @@
 
 class Public::LikesController < ApplicationController
   before_action :authenticate_user!
-  # before_action :ensure_normal_user, only:  %i(create)
 
   def create
     @post = Post.find(params[:post_id])

@@ -1,6 +1,5 @@
 class Public::ChatsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :ensure_normal_user, only:  %i(create show)
 
   def index
     rooms = current_user.user_rooms.pluck(:room_id) # ユーザーに関連するroom_idを配列取得
