@@ -72,6 +72,7 @@
 * 閲覧数表示機能(impressionist)
 * 画像スライド(skipper)
 * 無限スクロール(jscroll)
+* 管理者側に1週間の投稿数のグラフ表示（chart.js）
 
 <br>
 
