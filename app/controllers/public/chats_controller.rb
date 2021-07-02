@@ -2,13 +2,13 @@ class Public::ChatsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    rooms = current_user.user_rooms.pluck(:room_id) # ユーザーに関連するroom_idを配列取得
+    rooms = current_user.user_rooms.pluck(:room_id)
     @room_lists = UserRoom.current_rooms(rooms, current_user)
   end
 
   def show
     @user = User.find(params[:user_id])
-    rooms = current_user.user_rooms.pluck(:room_id) # pluck=特定のカラムの値だけ
+    rooms = current_user.user_rooms.pluck(:room_id)
     user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
 
     if user_rooms.nil?
