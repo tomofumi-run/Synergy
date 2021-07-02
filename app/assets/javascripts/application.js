@@ -23,7 +23,6 @@
 // require turbolinks
 //= require_tree
 
-// 無限スクロール
 $(document).ready(function() {
   $('.jscroll').jscroll({
     nextSelector: 'a[rel=next].page-link',
@@ -43,16 +42,14 @@ $(document).ready(function() {
   });
 });
 
-//ロゴ表示
 $(window).ready(function(){
   $("#splash").delay(1500).fadeOut('slow');
   $("#splash_logo").delay(1000).fadeOut('slow');
 });
 
 
-// ページトップへの遷移
 $(document).ready(function(){
-  let pagetop = $('#page_top');
+  var pagetop = $('#page_top');
   pagetop.hide();
   $(window).scroll(function () {
      if ($(this).scrollTop() > 1000) {
@@ -67,7 +64,6 @@ $(document).ready(function(){
   });
 });
 
-// サクセスアラートのフェードアウト
 $(function(){
   $(".alert-success").fadeOut(5000);
 });
