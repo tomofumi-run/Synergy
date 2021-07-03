@@ -6,7 +6,7 @@
     let myLineChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['7日前','6日前', '5日前', '4日前', '3日前', '2日前', '前日', '今日'],
+        labels: ['7日前','6日前', '5日前', '4日前', '3日前', '2日前', '前日'],
         datasets: [
           {
             label: '投稿された数',
@@ -18,7 +18,6 @@
               <%= @three_days_ago_post %>,
               <%= @two_days_ago_post %>,
               <%= @yesterday_post %>,
-              <%= @today_post %>
               ],
             borderColor: "rgba(0, 0, 255, 1)",
             backgroundColor: "rgba(0,0,0,0)"
