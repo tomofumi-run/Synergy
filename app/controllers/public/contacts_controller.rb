@@ -9,6 +9,7 @@ class Public::ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
+      # deliverでcontact_mailを送信する
       ContactMailer.contact_mail(@contact).deliver
       redirect_to thanx_contacts_path, notice: 'お問合せありがとうございました。'
     else

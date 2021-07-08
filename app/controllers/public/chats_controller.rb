@@ -8,7 +8,9 @@ class Public::ChatsController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    rooms = current_user.user_rooms.pluck(:room_id) 
+    # current_userのroomを配列として取得
+    rooms = current_user.user_rooms.pluck(:room_id)
+    # 相手とのroom_idの検索する
     user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
 
     if user_rooms.nil?
@@ -28,6 +30,7 @@ class Public::ChatsController < ApplicationController
 
     if @chat.save
       room = @chat.room
+      # 自分のuser_id以外に紐づいているuser_idとroom_idを取得
       user_room = UserRoom.current_rooms(room, current_user).first
       room.create_notification_chat!(current_user, @chat.id, user_room)
       redirect_to request.referer

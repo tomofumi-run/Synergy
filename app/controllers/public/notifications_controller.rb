@@ -5,7 +5,7 @@ class Public::NotificationsController < ApplicationController
 
   def index
     notification = current_user.passive_notifications # 自分に対する通知を全取得
-    @notifications = notification.other_notification(current_user.id)# 自分の通知は表示させない
+    @notifications = notification.other_notification(current_user.id) # 自分の通知は表示させない
     @notifications.where(checked: false).find_each { |n| n.update!(checked: true) }
   end
 
