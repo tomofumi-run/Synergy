@@ -25,6 +25,8 @@ class ApplicationController < ActionController::Base
   end
   
   def ensure_normal_user
-    current_user.email == 'aaa@aaa.com' if redirect_to users_path, alert: 'ゲストユーザーに権限はありません。'
+    if current_user.email == 'aaa@aaa.com'
+      redirect_to users_path, alert: 'ゲストユーザーに権限はありません。'
+    end
   end  
 end
